@@ -1,10 +1,514 @@
+Yes — make the homepage/index position Vivid Lessons around the strongest money lanes:
+
+1. AP Business
+2. Personal Financial Management
+3. Career Readiness
+4. Marketing / Business 101 / AI Literacy as supporting areas
+
+Paste this into your index.html:
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Vivid Lessons</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vivid Lessons | Interactive Business, Finance & Career Curriculum</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0D1B2A;
+      --navy2: #12263A;
+      --blue: #64B5F6;
+      --blue2: #2196F3;
+      --white: #F8FAFC;
+      --text: #E0E8F0;
+      --muted: #AAB8C5;
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.16);
+      --green: #4ADE80;
+      --gold: #FBBF24;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(100,181,246,0.22), transparent 35%),
+        linear-gradient(135deg, #0D1B2A 0%, #12263A 55%, #08111F 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .topbar {
+      width: 100%;
+      padding: 22px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(13,27,42,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 20;
+    }
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .brand span {
+      color: var(--blue);
+    }
+    .nav {
+      display: flex;
+      gap: 22px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .nav a:hover {
+      color: var(--white);
+    }
+    .hero {
+      padding: 80px 6% 50px;
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 45px;
+      align-items: center;
+    }
+    .badge {
+      display: inline-flex;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 5.7rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 24px;
+    }
+    h1 span {
+      color: var(--blue);
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+      max-width: 720px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .btn {
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.08);
+      transition: 0.2s ease;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color: #06111F;
+      border: none;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.14);
+    }
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    }
+    .hero-card h2 {
+      font-size: 1.45rem;
+      margin-bottom: 16px;
+    }
+    .stat {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat:last-child {
+      border-bottom: none;
+    }
+    .stat strong {
+      display: block;
+      color: var(--white);
+      font-size: 1.45rem;
+    }
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    section {
+      max-width: 1250px;
+      margin: auto;
+      padding: 50px 6%;
+    }
+    .section-title {
+      margin-bottom: 26px;
+    }
+    .section-title p {
+      color: var(--blue);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+    .section-title h2 {
+      font-size: clamp(1.9rem, 4vw, 3.1rem);
+      letter-spacing: -0.05em;
+    }
+    .priority-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 28px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card.featured {
+      border: 1px solid rgba(100,181,246,0.55);
+      background:
+        linear-gradient(135deg, rgba(100,181,246,0.16), rgba(255,255,255,0.06));
+    }
+    .tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      background: rgba(100,181,246,0.15);
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+    .tag.green {
+      background: rgba(74,222,128,0.15);
+      color: var(--green);
+    }
+    .tag.gold {
+      background: rgba(251,191,36,0.15);
+      color: var(--gold);
+    }
+    .product-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.04em;
+    }
+    .product-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+    .product-card ul {
+      margin-top: 18px;
+      padding-left: 18px;
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 0.92rem;
+    }
+    .card-link {
+      margin-top: 22px;
+      font-weight: 800;
+      color: var(--blue);
+    }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .mini-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+    }
+    .mini-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+    .mini-card p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.92rem;
+    }
+    .sell-section {
+      background: rgba(255,255,255,0.06);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-top: 40px;
+    }
+    .sell-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .sell-box {
+      padding: 22px;
+      border-radius: 20px;
+      background: rgba(13,27,42,0.6);
+      border: 1px solid var(--border);
+    }
+    .sell-box strong {
+      display: block;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .sell-box span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 45px 6%;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 900px) {
+      .hero,
+      .priority-grid,
+      .mini-grid,
+      .sell-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav {
+        display: none;
+      }
+      .hero {
+        padding-top: 50px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Vivid Lessons</h1>
-  <p>Interactive business, finance, marketing, and career-ready curriculum.</p>
+  <header class="topbar">
+    <a href="index.html" class="brand">Vivid<span>Lessons</span></a>
+    <nav class="nav">
+      <a href="#modules">Modules</a>
+      <a href="#courses">Courses</a>
+      <a href="#why">Why Vivid Lessons</a>
+      <a href="#support">Contact / Support</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="badge">Interactive curriculum for business, finance, and career-ready classrooms</div>
+        <h1>Lessons students actually <span>finish.</span></h1>
+        <p>
+          Vivid Lessons creates polished, web-based learning modules for teachers who want more than worksheets.
+          Our strongest focus is AP Business and Personal Financial Management, with ready-to-use modules,
+          auto-scored activities, real-world scenarios, and clean student-facing design.
+        </p>
+        <div class="hero-actions">
+          <a href="#modules" class="btn primary">View Featured Modules</a>
+          <a href="#courses" class="btn">Explore Course Areas</a>
+          <a href="#support" class="btn">Contact / Support</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>Built for high-demand teaching areas</h2>
+        <div class="stat">
+          <strong>AP Business</strong>
+          <span>Low-competition niche with strong growth potential.</span>
+        </div>
+        <div class="stat">
+          <strong>Personal Finance</strong>
+          <span>High-demand graduation requirement and life-skills category.</span>
+        </div>
+        <div class="stat">
+          <strong>Career Readiness</strong>
+          <span>Projects, employability skills, resumes, interviews, and real-world decisions.</span>
+        </div>
+      </aside>
+    </section>
+    <section id="modules">
+      <div class="section-title">
+        <p>Featured Focus</p>
+        <h2>Start with the strongest product lanes.</h2>
+      </div>
+      <div class="priority-grid">
+        <article class="product-card featured">
+          <div>
+            <span class="tag">Primary Focus</span>
+            <h3>AP Business</h3>
+            <p>
+              Full AP Business learning modules designed for high school students. These resources focus on vocabulary,
+              business concepts, real-world examples, interactive checks, and clean progression through course units.
+            </p>
+            <ul>
+              <li>Unit-based interactive lessons</li>
+              <li>Vocabulary, examples, checks for understanding</li>
+              <li>Teacher-ready structure with student-facing copy</li>
+              <li>Ideal for digital modules, bell ringers, and course bundles</li>
+            </ul>
+          </div>
+          <a class="card-link" href="ap-business.html">Open AP Business →</a>
+        </article>
+        <article class="product-card featured">
+          <div>
+            <span class="tag green">Primary Focus</span>
+            <h3>Personal Financial Management</h3>
+            <p>
+              Personal finance modules built around decisions students will actually face: paychecks, taxes, credit,
+              banking, budgeting, cars, renting, insurance, investing, and long-term planning.
+            </p>
+            <ul>
+              <li>Auto-scored student activities</li>
+              <li>Scenario-based calculators and decision practice</li>
+              <li>Completion tracking through Google Sheets</li>
+              <li>Strong fit for graduation-required financial literacy</li>
+            </ul>
+          </div>
+          <a class="card-link" href="personal-finance.html">Open Personal Finance →</a>
+        </article>
+      </div>
+    </section>
+    <section id="courses">
+      <div class="section-title">
+        <p>Additional Course Areas</p>
+        <h2>Supporting subjects that expand the catalog.</h2>
+      </div>
+      <div class="mini-grid">
+        <article class="mini-card">
+          <h3>Career Readiness</h3>
+          <p>
+            Resume building, interviews, employability skills, workplace behavior, career paths, trades,
+            college options, and real-world decision-making.
+          </p>
+        </article>
+        <article class="mini-card">
+          <h3>Marketing Fundamentals</h3>
+          <p>
+            Sports marketing, branding, attention economy, product strategy, advertising, events,
+            customer experience, and social media analysis.
+          </p>
+        </article>
+        <article class="mini-card">
+          <h3>Business 101</h3>
+          <p>
+            Introductory business lessons covering entrepreneurship, economics, business types,
+            products and services, competition, and consumer behavior.
+          </p>
+        </article>
+        <article class="mini-card">
+          <h3>AI Literacy</h3>
+          <p>
+            Student-friendly AI basics, responsible use, prompt writing, workplace impact,
+            misinformation, privacy, and future career skills.
+          </p>
+        </article>
+        <article class="mini-card">
+          <h3>Bell Ringers</h3>
+          <p>
+            Short daily warm-ups connected to business, money, careers, marketing, current events,
+            and real-world student decisions.
+          </p>
+        </article>
+        <article class="mini-card">
+          <h3>Teacher Tools</h3>
+          <p>
+            Google Sheets tracking, module setup guides, answer collection, digital classroom systems,
+            and editable lesson support.
+          </p>
+        </article>
+      </div>
+    </section>
+    <section class="sell-section" id="why">
+      <div class="section-title">
+        <p>Why This Model Works</p>
+        <h2>More valuable than a worksheet.</h2>
+      </div>
+      <div class="sell-grid">
+        <div class="sell-box">
+          <strong>Interactive</strong>
+          <span>Students click, answer, sort, match, calculate, and complete instead of only reading.</span>
+        </div>
+        <div class="sell-box">
+          <strong>Trackable</strong>
+          <span>Modules can connect to Google Sheets so teachers can collect names, blocks, answers, and scores.</span>
+        </div>
+        <div class="sell-box">
+          <strong>Sellable</strong>
+          <span>Complete modules, unit bundles, and course packs have higher value than single PDFs.</span>
+        </div>
+        <div class="sell-box">
+          <strong>Modern</strong>
+          <span>Clean web-based lessons look polished, current, and easier for students to use.</span>
+        </div>
+      </div>
+    </section>
+    <section id="support">
+      <div class="section-title">
+        <p>Contact / Support</p>
+        <h2>Need access, help, or a custom module?</h2>
+      </div>
+      <div class="priority-grid">
+        <article class="product-card">
+          <div>
+            <span class="tag gold">For Teachers</span>
+            <h3>Module Access</h3>
+            <p>
+              Teachers can use Vivid Lessons modules as classroom activities, bell ringers, projects,
+              review lessons, or full unit resources.
+            </p>
+          </div>
+          <a class="card-link" href="mailto:support@vividlessons.com">Contact Support →</a>
+        </article>
+        <article class="product-card">
+          <div>
+            <span class="tag">For Schools</span>
+            <h3>Course Bundles</h3>
+            <p>
+              Vivid Lessons can grow into full course bundles for AP Business, Personal Finance,
+              Career Readiness, Marketing, and Business 101.
+            </p>
+          </div>
+          <a class="card-link" href="mailto:support@vividlessons.com">Request Info →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    © 2026 Vivid Lessons. Interactive curriculum for business, finance, and career-ready classrooms.
+  </footer>
 </body>
 </html>
+
+Use this as your new homepage index.html. The main message is now: AP Business + Personal Financial Management first, with the other subjects supporting the brand instead of competing with the main focus.
