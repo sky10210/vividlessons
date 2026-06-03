@@ -1,1 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Teacher Dashboard | Vivid Lessons</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0D1B2A;
+  --blue:#2563EB;
+  --cyan:#22D3EE;
+  --emerald:#10B981;
+  --white:#F8FAFC;
+  --gray:#F1F5F9;
+  --card:#FFFFFF;
+  --text:#102033;
+  --muted:#64748B;
+  --border:#E2E8F0;
+  --shadow:0 18px 45px rgba(13,27,42,.10);
+  --radius:22px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 48%,#F8FAFC 100%);
+  color:var(--text);
+  line-height:1.6;
+}
+
+a{text-decoration:none;color:inherit}
+button,input,select{font-family:inherit}
+
+.nav{
+  width:min(1240px,92%);
+  margin:auto;
+  padding:22px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:800;
+  color:var(--navy);
+  font-size:1.18rem;
+}
+
+.logo{
+  width:46px;
+  height:46px;
+  border-radius:17px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  position:relative;
+  box-shadow:
+    0 0 0 7px rgba(34,211,238,.12),
+    0 16px 34px rgba(37,99,235,.32);
+}
+
+.logo:before{
+  content:"";
+  position:absolute;
+  width:27px;
+  height:27px;
+  border-left:5px solid white;
+  border-bottom:5px solid white;
+  transform:rotate(-45deg);
+  border-radius:4px;
+  top:8px;
+  left:9px;
+}
+
+.logo:after{
+  content:"";
+  position:absolute;
+  width:13px;
+  height:13px;
+  border-left:4px solid white;
+  border-bottom:4px solid white;
+  transform:rotate(-45deg);
+  border-radius:3px;
+  top:16px;
+  left:17px;
+}
+
+.nav-links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.nav-links a{
+  padding:10px 13px;
+  border-radius:999px;
+  font-size:.86rem;
+  font-weight:700;
+  color:#334155;
+}
+
+.nav-links a:hover{
+  background:white;
+  color:var(--blue);
+}
+
+.dashboard{
+  width:min(1240px,92%);
+  margin:22px auto 60px;
+}
+
+.hero{
+  background:var(--navy);
+  color:white;
+  border-radius:34px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  margin-bottom:24px;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:340px;
+  height:340px;
+  right:-120px;
+  top:-120px;
+  border-radius:999px;
+  background:radial-gradient(circle,rgba(34,211,238,.36),transparent 65%);
+}
+
+.kicker{
+  color:#BAE6FD;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.76rem;
+  margin-bottom:8px;
+}
+
+.hero h1{
+  font-size:clamp(2rem,4vw,3.4rem);
+  line-height:1.05;
+  letter-spacing:-.055em;
+  margin-bottom:12px;
+  position:relative;
+  z-index:2;
+}
+
+.hero p{
+  color:#CBD5E1;
+  max-width:760px;
+  position:relative;
+  z-index:2;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:26px;
+  position:relative;
+  z-index:2;
+}
+
+.stat{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:20px;
+  padding:18px;
+}
+
+.stat strong{
+  display:block;
+  font-size:1.9rem;
+  line-height:1;
+}
+
+.stat span{
+  color:#BAE6FD;
+  font-weight:700;
+  font-size:.86rem;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:22px;
+  align-items:start;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:0 14px 30px rgba(15,23,42,.07);
+  padding:22px;
+}
+
+.sidebar{
+  position:sticky;
+  top:20px;
+}
+
+.pill{
+  display:inline-flex;
+  width:max-content;
+  background:#EFF6FF;
+  color:var(--blue);
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:.72rem;
+  font-weight:900;
+}
+
+.card h2,.card h3{
+  color:var(--navy);
+  line-height:1.16;
+  margin:10px 0;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:.92rem;
+}
+
+.status-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid var(--border);
+  padding:13px 0;
+  font-size:.88rem;
+}
+
+.status-row:last-child{border-bottom:0}
+
+.status-row strong{color:var(--navy)}
+.status-row span{color:var(--muted);font-weight:700;text-align:right}
+
+.license-input{
+  display:grid;
+  gap:10px;
+  margin-top:16px;
+}
+
+input,select{
+  width:100%;
+  padding:12px 13px;
+  border-radius:13px;
+  border:1px solid var(--border);
+  background:#F8FAFC;
+  font-weight:700;
+}
+
+.btn{
+  border:0;
+  cursor:pointer;
+  border-radius:14px;
+  padding:12px 14px;
+  font-weight:800;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  transition:.2s ease;
+}
+
+.btn:hover{transform:translateY(-2px)}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),#1D4ED8);
+  color:white;
+  box-shadow:0 12px 24px rgba(37,99,235,.22);
+}
+
+.btn-secondary{
+  background:white;
+  color:var(--navy);
+  border:1px solid var(--border);
+}
+
+.btn-emerald{
+  background:#DCFCE7;
+  color:#166534;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  margin-bottom:16px;
+}
+
+.section-head h2{
+  color:var(--navy);
+  font-size:1.6rem;
+  letter-spacing:-.04em;
+}
+
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.tab{
+  border:1px solid var(--border);
+  background:white;
+  color:#334155;
+  padding:10px 13px;
+  border-radius:999px;
+  font-size:.84rem;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.tab.active{
+  background:var(--navy);
+  color:white;
+}
+
+.module-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin-bottom:26px;
+}
+
+.module-card{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.module-top{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.module-title h3{
+  margin:6px 0 6px;
+}
+
+.active{
+  background:#D1FAE5;
+  color:#047857;
+}
+
+.expire{
+  background:#FEF3C7;
+  color:#92400E;
+}
+
+.module-meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+}
+
+.qr-box{
+  display:none;
+  background:#F8FAFC;
+  border:1px dashed #CBD5E1;
+  border-radius:16px;
+  padding:14px;
+  gap:13px;
+  align-items:center;
+}
+
+.qr-box.show{display:flex}
+
+.fake-qr{
+  width:82px;
+  height:82px;
+  background:
+    linear-gradient(90deg,#111 10px,transparent 10px) 0 0/20px 20px,
+    linear-gradient(#111 10px,transparent 10px) 0 0/20px 20px,
+    #fff;
+  border:8px solid #fff;
+  box-shadow:inset 0 0 0 2px #111;
+  flex:0 0 auto;
+}
+
+.completions{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:760px;
+}
+
+th,td{
+  text-align:left;
+  padding:13px 12px;
+  border-bottom:1px solid var(--border);
+  font-size:.88rem;
+}
+
+th{
+  color:#475569;
+  background:#F8FAFC;
+  font-weight:900;
+}
+
+td{
+  color:#334155;
+  font-weight:600;
+}
+
+.score{
+  font-weight:900;
+  color:#047857;
+}
+
+.toast{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:var(--navy);
+  color:white;
+  padding:13px 16px;
+  border-radius:14px;
+  font-weight:800;
+  opacity:0;
+  transform:translateY(10px);
+  transition:.2s ease;
+  z-index:50;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .module-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:640px){
+  .nav{flex-direction:column;align-items:flex-start}
+  .stats{grid-template-columns:1fr}
+  .actions{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <a class="brand" href="index.html">
+    <span class="logo"></span>
+    <span>Vivid Lessons</span>
+  </a>
+
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="#modules">My Modules</a>
+    <a href="#completions">Completions</a>
+    <a href="#licenses">Licenses</a>
+    <a href="index.html">Log Out</a>
+  </nav>
+</header>
+
+<main class="dashboard">
+
+<section class="hero">
+  <div class="kicker">Teacher Dashboard</div>
+  <h1>Welcome, Demo Teacher.</h1>
+  <p>
+    Manage purchased modules, launch lessons, copy student links, display QR codes,
+    and view student completions from one clean dashboard.
+  </p>
+
+  <div class="stats">
+    <div class="stat">
+      <strong>5</strong>
+      <span>Active Modules</span>
+    </div>
+    <div class="stat">
+      <strong>3</strong>
+      <span>Collections Owned</span>
+    </div>
+    <div class="stat">
+      <strong>124</strong>
+      <span>Student Completions</span>
+    </div>
+    <div class="stat">
+      <strong>0</strong>
+      <span>Expiring Soon</span>
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+
+<aside class="card sidebar" id="licenses">
+  <span class="pill">Account</span>
+  <h3>License Summary</h3>
+
+  <div class="status-row">
+    <strong>Teacher</strong>
+    <span>Demo Teacher</span>
+  </div>
+  <div class="status-row">
+    <strong>Email</strong>
+    <span>teacher@email.com</span>
+  </div>
+  <div class="status-row">
+    <strong>Status</strong>
+    <span>Active</span>
+  </div>
+  <div class="status-row">
+    <strong>License Type</strong>
+    <span>Individual Modules</span>
+  </div>
+  <div class="status-row">
+    <strong>Access</strong>
+    <span>1 year from first use</span>
+  </div>
+
+  <div class="license-input">
+    <input placeholder="Enter license key" />
+    <button class="btn btn-primary" onclick="toast('License redemption placeholder.')">Redeem Module</button>
+  </div>
+
+  <p style="margin-top:14px">
+    Purchased modules appear in this dashboard after the license key is redeemed.
+  </p>
+</aside>
+
+<section>
+
+<div class="section-head" id="modules">
+  <div>
+    <div class="kicker">My Modules</div>
+    <h2>Purchased curriculum</h2>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="filterModules('all', this)">All</button>
+  <button class="tab" onclick="filterModules('pfm', this)">Personal Finance</button>
+  <button class="tab" onclick="filterModules('ap', this)">AP Business</button>
+  <button class="tab" onclick="filterModules('marketing', this)">Marketing</button>
+  <button class="tab" onclick="filterModules('business', this)">Business 101</button>
+</div>
+
+<div class="module-grid">
+
+<article class="card module-card module pfm">
+  <div class="module-top">
+    <div class="module-title">
+      <span class="pill">Personal Finance</span>
+      <h3>Your First Paycheck</h3>
+      <p>Gross pay, taxes, deductions, net pay, and paycheck decision-making.</p>
+    </div>
+    <span class="pill active">Active</span>
+  </div>
+
+  <div class="module-meta">
+    <span class="pill">Expires Jun 2, 2027</span>
+    <span class="pill">32 completions</span>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" onclick="toast('Launching module placeholder.')">Launch Module</button>
+    <button class="btn btn-secondary" onclick="copyLink('/modules/your-first-paycheck.html')">Copy Student Link</button>
+    <button class="btn btn-secondary" onclick="toggleQR('qr-paycheck')">Show QR</button>
+    <button class="btn btn-secondary" onclick="toast('Opening teacher guide placeholder.')">Teacher Guide</button>
+    <button class="btn btn-emerald" onclick="scrollToCompletions('Your First Paycheck')">View Completions</button>
+  </div>
+
+  <div class="qr-box" id="qr-paycheck">
+    <div class="fake-qr"></div>
+    <div>
+      <strong>Student QR Code</strong><br>
+      <small>Students scan this to open Your First Paycheck.</small>
+    </div>
+  </div>
+</article>
+
+<article class="card module-card module pfm">
+  <div class="module-top">
+    <div class="module-title">
+      <span class="pill">Personal Finance</span>
+      <h3>Smart Spending</h3>
+      <p>Needs, wants, trade-offs, budgeting choices, and spending plans.</p>
+    </div>
+    <span class="pill active">Active</span>
+  </div>
+
+  <div class="module-meta">
+    <span class="pill">Expires Jun 2, 2027</span>
+    <span class="pill">27 completions</span>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" onclick="toast('Launching module placeholder.')">Launch Module</button>
+    <button class="btn btn-secondary" onclick="copyLink('/modules/smart-spending.html')">Copy Student Link</button>
+    <button class="btn btn-secondary" onclick="toggleQR('qr-spending')">Show QR</button>
+    <button class="btn btn-secondary" onclick="toast('Opening teacher guide placeholder.')">Teacher Guide</button>
+    <button class="btn btn-emerald" onclick="scrollToCompletions('Smart Spending')">View Completions</button>
+  </div>
+
+  <div class="qr-box" id="qr-spending">
+    <div class="fake-qr"></div>
+    <div>
+      <strong>Student QR Code</strong><br>
+      <small>Students scan this to open Smart Spending.</small>
+    </div>
+  </div>
+</article>
+
+<article class="card module-card module ap">
+  <div class="module-top">
+    <div class="module-title">
+      <span class="pill">AP Business</span>
+      <h3>AP Business Unit 1 Foundations</h3>
+      <p>Business purpose, stakeholders, ownership, entrepreneurship, and vocabulary checks.</p>
+    </div>
+    <span class="pill active">Active</span>
+  </div>
+
+  <div class="module-meta">
+    <span class="pill">Expires Jun 2, 2027</span>
+    <span class="pill">41 completions</span>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" onclick="toast('Launching module placeholder.')">Launch Module</button>
+    <button class="btn btn-secondary" onclick="copyLink('/ap-business/unit-1.html')">Copy Student Link</button>
+    <button class="btn btn-secondary" onclick="toggleQR('qr-ap1')">Show QR</button>
+    <button class="btn btn-secondary" onclick="toast('Opening teacher guide placeholder.')">Teacher Guide</button>
+    <button class="btn btn-emerald" onclick="scrollToCompletions('AP Business Unit 1')">View Completions</button>
+  </div>
+
+  <div class="qr-box" id="qr-ap1">
+    <div class="fake-qr"></div>
+    <div>
+      <strong>Student QR Code</strong><br>
+      <small>Students scan this to open AP Business Unit 1.</small>
+    </div>
+  </div>
+</article>
+
+<article class="card module-card module marketing">
+  <div class="module-top">
+    <div class="module-title">
+      <span class="pill">Marketing</span>
+      <h3>Branding Basics</h3>
+      <p>Target market, brand identity, positioning, slogans, logos, and campaign choices.</p>
+    </div>
+    <span class="pill active">Active</span>
+  </div>
+
+  <div class="module-meta">
+    <span class="pill">Expires Jun 2, 2027</span>
+    <span class="pill">16 completions</span>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" onclick="toast('Launching module placeholder.')">Launch Module</button>
+    <button class="btn btn-secondary" onclick="copyLink('/marketing/branding-basics.html')">Copy Student Link</button>
+    <button class="btn btn-secondary" onclick="toggleQR('qr-branding')">Show QR</button>
+    <button class="btn btn-secondary" onclick="toast('Opening teacher guide placeholder.')">Teacher Guide</button>
+    <button class="btn btn-emerald" onclick="scrollToCompletions('Branding Basics')">View Completions</button>
+  </div>
+
+  <div class="qr-box" id="qr-branding">
+    <div class="fake-qr"></div>
+    <div>
+      <strong>Student QR Code</strong><br>
+      <small>Students scan this to open Branding Basics.</small>
+    </div>
+  </div>
+</article>
+
+<article class="card module-card module business">
+  <div class="module-top">
+    <div class="module-title">
+      <span class="pill">Business 101</span>
+      <h3>Build Your Own Company</h3>
+      <p>Company idea, product/service, logo, slogan, billboard, and early pitch concept.</p>
+    </div>
+    <span class="pill expire">Expires Soon</span>
+  </div>
+
+  <div class="module-meta">
+    <span class="pill">Expires Jul 15, 2026</span>
+    <span class="pill">8 completions</span>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" onclick="toast('Launching module placeholder.')">Launch Module</button>
+    <button class="btn btn-secondary" onclick="copyLink('/business-101/company-project.html')">Copy Student Link</button>
+    <button class="btn btn-secondary" onclick="toggleQR('qr-company')">Show QR</button>
+    <button class="btn btn-secondary" onclick="toast('Opening teacher guide placeholder.')">Teacher Guide</button>
+    <button class="btn btn-emerald" onclick="scrollToCompletions('Build Your Own Company')">View Completions</button>
+  </div>
+
+  <div class="qr-box" id="qr-company">
+    <div class="fake-qr"></div>
+    <div>
+      <strong>Student QR Code</strong><br>
+      <small>Students scan this to open Build Your Own Company.</small>
+    </div>
+  </div>
+</article>
+
+</div>
+
+<div class="card completions" id="completions">
+  <div class="section-head">
+    <div>
+      <span class="pill">Student Records</span>
+      <h2>Recent completions</h2>
+    </div>
+
+    <select id="completionFilter" onchange="filterCompletions()">
+      <option value="all">All modules</option>
+      <option value="Your First Paycheck">Your First Paycheck</option>
+      <option value="Smart Spending">Smart Spending</option>
+      <option value="AP Business Unit 1">AP Business Unit 1</option>
+      <option value="Branding Basics">Branding Basics</option>
+      <option value="Build Your Own Company">Build Your Own Company</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Module</th>
+        <th>Score</th>
+        <th>Percent</th>
+        <th>Completed At</th>
+        <th>Certificate ID</th>
+      </tr>
+    </thead>
+    <tbody id="completionRows">
+      <tr data-module="Your First Paycheck">
+        <td>Alex M.</td>
+        <td>Your First Paycheck</td>
+        <td class="score">9 / 10</td>
+        <td>90%</td>
+        <td>Jun 2, 2026</td>
+        <td>VL-PFM-1842</td>
+      </tr>
+      <tr data-module="Smart Spending">
+        <td>Jordan K.</td>
+        <td>Smart Spending</td>
+        <td class="score">8 / 10</td>
+        <td>80%</td>
+        <td>Jun 2, 2026</td>
+        <td>VL-PFM-1874</td>
+      </tr>
+      <tr data-module="AP Business Unit 1">
+        <td>Sam R.</td>
+        <td>AP Business Unit 1</td>
+        <td class="score">14 / 15</td>
+        <td>93%</td>
+        <td>Jun 1, 2026</td>
+        <td>VL-APB-2209</td>
+      </tr>
+      <tr data-module="Branding Basics">
+        <td>Taylor S.</td>
+        <td>Branding Basics</td>
+        <td class="score">10 / 12</td>
+        <td>83%</td>
+        <td>May 31, 2026</td>
+        <td>VL-MKT-0918</td>
+      </tr>
+      <tr data-module="Build Your Own Company">
+        <td>Casey P.</td>
+        <td>Build Your Own Company</td>
+        <td class="score">Complete</td>
+        <td>Project</td>
+        <td>May 30, 2026</td>
+        <td>VL-B101-3341</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</section>
+</div>
+
+</main>
+
+<div class="toast" id="toast">Copied.</div>
+
+<script>
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+function copyLink(path){
+  const link=location.origin + path;
+  navigator.clipboard?.writeText(link).then(()=>toast('Student link copied.'));
+}
+
+function toggleQR(id){
+  document.getElementById(id).classList.toggle('show');
+}
+
+function filterModules(type, btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.module').forEach(card=>{
+    card.style.display = type === 'all' || card.classList.contains(type) ? 'flex' : 'none';
+  });
+}
+
+function scrollToCompletions(moduleName){
+  document.getElementById('completionFilter').value = moduleName;
+  filterCompletions();
+  document.getElementById('completions').scrollIntoView({behavior:'smooth'});
+}
+
+function filterCompletions(){
+  const selected=document.getElementById('completionFilter').value;
+  document.querySelectorAll('#completionRows tr').forEach(row=>{
+    row.style.display = selected === 'all' || row.dataset.module === selected ? '' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
