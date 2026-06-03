@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sample Module | Vivid Lessons</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0D1B2A;
+  --blue:#2563EB;
+  --cyan:#22D3EE;
+  --emerald:#10B981;
+  --white:#F8FAFC;
+  --gray:#F1F5F9;
+  --card:#FFFFFF;
+  --text:#102033;
+  --muted:#64748B;
+  --border:#E2E8F0;
+  --danger:#DC2626;
+  --gold:#F59E0B;
+  --shadow:0 18px 45px rgba(13,27,42,.10);
+  --radius:22px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 50%,#F8FAFC 100%);
+  color:var(--text);
+  line-height:1.6;
+}
+
+button,input,textarea,select{font-family:inherit}
+
+a{text-decoration:none;color:inherit}
+
+.nav{
+  width:min(1080px,92%);
+  margin:auto;
+  padding:22px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:800;
+  color:var(--navy);
+}
+
+.logo{
+  width:46px;
+  height:46px;
+  border-radius:17px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  position:relative;
+  box-shadow:0 0 0 7px rgba(34,211,238,.12),0 16px 34px rgba(37,99,235,.32);
+}
+
+.logo:before{
+  content:"";
+  position:absolute;
+  width:27px;
+  height:27px;
+  border-left:5px solid white;
+  border-bottom:5px solid white;
+  transform:rotate(-45deg);
+  border-radius:4px;
+  top:8px;
+  left:9px;
+}
+
+.logo:after{
+  content:"";
+  position:absolute;
+  width:13px;
+  height:13px;
+  border-left:4px solid white;
+  border-bottom:4px solid white;
+  transform:rotate(-45deg);
+  border-radius:3px;
+  top:16px;
+  left:17px;
+}
+
+.nav a{
+  font-weight:800;
+  color:var(--blue);
+}
+
+.wrap{
+  width:min(1080px,92%);
+  margin:10px auto 70px;
+}
+
+.hero{
+  background:var(--navy);
+  color:white;
+  border-radius:34px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  margin-bottom:22px;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:320px;
+  height:320px;
+  right:-110px;
+  top:-110px;
+  border-radius:999px;
+  background:radial-gradient(circle,rgba(34,211,238,.36),transparent 65%);
+}
+
+.kicker{
+  color:#BAE6FD;
+  font-size:.76rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  margin-bottom:8px;
+}
+
+.hero h1{
+  font-size:clamp(2rem,4vw,3.5rem);
+  line-height:1.05;
+  letter-spacing:-.055em;
+  margin-bottom:12px;
+  position:relative;
+  z-index:2;
+}
+
+.hero p{
+  color:#CBD5E1;
+  max-width:760px;
+  position:relative;
+  z-index:2;
+}
+
+.progress-shell{
+  margin-top:24px;
+  position:relative;
+  z-index:2;
+}
+
+.progress-top{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  color:#BAE6FD;
+  font-weight:800;
+  font-size:.86rem;
+  margin-bottom:8px;
+}
+
+.progress{
+  height:12px;
+  background:rgba(255,255,255,.14);
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--emerald));
+  transition:.35s ease;
+}
+
+.student-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:0 14px 30px rgba(15,23,42,.07);
+  padding:22px;
+  margin-bottom:18px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+label{
+  display:block;
+  color:#475569;
+  font-size:.78rem;
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--border);
+  background:#F8FAFC;
+  border-radius:14px;
+  padding:12px 13px;
+  font-weight:700;
+}
+
+textarea{
+  resize:vertical;
+  min-height:100px;
+}
+
+.btn{
+  border:0;
+  cursor:pointer;
+  border-radius:15px;
+  padding:12px 15px;
+  font-weight:900;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  transition:.2s ease;
+}
+
+.btn:hover{transform:translateY(-2px)}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),#1D4ED8);
+  color:white;
+  box-shadow:0 12px 24px rgba(37,99,235,.22);
+}
+
+.btn-secondary{
+  background:white;
+  color:var(--navy);
+  border:1px solid var(--border);
+}
+
+.btn-emerald{
+  background:#DCFCE7;
+  color:#166534;
+}
+
+.btn-small{
+  padding:9px 11px;
+  font-size:.82rem;
+}
+
+.module{
+  display:grid;
+  gap:18px;
+}
+
+.section{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:28px;
+  box-shadow:0 14px 30px rgba(15,23,42,.07);
+  overflow:hidden;
+}
+
+.section.locked{
+  opacity:.58;
+}
+
+.section-head{
+  padding:22px;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+
+.section-title h2{
+  color:var(--navy);
+  font-size:1.45rem;
+  line-height:1.15;
+  letter-spacing:-.04em;
+}
+
+.section-title p{
+  color:var(--muted);
+  font-size:.92rem;
+  margin-top:4px;
+}
+
+.badge{
+  display:inline-flex;
+  width:max-content;
+  background:#EFF6FF;
+  color:var(--blue);
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:.72rem;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.lock{
+  background:#F1F5F9;
+  color:#64748B;
+}
+
+.done{
+  background:#D1FAE5;
+  color:#047857;
+}
+
+.section-body{
+  padding:22px;
+}
+
+.lock-msg{
+  background:#F8FAFC;
+  border:1px dashed #CBD5E1;
+  color:#64748B;
+  border-radius:18px;
+  padding:18px;
+  font-weight:700;
+}
+
+.lesson-card{
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:16px;
+}
+
+.lesson-card h3{
+  color:var(--navy);
+  margin-bottom:8px;
+}
+
+.activity{
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  margin-top:16px;
+}
+
+.activity h3{
+  color:var(--navy);
+  margin-bottom:8px;
+}
+
+.activity p{
+  color:#475569;
+  margin-bottom:12px;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+}
+
+.option{
+  width:100%;
+  text-align:left;
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:13px;
+  cursor:pointer;
+  font-weight:800;
+}
+
+.option.selected{
+  border-color:var(--blue);
+  background:#EFF6FF;
+}
+
+.option.correct{
+  border-color:var(--emerald);
+  background:#DCFCE7;
+  color:#166534;
+}
+
+.option.wrong{
+  border-color:#FCA5A5;
+  background:#FEE2E2;
+  color:#991B1B;
+}
+
+.feedback{
+  display:none;
+  margin-top:12px;
+  border-radius:14px;
+  padding:12px;
+  font-weight:800;
+}
+
+.feedback.show{
+  display:block;
+}
+
+.feedback.good{
+  background:#DCFCE7;
+  color:#166534;
+}
+
+.feedback.bad{
+  background:#FEE2E2;
+  color:#991B1B;
+}
+
+.word-bank{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:12px 0;
+}
+
+.word{
+  border:1px solid var(--border);
+  background:white;
+  padding:9px 12px;
+  border-radius:999px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.word.used{
+  opacity:.35;
+  pointer-events:none;
+}
+
+.blank{
+  display:inline-flex;
+  min-width:120px;
+  min-height:34px;
+  border:2px dashed #CBD5E1;
+  background:#F8FAFC;
+  border-radius:10px;
+  padding:4px 8px;
+  align-items:center;
+  justify-content:center;
+  color:var(--blue);
+  font-weight:900;
+  cursor:pointer;
+  vertical-align:middle;
+}
+
+.match-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.match-row{
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px;
+}
+
+.match-row strong{
+  display:block;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+
+.sort-list{
+  display:grid;
+  gap:10px;
+}
+
+.sort-item{
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  font-weight:800;
+}
+
+.sort-controls{
+  display:flex;
+  gap:7px;
+}
+
+.sort-controls button{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:white;
+  cursor:pointer;
+  font-weight:900;
+}
+
+.cert{
+  display:none;
+  background:white;
+  border:2px solid #BFDBFE;
+  border-radius:28px;
+  padding:28px;
+  box-shadow:var(--shadow);
+  margin-top:18px;
+  text-align:center;
+}
+
+.cert.show{display:block}
+
+.cert-logo{
+  margin:0 auto 14px;
+}
+
+.cert h2{
+  color:var(--navy);
+  font-size:2rem;
+  letter-spacing:-.04em;
+}
+
+.cert-name{
+  font-size:1.6rem;
+  color:var(--blue);
+  font-weight:900;
+  margin:10px 0;
+}
+
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:20px 0;
+}
+
+.cert-stat{
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px;
+}
+
+.cert-stat strong{
+  display:block;
+  color:var(--navy);
+  font-size:1.2rem;
+}
+
+.cert-stat span{
+  color:var(--muted);
+  font-weight:700;
+  font-size:.82rem;
+}
+
+.toast{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:var(--navy);
+  color:white;
+  padding:13px 16px;
+  border-radius:14px;
+  font-weight:800;
+  opacity:0;
+  transform:translateY(10px);
+  transition:.2s ease;
+  z-index:50;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:850px){
+  .form-grid,.cert-grid{grid-template-columns:1fr 1fr}
+  .match-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:620px){
+  .nav{flex-direction:column;align-items:flex-start}
+  .form-grid,.cert-grid{grid-template-columns:1fr}
+  .section-head{display:block}
+  .badge{margin-top:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <a class="brand" href="index.html">
+    <span class="logo"></span>
+    <span>Vivid Lessons</span>
+  </a>
+  <a href="index.html">← Back to Home</a>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="kicker">Free sample module</div>
+  <h1>How Vivid Lessons Interactive Modules Work</h1>
+  <p>
+    This sample shows the student experience: locked sections, quick learning,
+    multiple graded question types, instant feedback, reflection, and a completion certificate.
+  </p>
+
+  <div class="progress-shell">
+    <div class="progress-top">
+      <span id="progressText">Progress: 0%</span>
+      <span id="scoreText">Score: 0 / 6</span>
+    </div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+  </div>
+</section>
+
+<section class="student-card">
+  <h2 style="color:var(--navy);margin-bottom:10px">Student Start Form</h2>
+  <div class="form-grid">
+    <div>
+      <label>First Name</label>
+      <input id="firstName" placeholder="First name">
+    </div>
+    <div>
+      <label>Last Name</label>
+      <input id="lastName" placeholder="Last name">
+    </div>
+    <div>
+      <label>Class / Block</label>
+      <select id="block">
+        <option value="">Select</option>
+        <option>Block 1</option>
+        <option>Block 2</option>
+        <option>Block 3</option>
+        <option>Block 4</option>
+      </select>
+    </div>
+    <div style="display:flex;align-items:end">
+      <button class="btn btn-primary" style="width:100%" onclick="startModule()">Start Module</button>
+    </div>
+  </div>
+</section>
+
+<div class="module">
+
+<section class="section locked" id="sec1">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>1. What makes an interactive module different?</h2>
+      <p>Quick learning card + multiple choice check.</p>
+    </div>
+    <span class="badge lock" id="badge1">Locked</span>
+  </div>
+  <div class="section-body" id="body1">
+    <div class="lock-msg">Complete the student start form to unlock this section.</div>
+  </div>
+</section>
+
+<section class="section locked" id="sec2">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>2. Active response check</h2>
+      <p>Word bank retrieval practice before harder questions.</p>
+    </div>
+    <span class="badge lock" id="badge2">Locked</span>
+  </div>
+  <div class="section-body" id="body2">
+    <div class="lock-msg">Complete Section 1 to unlock this section.</div>
+  </div>
+</section>
+
+<section class="section locked" id="sec3">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>3. Match concepts to examples</h2>
+      <p>Dropdown matching activity.</p>
+    </div>
+    <span class="badge lock" id="badge3">Locked</span>
+  </div>
+  <div class="section-body" id="body3">
+    <div class="lock-msg">Complete Section 2 to unlock this section.</div>
+  </div>
+</section>
+
+<section class="section locked" id="sec4">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>4. Sort the process</h2>
+      <p>Students put steps in the correct order.</p>
+    </div>
+    <span class="badge lock" id="badge4">Locked</span>
+  </div>
+  <div class="section-body" id="body4">
+    <div class="lock-msg">Complete Section 3 to unlock this section.</div>
+  </div>
+</section>
+
+<section class="section locked" id="sec5">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>5. Numeric scenario</h2>
+      <p>Students calculate a real number instead of just clicking through.</p>
+    </div>
+    <span class="badge lock" id="badge5">Locked</span>
+  </div>
+  <div class="section-body" id="body5">
+    <div class="lock-msg">Complete Section 4 to unlock this section.</div>
+  </div>
+</section>
+
+<section class="section locked" id="sec6">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>6. Reflection + certificate</h2>
+      <p>Students finish with a written reflection and completion certificate.</p>
+    </div>
+    <span class="badge lock" id="badge6">Locked</span>
+  </div>
+  <div class="section-body" id="body6">
+    <div class="lock-msg">Complete Section 5 to unlock this section.</div>
+  </div>
+</section>
+
+</div>
+
+</main>
+
+<div class="toast" id="toast">Saved.</div>
+
+<script>
+let started=false;
+let score=0;
+let total=6;
+let completedSections=0;
+let answers={};
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+function updateProgress(){
+  const percent=Math.round((completedSections/6)*100);
+  document.getElementById('bar').style.width=percent+'%';
+  document.getElementById('progressText').textContent='Progress: '+percent+'%';
+  document.getElementById('scoreText').textContent='Score: '+score+' / '+total;
+}
+
+function unlock(n){
+  const sec=document.getElementById('sec'+n);
+  const badge=document.getElementById('badge'+n);
+  sec.classList.remove('locked');
+  badge.className='badge';
+  badge.textContent='Unlocked';
+  renderSection(n);
+}
+
+function completeSection(n){
+  const badge=document.getElementById('badge'+n);
+  badge.className='badge done';
+  badge.textContent='Complete';
+  completedSections=Math.max(completedSections,n);
+  updateProgress();
+  if(n<6) unlock(n+1);
+}
+
+function startModule(){
+  const first=document.getElementById('firstName').value.trim();
+  const last=document.getElementById('lastName').value.trim();
+  const block=document.getElementById('block').value;
+  if(!first || !last || !block){
+    toast('Enter first name, last name, and block.');
+    return;
+  }
+  if(!started){
+    started=true;
+    unlock(1);
+    toast('Module started. Section 1 unlocked.');
+  }
+}
+
+function renderSection(n){
+  const body=document.getElementById('body'+n);
+
+  if(n===1){
+    body.innerHTML=`
+      <div class="lesson-card">
+        <h3>Mini Lesson</h3>
+        <p>
+          A strong interactive module does more than display information. It guides students through
+          short chunks, asks them to respond, gives immediate feedback, and records completion.
+        </p>
+      </div>
+
+      <div class="activity">
+        <h3>Graded Question 1: Multiple Choice</h3>
+        <p>Which feature best shows that a lesson is interactive?</p>
+        <div class="options">
+          <button class="option" onclick="mc(this,1,false,'A normal PDF can be useful, but it does not create active feedback by itself.')">It is only a PDF download.</button>
+          <button class="option" onclick="mc(this,1,true,'Correct. Students respond, receive feedback, and continue through the module.')">Students answer questions and receive immediate feedback.</button>
+          <button class="option" onclick="mc(this,1,false,'A teacher lecture can help, but the module should also make students actively respond.')">It only gives the teacher lecture notes.</button>
+        </div>
+        <div class="feedback" id="fb1"></div>
+      </div>
+    `;
+  }
+
+  if(n===2){
+    body.innerHTML=`
+      <div class="lesson-card">
+        <h3>Mini Lesson</h3>
+        <p>
+          Word banks are useful because they make students retrieve key terms before they face a harder question.
+          This helps turn reading into active learning.
+        </p>
+      </div>
+
+      <div class="activity">
+        <h3>Graded Question 2: Choose the Missing Word Bank</h3>
+        <p>
+          Vivid Lessons modules use guided
+          <span class="blank" id="blank1" onclick="clearBlank('blank1')">blank</span>,
+          instant
+          <span class="blank" id="blank2" onclick="clearBlank('blank2')">blank</span>,
+          and student
+          <span class="blank" id="blank3" onclick="clearBlank('blank3')">blank</span>.
+        </p>
+
+        <div class="word-bank">
+          <button class="word" onclick="placeWord(this,'progression')">progression</button>
+          <button class="word" onclick="placeWord(this,'feedback')">feedback</button>
+          <button class="word" onclick="placeWord(this,'completion')">completion</button>
+          <button class="word" onclick="placeWord(this,'decoration')">decoration</button>
+        </div>
+
+        <button class="btn btn-primary btn-small" onclick="checkWordBank()">Check Word Bank</button>
+        <div class="feedback" id="fb2"></div>
+      </div>
+    `;
+  }
+
+  if(n===3){
+    body.innerHTML=`
+      <div class="activity">
+        <h3>Graded Question 3: Matching</h3>
+        <p>Match each teacher dashboard tool to what it does.</p>
+
+        <div class="match-grid">
+          <div class="match-row">
+            <strong>Copy Student Link</strong>
+            <select id="m1">
+              <option value="">Choose</option>
+              <option value="guide">Opens answer notes for the teacher</option>
+              <option value="link">Gives students a direct module URL</option>
+              <option value="score">Shows completed students and scores</option>
+            </select>
+          </div>
+
+          <div class="match-row">
+            <strong>Teacher Guide</strong>
+            <select id="m2">
+              <option value="">Choose</option>
+              <option value="score">Shows completed students and scores</option>
+              <option value="guide">Opens answer notes for the teacher</option>
+              <option value="qr">Displays a scan code</option>
+            </select>
+          </div>
+
+          <div class="match-row">
+            <strong>View Completions</strong>
+            <select id="m3">
+              <option value="">Choose</option>
+              <option value="qr">Displays a scan code</option>
+              <option value="link">Gives students a direct module URL</option>
+              <option value="score">Shows completed students and scores</option>
+            </select>
+          </div>
+
+          <div class="match-row">
+            <strong>Show QR</strong>
+            <select id="m4">
+              <option value="">Choose</option>
+              <option value="guide">Opens answer notes for the teacher</option>
+              <option value="qr">Displays a scan code</option>
+              <option value="score">Shows completed students and scores</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-small" style="margin-top:14px" onclick="checkMatching()">Check Matching</button>
+        <div class="feedback" id="fb3"></div>
+      </div>
+    `;
+  }
+
+  if(n===4){
+    body.innerHTML=`
+      <div class="activity">
+        <h3>Graded Question 4: Sorting</h3>
+        <p>Put the teacher workflow in the best order.</p>
+
+        <div class="sort-list" id="sortList">
+          <div class="sort-item" data-step="3">Share link or QR with students <span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span></div>
+          <div class="sort-item" data-step="1">Purchase module or bundle <span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span></div>
+          <div class="sort-item" data-step="4">Students complete module and certificate <span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span></div>
+          <div class="sort-item" data-step="2">Teacher logs in and launches module <span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span></div>
+        </div>
+
+        <button class="btn btn-primary btn-small" style="margin-top:14px" onclick="checkSort()">Check Order</button>
+        <div class="feedback" id="fb4"></div>
+      </div>
+    `;
+  }
+
+  if(n===5){
+    body.innerHTML=`
+      <div class="lesson-card">
+        <h3>Mini Lesson</h3>
+        <p>
+          Scenario questions are stronger when students must use numbers from the situation.
+          This helps show that the module can support math-based finance, business, science, or other subjects later.
+        </p>
+      </div>
+
+      <div class="activity">
+        <h3>Graded Question 5: Numeric Scenario</h3>
+        <p>
+          A teacher assigns a sample module to <strong>24 students</strong>.
+          <strong>18 students</strong> complete it. What percent of students completed the module?
+        </p>
+
+        <label>Enter completion percent</label>
+        <input id="numAnswer" type="number" placeholder="Example: 75">
+
+        <button class="btn btn-primary btn-small" style="margin-top:14px" onclick="checkNumeric()">Check Number</button>
+        <div class="feedback" id="fb5"></div>
+      </div>
+    `;
+  }
+
+  if(n===6){
+    body.innerHTML=`
+      <div class="activity">
+        <h3>Required Reflection</h3>
+        <p>What is one feature from this sample that would make a lesson easier for students or teachers?</p>
+
+        <textarea id="reflection" placeholder="Write at least one complete sentence."></textarea>
+
+        <button class="btn btn-primary" style="margin-top:14px" onclick="finishModule()">Submit Reflection & Generate Certificate</button>
+        <div class="feedback" id="fb6"></div>
+      </div>
+
+      <div class="cert" id="cert">
+        <div class="logo cert-logo"></div>
+        <div class="kicker" style="color:var(--blue)">Certificate of Completion</div>
+        <h2>Vivid Lessons Sample Module</h2>
+        <p>This certifies that</p>
+        <div class="cert-name" id="certName">Student Name</div>
+        <p>completed the sample interactive module.</p>
+
+        <div class="cert-grid">
+          <div class="cert-stat">
+            <strong id="certScore">0 / 6</strong>
+            <span>Score</span>
+          </div>
+          <div class="cert-stat">
+            <strong id="certPercent">0%</strong>
+            <span>Percent</span>
+          </div>
+          <div class="cert-stat">
+            <strong id="certId">VL-SAMPLE</strong>
+            <span>Certificate ID</span>
+          </div>
+        </div>
+
+        <p><strong>Score sent to teacher dashboard.</strong></p>
+        <p style="margin-top:8px;color:var(--muted)">In the full platform, this completion record would appear for the teacher automatically.</p>
+      </div>
+    `;
+  }
+}
+
+function mc(btn,q,isCorrect,msg){
+  if(answers['q'+q]) return;
+  answers['q'+q]=isCorrect;
+  if(isCorrect) score++;
+  btn.classList.add(isCorrect?'correct':'wrong');
+  document.querySelectorAll('#fb'+q)[0].className='feedback show '+(isCorrect?'good':'bad');
+  document.querySelectorAll('#fb'+q)[0].textContent=msg;
+  completeSection(1);
+}
+
+let activeBlank=null;
+function placeWord(btn,word){
+  const blanks=['blank1','blank2','blank3'];
+  let target=blanks.find(id=>document.getElementById(id).textContent==='blank');
+  if(!target) return;
+  document.getElementById(target).textContent=word;
+  document.getElementById(target).dataset.word=word;
+  btn.classList.add('used');
+}
+
+function clearBlank(id){
+  const blank=document.getElementById(id);
+  const word=blank.dataset.word;
+  if(!word) return;
+  document.querySelectorAll('.word').forEach(w=>{
+    if(w.textContent===word) w.classList.remove('used');
+  });
+  blank.textContent='blank';
+  blank.dataset.word='';
+}
+
+function checkWordBank(){
+  if(answers.q2) return;
+  const ok=
+    document.getElementById('blank1').dataset.word==='progression' &&
+    document.getElementById('blank2').dataset.word==='feedback' &&
+    document.getElementById('blank3').dataset.word==='completion';
+
+  answers.q2=ok;
+  if(ok) score++;
+
+  const fb=document.getElementById('fb2');
+  fb.className='feedback show '+(ok?'good':'bad');
+  fb.textContent=ok
+    ? 'Correct — progression, feedback, and completion are key parts of the module system.'
+    : 'Not quite. The correct words are progression, feedback, and completion.';
+
+  completeSection(2);
+}
+
+function checkMatching(){
+  if(answers.q3) return;
+  const ok=
+    document.getElementById('m1').value==='link' &&
+    document.getElementById('m2').value==='guide' &&
+    document.getElementById('m3').value==='score' &&
+    document.getElementById('m4').value==='qr';
+
+  answers.q3=ok;
+  if(ok) score++;
+
+  const fb=document.getElementById('fb3');
+  fb.className='feedback show '+(ok?'good':'bad');
+  fb.textContent=ok
+    ? 'Correct — each tool matches the teacher dashboard action.'
+    : 'Not quite. Copy link = URL, teacher guide = notes, completions = records, QR = scan code.';
+
+  completeSection(3);
+}
+
+function move(btn,dir){
+  const item=btn.closest('.sort-item');
+  const list=document.getElementById('sortList');
+  if(dir<0 && item.previousElementSibling) list.insertBefore(item,item.previousElementSibling);
+  if(dir>0 && item.nextElementSibling) list.insertBefore(item.nextElementSibling,item);
+}
+
+function checkSort(){
+  if(answers.q4) return;
+  const items=[...document.querySelectorAll('.sort-item')];
+  const order=items.map(i=>i.dataset.step).join('');
+  const ok=order==='1234';
+
+  answers.q4=ok;
+  if(ok) score++;
+
+  const fb=document.getElementById('fb4');
+  fb.className='feedback show '+(ok?'good':'bad');
+  fb.textContent=ok
+    ? 'Correct — purchase, launch, share, complete.'
+    : 'Not quite. Best order: purchase, teacher launches, students access, students complete.';
+
+  completeSection(4);
+}
+
+function checkNumeric(){
+  if(answers.q5) return;
+  const val=Number(document.getElementById('numAnswer').value);
+  const ok=Math.abs(val-75)<=.5;
+
+  answers.q5=ok;
+  if(ok) score++;
+
+  const fb=document.getElementById('fb5');
+  fb.className='feedback show '+(ok?'good':'bad');
+  fb.textContent=ok
+    ? 'Correct — 18 ÷ 24 = 0.75, so 75% completed the module.'
+    : 'Not quite. Divide 18 by 24, then multiply by 100. The answer is 75%.';
+
+  completeSection(5);
+}
+
+function finishModule(){
+  if(answers.q6) return;
+  const reflection=document.getElementById('reflection').value.trim();
+  if(reflection.length<12){
+    toast('Write a complete reflection first.');
+    return;
+  }
+
+  answers.q6=true;
+  score++;
+  completeSection(6);
+
+  const first=document.getElementById('firstName').value.trim();
+  const last=document.getElementById('lastName').value.trim();
+  const percent=Math.round((score/total)*100);
+  const certId='VL-SAMPLE-'+Math.floor(1000+Math.random()*9000);
+
+  document.getElementById('certName').textContent=first+' '+last;
+  document.getElementById('certScore').textContent=score+' / '+total;
+  document.getElementById('certPercent').textContent=percent+'%';
+  document.getElementById('certId').textContent=certId;
+  document.getElementById('cert').classList.add('show');
+
+  const fb=document.getElementById('fb6');
+  fb.className='feedback show good';
+  fb.textContent='Reflection submitted. Certificate generated. Score sent to teacher dashboard.';
+
+  toast('Module complete. Certificate generated.');
+  updateProgress();
+}
+</script>
+
+</body>
+</html>
