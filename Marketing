@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Marketing Fundamentals | Vivid Lessons</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0D1B2A; --blue:#2563EB; --cyan:#22D3EE; --emerald:#10B981;
+  --white:#F8FAFC; --text:#102033; --muted:#64748B; --border:#E2E8F0;
+  --shadow:0 18px 45px rgba(13,27,42,.10); --radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 50%,#F8FAFC 100%);
+  color:var(--text); line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+
+.nav{
+  width:min(1180px,92%); margin:auto; padding:22px 0;
+  display:flex; justify-content:space-between; align-items:center; gap:20px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy)}
+.logo{
+  width:46px;height:46px;border-radius:17px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  position:relative;
+  box-shadow:0 0 0 7px rgba(34,211,238,.12),0 16px 34px rgba(37,99,235,.32);
+}
+.logo:before{
+  content:"";position:absolute;width:27px;height:27px;
+  border-left:5px solid white;border-bottom:5px solid white;
+  transform:rotate(-45deg);border-radius:4px;top:8px;left:9px;
+}
+.logo:after{
+  content:"";position:absolute;width:13px;height:13px;
+  border-left:4px solid white;border-bottom:4px solid white;
+  transform:rotate(-45deg);border-radius:3px;top:16px;left:17px;
+}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+.links a{
+  padding:10px 13px;border-radius:999px;color:#334155;
+  font-size:.88rem;font-weight:700;
+}
+.links a:hover{background:white;color:var(--blue)}
+
+.wrap{width:min(1180px,92%);margin:auto}
+
+.hero{
+  margin:30px auto 26px;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center;
+}
+.eyebrow{
+  display:inline-flex;gap:8px;align-items:center;
+  background:#E0F2FE;color:#075985;border-radius:999px;
+  padding:8px 13px;font-size:.82rem;font-weight:800;margin-bottom:18px;
+}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 5px rgba(16,185,129,.14)}
+h1{
+  font-size:clamp(2.5rem,5vw,4.8rem);line-height:1;
+  letter-spacing:-.07em;color:var(--navy);margin-bottom:20px;
+}
+.gradient{
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{color:#475569;font-size:1.05rem;max-width:700px;margin-bottom:22px}
+
+.info{
+  background:white;border:1px solid var(--border);border-left:5px solid var(--blue);
+  border-radius:18px;padding:17px;box-shadow:0 12px 26px rgba(15,23,42,.07);
+  margin-bottom:22px;
+}
+.info strong{display:block;color:var(--navy);margin-bottom:4px}
+.info p{margin:0;color:var(--muted);font-size:.92rem}
+
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  border:0;cursor:pointer;border-radius:15px;padding:12px 16px;font-weight:900;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(135deg,var(--blue),#1D4ED8);color:white;box-shadow:0 12px 24px rgba(37,99,235,.22)}
+.btn-secondary{background:white;color:var(--navy);border:1px solid var(--border)}
+.btn-shopify{background:#95BF47;color:#102033}
+.btn-small{padding:9px 11px;font-size:.82rem}
+
+.panel,.card{
+  background:white;border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:0 14px 30px rgba(15,23,42,.07);padding:22px;
+}
+.panel{border-radius:30px}
+.panel-top{
+  background:var(--navy);color:white;border-radius:24px;padding:24px;margin-bottom:16px;position:relative;overflow:hidden;
+}
+.panel-top:after{
+  content:"";position:absolute;width:220px;height:220px;right:-80px;top:-80px;border-radius:999px;
+  background:radial-gradient(circle,rgba(34,211,238,.38),transparent 65%);
+}
+.panel-top small{color:#BAE6FD;font-weight:900;text-transform:uppercase;letter-spacing:.1em}
+.panel-top h3{font-size:1.45rem;line-height:1.15;margin-top:9px;position:relative;z-index:2}
+
+.quick-row{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
+  padding:13px;border:1px solid var(--border);border-radius:17px;background:#FBFDFF;margin-bottom:10px;
+}
+.icon{
+  width:42px;height:42px;border-radius:14px;background:#E0F2FE;color:var(--blue);
+  display:grid;place-items:center;font-weight:900;
+}
+.quick-row strong{display:block;color:var(--navy);line-height:1.2}
+.quick-row span{color:var(--muted);font-size:.8rem;font-weight:700}
+.ready{background:#D1FAE5;color:#047857;border-radius:999px;padding:6px 8px;font-size:.7rem;font-weight:900}
+
+.section{padding:56px 0}
+.section-head{
+  display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:24px;
+}
+.kicker{color:var(--blue);font-weight:900;text-transform:uppercase;letter-spacing:.12em;font-size:.76rem;margin-bottom:8px}
+h2{color:var(--navy);font-size:clamp(1.9rem,3vw,3rem);line-height:1.05;letter-spacing:-.055em}
+.section-head p{max-width:560px;color:var(--muted);font-weight:500}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pill{
+  display:inline-flex;width:max-content;background:#EFF6FF;color:var(--blue);
+  border-radius:999px;padding:7px 10px;font-size:.72rem;font-weight:900;
+}
+.card h3{color:var(--navy);line-height:1.2;margin:10px 0}
+.card p{color:var(--muted);font-size:.92rem}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.module-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}
+
+.bundle{
+  background:var(--navy);color:white;border-radius:32px;padding:30px;box-shadow:var(--shadow);
+  display:grid;grid-template-columns:1fr .8fr;gap:24px;align-items:center;
+}
+.bundle h2{color:white}
+.bundle p{color:#CBD5E1;margin-top:12px}
+.price-card{
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);
+  border-radius:24px;padding:22px;
+}
+.price{font-size:2.6rem;font-weight:900;letter-spacing:-.06em}
+.price small{font-size:.9rem;color:#BAE6FD}
+
+.qr-box{
+  display:none;margin-top:14px;background:#F8FAFC;border:1px dashed #CBD5E1;
+  border-radius:16px;padding:14px;gap:13px;align-items:center;
+}
+.qr-box.show{display:flex}
+.fake-qr{
+  width:78px;height:78px;
+  background:linear-gradient(90deg,#111 10px,transparent 10px) 0 0/20px 20px,
+             linear-gradient(#111 10px,transparent 10px) 0 0/20px 20px,#fff;
+  border:8px solid #fff;box-shadow:inset 0 0 0 2px #111;flex:0 0 auto;
+}
+.toast{
+  position:fixed;right:18px;bottom:18px;background:var(--navy);color:white;
+  padding:13px 16px;border-radius:14px;font-weight:800;opacity:0;transform:translateY(10px);
+  transition:.2s ease;z-index:50;
+}
+.toast.show{opacity:1;transform:translateY(0)}
+
+footer{
+  width:min(1180px,92%);margin:auto;padding:34px 0 46px;color:#64748B;
+  font-size:.9rem;font-weight:600;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+
+@media(max-width:950px){
+  .hero,.bundle{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr 1fr}
+  .section-head{display:block}
+  .section-head p{margin-top:12px}
+}
+@media(max-width:640px){
+  .nav{flex-direction:column;align-items:flex-start}
+  .grid{grid-template-columns:1fr}
+  .module-actions{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <a class="brand" href="index.html">
+    <span class="logo"></span>
+    <span>Vivid Lessons</span>
+  </a>
+  <nav class="links">
+    <a href="index.html">Home</a>
+    <a href="#topics">Topics</a>
+    <a href="#resources">Resources</a>
+    <a href="sample-module.html">Sample Preview</a>
+    <a href="teacher-dashboard.html">Teacher Login</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> Featured collection</div>
+    <h1>Marketing <span class="gradient">Fundamentals</span></h1>
+    <p>
+      A student-ready collection for branding, attention, advertising, consumer behavior,
+      sports and entertainment marketing, digital strategy, events, and campaign creation.
+      Built for real-world examples, interactive choices, certificates, and teacher completion tracking.
+    </p>
+
+    <div class="info">
+      <strong>Topic-based collection, not a forced sequence.</strong>
+      <p>
+        Teachers can use the full collection or pick the topic that fits the week:
+        branding, events, advertising, digital marketing, sports business, or campaign projects.
+      </p>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="#topics">View Topics</a>
+      <a class="btn btn-secondary" href="sample-module.html">Try Sample Module</a>
+      <a class="btn btn-shopify" href="https://YOUR-SHOPIFY-MARKETING-COLLECTION-LINK.com" target="_blank">Buy Collection</a>
+    </div>
+  </div>
+
+  <aside class="panel">
+    <div class="panel-top">
+      <small>Marketing collection preview</small>
+      <h3>Launch marketing lessons with student links, QR codes, and completion records.</h3>
+    </div>
+
+    <div class="quick-row">
+      <div class="icon">B</div>
+      <div><strong>Brand thinking</strong><span>Identity, audience, positioning</span></div>
+      <div class="ready">Ready</div>
+    </div>
+    <div class="quick-row">
+      <div class="icon">A</div>
+      <div><strong>Attention & ads</strong><span>Promotion, persuasion, media</span></div>
+      <div class="ready">Ready</div>
+    </div>
+    <div class="quick-row">
+      <div class="icon">P</div>
+      <div><strong>Campaign projects</strong><span>Apply strategy to a real deliverable</span></div>
+      <div class="ready">Ready</div>
+    </div>
+  </aside>
+</section>
+
+<section class="section" id="topics">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Marketing topics</div>
+      <h2>Flexible lessons for real-world marketing.</h2>
+    </div>
+    <p>
+      Each topic can become a standalone product, part of a bundle, or part of the full
+      Marketing Fundamentals collection.
+    </p>
+  </div>
+
+  <div class="grid">
+
+    <article class="card">
+      <span class="pill">Branding</span>
+      <h3>Branding Basics</h3>
+      <p>Target audience, brand identity, positioning, slogans, logos, personality, and first impressions.</p>
+      <div class="meta"><span class="pill">25–35 min</span><span class="pill">Creative</span></div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy Topic</a>
+        <a class="btn btn-primary btn-small" href="marketing/branding-basics.html">Launch</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/marketing/branding-basics.html')">Copy Link</button>
+        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-branding')">Show QR</button>
+      </div>
+      <div class="qr-box" id="qr-branding"><div class="fake-qr"></div><div><strong>Student QR</strong><br><small>/marketing/branding-basics.html</small></div></div>
+    </article>
+
+    <article class="card">
+      <span class="pill">Attention</span>
+      <h3>The Attention Economy</h3>
+      <p>How platforms, brands, influencers, media, and entertainment compete for consumer attention.</p>
+      <div class="meta"><span class="pill">25–35 min</span><span class="pill">Current examples</span></div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy Topic</a>
+        <a class="btn btn-primary btn-small" href="marketing/attention-economy.html">Launch</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/marketing/attention-economy.html')">Copy Link</button>
+        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-attention')">Show QR</button>
+      </div>
+      <div class="qr-box" id="qr-attention"><div class="fake-qr"></div><div><strong>Student QR</strong><br><small>/marketing/attention-economy.html</small></div></div>
+    </article>
+
+    <article class="card">
+      <span class="pill">Sports & Entertainment</span>
+      <h3>Sports & Entertainment Marketing</h3>
+      <p>Sponsorships, tickets, branding, athletes, influencers, live events, merchandise, and media rights.</p>
+      <div class="meta"><span class="pill">30–45 min</span><span class="pill">High engagement</span></div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy Topic</a>
+        <a class="btn btn-primary btn-small" href="marketing/sports-entertainment.html">Launch</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/marketing/sports-entertainment.html')">Copy Link</button>
+        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-sports')">Show QR</button>
+      </div>
+      <div class="qr-box" id="qr-sports"><div class="fake-qr"></div><div><strong>Student QR</strong><br><small>/marketing/sports-entertainment.html</small></div></div>
+    </article>
+
+    <article class="card">
+      <span class="pill">Events</span>
+      <h3>Experiences & Events</h3>
+      <p>Festival planning, live experiences, event branding, audience design, ticketing, and promotion.</p>
+      <div class="meta"><span class="pill">Project-ready</span><span class="pill">Events</span></div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy Topic</a>
+        <a class="btn btn-primary btn-small" href="marketing/experiences-events.html">Launch</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/marketing/experiences-events.html')">Copy Link</button>
+        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-events')">Show QR</button>
+      </div>
+      <div class="qr-box" id="qr-events"><div class="fake-qr"></div><div><strong>Student QR</strong><br><small>/marketing/experiences-events.html</small></div></div>
+    </article>
+
+    <article class="card">
+      <span class="pill">Promotion</span>
+      <h3>Advertising & Promotion</h3>
+      <p>Ad strategies, emotional appeals, humor, celebrity, storytelling, media choices, and campaign goals.</p>
+      <div class="meta"><span class="pill">25–35 min</span><span class="pill">Ad analysis</span></div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy Topic</a>
+        <a class="btn btn-primary btn-small" href="marketing/advertising-promotion.html">Launch</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/marketing/advertising-promotion.html')">Copy Link</button>
+        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-ads')">Show QR</button>
+      </div>
+      <div class="qr-box" id="qr-ads"><div class="fake-qr"></div><div><strong>Student QR</strong><br><small>/marketing/advertising-promotion.html</small></div></div>
+    </article>
+
+    <article class="card">
+      <span class="pill">Consumer Behavior</span>
+      <h3>Consumer Behavior</h3>
+      <p>Why people buy, decision influences, social proof, price perception, habits, and customer psychology.</p>
+      <div class="meta"><span class="pill">30–40 min</span><span class="pill">Decision-based</span></div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy Topic</a>
+        <a class="btn btn-primary btn-small" href="marketing/consumer-behavior.html">Launch</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/marketing/consumer-behavior.html')">Copy Link</button>
+        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-consumer')">Show QR</button>
+      </div>
+      <div class="qr-box" id="qr-consumer"><div class="fake-qr"></div><div><strong>Student QR</strong><br><small>/marketing/consumer-behavior.html</small></div></div>
+    </article>
+
+    <article class="card">
+      <span class="pill">Digital</span>
+      <h3>Social Media & Digital Marketing</h3>
+      <p>Platforms, content strategy, reach, engagement, analytics, creators, and digital campaign choices.</p>
+      <div class="meta"><span class="pill">Current</span><span class="pill">Digital tools</span></div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy Topic</a>
+        <a class="btn btn-primary btn-small" href="marketing/digital-marketing.html">Launch</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/marketing/digital-marketing.html')">Copy Link</button>
+        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-digital')">Show QR</button>
+      </div>
+      <div class="qr-box" id="qr-digital"><div class="fake-qr"></div><div><strong>Student QR</strong><br><small>/marketing/digital-marketing.html</small></div></div>
+    </article>
+
+    <article class="card">
+      <span class="pill">Project</span>
+      <h3>Marketing Campaign Project</h3>
+      <p>Students build a campaign with audience, message, channel, creative assets, and campaign reasoning.</p>
+      <div class="meta"><span class="pill">Project</span><span class="pill">Portfolio-ready</span></div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy Topic</a>
+        <a class="btn btn-primary btn-small" href="marketing/campaign-project.html">Launch</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/marketing/campaign-project.html')">Copy Link</button>
+        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-project')">Show QR</button>
+      </div>
+      <div class="qr-box" id="qr-project"><div class="fake-qr"></div><div><strong>Student QR</strong><br><small>/marketing/campaign-project.html</small></div></div>
+    </article>
+
+    <article class="card">
+      <span class="pill">Free Sample</span>
+      <h3>Sample Interactive Module</h3>
+      <p>Preview the Vivid Lessons format before buying: locked sections, scoring, reflection, and certificate.</p>
+      <div class="meta"><span class="pill">8–12 min</span><span class="pill">Free</span></div>
+      <div class="module-actions">
+        <a class="btn btn-primary btn-small" href="sample-module.html">Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/sample-module.html')">Copy Link</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="bundle">
+    <div>
+      <div class="kicker" style="color:#BAE6FD">Full collection license</div>
+      <h2>Marketing Fundamentals Collection</h2>
+      <p>
+        Includes flexible topic modules, student-ready interactive lessons, teacher access,
+        student links, QR codes, certificates, and completion records.
+      </p>
+    </div>
+    <div class="price-card">
+      <div class="price">$99 <small>/ teacher license</small></div>
+      <p>Placeholder price. Adjust before launch.</p>
+      <div class="actions" style="margin-top:18px">
+        <a class="btn btn-shopify" href="https://YOUR-SHOPIFY-MARKETING-COLLECTION-LINK.com" target="_blank">Buy Marketing Collection</a>
+        <a class="btn btn-secondary" href="sample-module.html">Preview First</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="resources">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Teacher access</div>
+      <h2>Built for flexible classroom use.</h2>
+    </div>
+    <p>
+      Use one topic as a one-day lesson, combine several into a unit, or assign the campaign project
+      as a larger portfolio piece.
+    </p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <span class="pill">Flexible</span>
+      <h3>Pick the topic that fits</h3>
+      <p>Marketing topics do not need to be completed in a strict order. Teachers can choose based on the current unit.</p>
+    </div>
+    <div class="card">
+      <span class="pill">Student Access</span>
+      <h3>Links and QR codes</h3>
+      <p>Students open modules through a direct link or QR code without needing individual accounts.</p>
+    </div>
+    <div class="card">
+      <span class="pill">Completion</span>
+      <h3>Certificates and records</h3>
+      <p>Students receive certificates, and teachers can view completion records from the dashboard.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>© 2026 Vivid Lessons</div>
+  <div>Learn. Apply. Succeed.</div>
+</footer>
+
+<div class="toast" id="toast">Copied.</div>
+
+<script>
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+function copyLink(path){
+  const link=location.origin + path;
+  navigator.clipboard?.writeText(link).then(()=>toast('Student link copied.'));
+}
+function toggleQR(id){
+  document.getElementById(id).classList.toggle('show');
+}
+</script>
+
+</body>
+</html>
