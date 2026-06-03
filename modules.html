@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module Library | Vivid Lessons</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0D1B2A; --blue:#2563EB; --cyan:#22D3EE; --emerald:#10B981;
+  --white:#F8FAFC; --text:#102033; --muted:#64748B; --border:#E2E8F0;
+  --shadow:0 18px 45px rgba(13,27,42,.10); --radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 50%,#F8FAFC 100%);
+  color:var(--text); line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+button,input{font-family:inherit}
+
+.nav{
+  width:min(1180px,92%); margin:auto; padding:22px 0;
+  display:flex; justify-content:space-between; align-items:center; gap:20px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy)}
+.logo{
+  width:46px;height:46px;border-radius:17px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  position:relative;
+  box-shadow:0 0 0 7px rgba(34,211,238,.12),0 16px 34px rgba(37,99,235,.32);
+}
+.logo:before{
+  content:"";position:absolute;width:27px;height:27px;
+  border-left:5px solid white;border-bottom:5px solid white;
+  transform:rotate(-45deg);border-radius:4px;top:8px;left:9px;
+}
+.logo:after{
+  content:"";position:absolute;width:13px;height:13px;
+  border-left:4px solid white;border-bottom:4px solid white;
+  transform:rotate(-45deg);border-radius:3px;top:16px;left:17px;
+}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+.links a{
+  padding:10px 13px;border-radius:999px;color:#334155;
+  font-size:.88rem;font-weight:700;
+}
+.links a:hover{background:white;color:var(--blue)}
+
+.wrap{width:min(1180px,92%);margin:auto}
+
+.hero{
+  margin:30px auto 26px;
+  background:var(--navy);
+  color:white;
+  border-radius:34px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"";position:absolute;width:340px;height:340px;right:-120px;top:-120px;
+  border-radius:999px;background:radial-gradient(circle,rgba(34,211,238,.36),transparent 65%);
+}
+.kicker{
+  color:#BAE6FD;font-weight:900;text-transform:uppercase;
+  letter-spacing:.12em;font-size:.76rem;margin-bottom:8px;
+}
+.hero h1{
+  font-size:clamp(2.4rem,5vw,4.6rem);
+  line-height:1;letter-spacing:-.07em;margin-bottom:14px;position:relative;z-index:2;
+}
+.hero p{
+  color:#CBD5E1;max-width:780px;position:relative;z-index:2;
+}
+.actions{
+  display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;position:relative;z-index:2;
+}
+.btn{
+  border:0;cursor:pointer;border-radius:15px;padding:12px 16px;font-weight:900;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s ease;
