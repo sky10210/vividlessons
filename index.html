@@ -3,14 +3,80 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vivid Lessons | Interactive Curriculum for Modern Classrooms</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Vivid Lessons | Interactive Lessons for Modern Classrooms</title>
+
+<meta name="description" content="Vivid Lessons is a premium catalog of interactive classroom materials for business, personal finance, marketing, career readiness, projects, worksheets, and modern student learning." />
+<meta name="keywords" content="interactive lessons, modern classroom materials, personal finance curriculum, business education lessons, AP business, career readiness, marketing lessons, teacher resources, student modules, classroom activities, high school business curriculum" />
+<meta name="author" content="Vivid Lessons" />
+
+<meta property="og:title" content="Vivid Lessons | Interactive Lessons for Modern Classrooms" />
+<meta property="og:description" content="Modern classroom materials made for the new age of students. Business, finance, and career readiness lessons students can actually interact and engage with." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://vividlessons.com" />
+
+<link rel="canonical" href="https://vividlessons.com/" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Vivid Lessons",
+  "url":"https://vividlessons.com",
+  "slogan":"Learn. Apply. Succeed.",
+  "description":"Interactive classroom materials and student-ready lessons for business, finance, marketing, career readiness, projects, worksheets, and modern learning."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ItemList",
+  "name":"Vivid Lessons Featured Classroom Materials",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "item":{
+        "@type":"Product",
+        "name":"Sample Interactive Module",
+        "description":"Free preview of the Vivid Lessons student module experience.",
+        "brand":{"@type":"Brand","name":"Vivid Lessons"},
+        "category":"Interactive Classroom Module"
+      }
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "item":{
+        "@type":"Product",
+        "name":"Personal Finance Modules",
+        "description":"Interactive personal finance lessons for budgeting, credit, taxes, investing, insurance, and real-world money decisions.",
+        "brand":{"@type":"Brand","name":"Vivid Lessons"},
+        "category":"Personal Finance Curriculum"
+      }
+    },
+    {
+      "@type":"ListItem",
+      "position":3,
+      "item":{
+        "@type":"Product",
+        "name":"Business Basics Modules",
+        "description":"Business foundations, entrepreneurship, company creation, branding, pricing, and workplace-ready skills.",
+        "brand":{"@type":"Brand","name":"Vivid Lessons"},
+        "category":"Business Education"
+      }
+    }
+  ]
+}
+</script>
 
 <style>
 :root{
   --navy:#0D1B2A;
   --blue:#2563EB;
+  --blue-dark:#1D4ED8;
   --cyan:#22D3EE;
   --emerald:#10B981;
   --white:#F8FAFC;
@@ -19,50 +85,86 @@
   --text:#102033;
   --muted:#64748B;
   --border:#E2E8F0;
+  --soft-blue:#EFF6FF;
+  --soft-cyan:#ECFEFF;
+  --soft-green:#ECFDF5;
   --shadow:0 18px 45px rgba(13,27,42,.10);
+  --shadow-soft:0 12px 28px rgba(15,23,42,.07);
   --radius:22px;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   font-family:Poppins,sans-serif;
-  background:linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 50%,#F8FAFC 100%);
+  background:
+    radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 32%),
+    radial-gradient(circle at top right,rgba(37,99,235,.12),transparent 34%),
+    linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 48%,#F8FAFC 100%);
   color:var(--text);
   line-height:1.6;
 }
 
-a{text-decoration:none;color:inherit}
-button,input{font-family:inherit}
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button,input{
+  font-family:inherit;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+/* NAV */
+
+.nav-wrap{
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:blur(18px);
+  background:rgba(248,250,252,.84);
+  border-bottom:1px solid rgba(226,232,240,.82);
+}
 
 .nav{
   width:min(1180px,92%);
   margin:auto;
-  padding:22px 0;
+  padding:15px 0;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:20px;
+  justify-content:space-between;
+  gap:18px;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
-  font-weight:800;
-  color:var(--navy);
-  font-size:1.22rem;
+  gap:13px;
+  min-width:max-content;
 }
 
 .logo{
   width:48px;
   height:48px;
-  border-radius:17px;
+  border-radius:18px;
   background:linear-gradient(135deg,var(--blue),var(--cyan));
   position:relative;
   box-shadow:
-    0 0 0 7px rgba(34,211,238,.12),
-    0 16px 34px rgba(37,99,235,.32);
+    0 0 0 7px rgba(34,211,238,.13),
+    0 16px 34px rgba(37,99,235,.31);
+  flex:0 0 auto;
 }
 
 .logo:before{
@@ -89,43 +191,103 @@ button,input{font-family:inherit}
   border-radius:3px;
   top:16px;
   left:17px;
-  opacity:.95;
+  opacity:.96;
+}
+
+.brand-copy{
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+}
+
+.brand-name{
+  font-size:1.25rem;
+  font-weight:900;
+  color:var(--navy);
+  letter-spacing:-.04em;
+}
+
+.brand-tagline{
+  margin-top:6px;
+  font-size:.68rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  color:var(--blue);
 }
 
 .links{
   display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+  align-items:center;
   justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
 .links a{
-  padding:10px 13px;
+  padding:9px 11px;
   border-radius:999px;
   color:#334155;
-  font-size:.88rem;
-  font-weight:700;
+  font-size:.82rem;
+  font-weight:800;
+  transition:.18s ease;
 }
 
 .links a:hover{
   background:white;
   color:var(--blue);
-  box-shadow:0 8px 20px rgba(15,23,42,.08);
+  box-shadow:0 8px 20px rgba(15,23,42,.07);
 }
 
-.login-pill{
-  background:var(--navy)!important;
+.sample-top{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark))!important;
   color:white!important;
+  box-shadow:0 12px 24px rgba(37,99,235,.24);
 }
+
+/* CATEGORY TABS */
+
+.category-tabs{
+  width:min(1180px,92%);
+  margin:0 auto;
+  padding:12px 0 16px;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.category-tabs::-webkit-scrollbar{
+  display:none;
+}
+
+.category-tabs a{
+  white-space:nowrap;
+  background:white;
+  border:1px solid var(--border);
+  color:#334155;
+  border-radius:999px;
+  padding:10px 14px;
+  font-size:.82rem;
+  font-weight:900;
+  box-shadow:0 8px 18px rgba(15,23,42,.05);
+}
+
+.category-tabs a:hover{
+  color:var(--blue);
+  border-color:#BFDBFE;
+}
+
+/* HERO */
 
 .hero{
   width:min(1180px,92%);
-  margin:35px auto 0;
+  margin:34px auto 0;
   display:grid;
-  grid-template-columns:1.05fr .95fr;
+  grid-template-columns:1.04fr .96fr;
   gap:42px;
   align-items:center;
-  padding-bottom:54px;
+  padding-bottom:48px;
 }
 
 .eyebrow{
@@ -136,8 +298,8 @@ button,input{font-family:inherit}
   color:#075985;
   border-radius:999px;
   padding:8px 13px;
-  font-size:.82rem;
-  font-weight:800;
+  font-size:.8rem;
+  font-weight:900;
   margin-bottom:18px;
 }
 
@@ -150,11 +312,11 @@ button,input{font-family:inherit}
 }
 
 h1{
-  font-size:clamp(2.5rem,5vw,4.9rem);
-  line-height:1;
-  letter-spacing:-.07em;
+  font-size:clamp(2.55rem,5vw,5.05rem);
+  line-height:.98;
+  letter-spacing:-.075em;
   color:var(--navy);
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
 .gradient{
@@ -164,38 +326,49 @@ h1{
   color:transparent;
 }
 
-.hero p{
-  color:#475569;
-  max-width:670px;
-  font-size:1.06rem;
+.hero-subtitle{
+  color:#334155;
+  max-width:740px;
+  font-size:1.08rem;
+  font-weight:600;
+  margin-bottom:16px;
+}
+
+.hero-small{
+  color:#64748B;
+  max-width:700px;
+  font-size:.98rem;
   margin-bottom:24px;
 }
 
-.info-box{
+.hero-lines{
+  display:grid;
+  gap:12px;
+  margin:24px 0;
+}
+
+.hero-line{
   background:white;
   border:1px solid var(--border);
   border-left:5px solid var(--blue);
   border-radius:18px;
-  padding:17px;
-  box-shadow:0 12px 26px rgba(15,23,42,.07);
-  margin-bottom:24px;
-}
-
-.info-box strong{
+  padding:14px 16px;
+  box-shadow:0 10px 24px rgba(15,23,42,.06);
+  font-weight:800;
   color:var(--navy);
-  display:block;
-  margin-bottom:4px;
 }
 
-.info-box p{
-  margin:0;
-  font-size:.92rem;
-  color:var(--muted);
+.hero-line:nth-child(2){
+  border-left-color:var(--cyan);
+}
+
+.hero-line:nth-child(3){
+  border-left-color:var(--emerald);
 }
 
 .actions{
   display:flex;
-  gap:14px;
+  gap:12px;
   flex-wrap:wrap;
 }
 
@@ -203,8 +376,8 @@ h1{
   border:0;
   cursor:pointer;
   border-radius:15px;
-  padding:13px 18px;
-  font-weight:800;
+  padding:13px 17px;
+  font-weight:900;
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -212,8 +385,12 @@ h1{
   transition:.2s ease;
 }
 
+.btn:hover{
+  transform:translateY(-2px);
+}
+
 .btn-primary{
-  background:linear-gradient(135deg,var(--blue),#1D4ED8);
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
   color:white;
   box-shadow:0 14px 28px rgba(37,99,235,.25);
 }
@@ -233,8 +410,6 @@ h1{
   padding:10px 12px;
   font-size:.82rem;
 }
-
-.btn:hover{transform:translateY(-2px)}
 
 .panel{
   background:white;
@@ -257,23 +432,23 @@ h1{
 .preview-top:after{
   content:"";
   position:absolute;
-  width:220px;
-  height:220px;
-  right:-80px;
-  top:-80px;
+  width:230px;
+  height:230px;
+  right:-90px;
+  top:-90px;
   border-radius:999px;
-  background:radial-gradient(circle,rgba(34,211,238,.38),transparent 65%);
+  background:radial-gradient(circle,rgba(34,211,238,.42),transparent 65%);
 }
 
 .preview-top small{
   color:#BAE6FD;
-  font-weight:800;
+  font-weight:900;
   text-transform:uppercase;
-  letter-spacing:.1em;
+  letter-spacing:.12em;
 }
 
 .preview-top h3{
-  font-size:1.45rem;
+  font-size:1.48rem;
   line-height:1.15;
   margin-top:9px;
   position:relative;
@@ -312,7 +487,7 @@ h1{
 .preview-row span{
   color:var(--muted);
   font-size:.82rem;
-  font-weight:600;
+  font-weight:700;
 }
 
 .ready{
@@ -323,6 +498,39 @@ h1{
   font-size:.72rem;
   font-weight:900;
 }
+
+/* TRUST STRIP */
+
+.trust-strip{
+  width:min(1180px,92%);
+  margin:0 auto 24px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.trust-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 12px 28px rgba(15,23,42,.06);
+}
+
+.trust-card strong{
+  display:block;
+  color:var(--navy);
+  font-size:1rem;
+  margin-bottom:4px;
+}
+
+.trust-card span{
+  color:var(--muted);
+  font-size:.86rem;
+  font-weight:700;
+}
+
+/* GENERAL SECTIONS */
 
 .section{
   width:min(1180px,92%);
@@ -342,23 +550,25 @@ h1{
   color:var(--blue);
   font-weight:900;
   text-transform:uppercase;
-  letter-spacing:.12em;
+  letter-spacing:.13em;
   font-size:.76rem;
   margin-bottom:8px;
 }
 
 h2{
   color:var(--navy);
-  font-size:clamp(1.9rem,3vw,3.1rem);
+  font-size:clamp(1.95rem,3vw,3.15rem);
   line-height:1.05;
-  letter-spacing:-.055em;
+  letter-spacing:-.058em;
 }
 
 .section-head p{
-  max-width:560px;
+  max-width:600px;
   color:var(--muted);
-  font-weight:500;
+  font-weight:600;
 }
+
+/* GRIDS */
 
 .grid{
   display:grid;
@@ -376,7 +586,7 @@ h2{
   background:white;
   border:1px solid var(--border);
   border-radius:var(--radius);
-  box-shadow:0 14px 30px rgba(15,23,42,.07);
+  box-shadow:var(--shadow-soft);
   padding:22px;
 }
 
@@ -392,7 +602,7 @@ h2{
 }
 
 .course-card{
-  min-height:260px;
+  min-height:270px;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
@@ -401,8 +611,21 @@ h2{
 
 .course-card:hover{
   transform:translateY(-5px);
-  box-shadow:0 22px 44px rgba(15,23,42,.11);
+  box-shadow:0 22px 44px rgba(15,23,42,.12);
   border-color:#BFDBFE;
+}
+
+.icon-bubble{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#DBEAFE,#CFFAFE);
+  color:var(--blue);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  font-size:1.05rem;
+  margin-bottom:12px;
 }
 
 .pill{
@@ -414,6 +637,16 @@ h2{
   padding:7px 10px;
   font-size:.72rem;
   font-weight:900;
+}
+
+.pill-green{
+  background:#DCFCE7;
+  color:#166534;
+}
+
+.pill-cyan{
+  background:#CFFAFE;
+  color:#0E7490;
 }
 
 .meta{
@@ -429,6 +662,17 @@ h2{
   margin-top:20px;
   display:flex;
   justify-content:space-between;
+  align-items:center;
+}
+
+.product-card{
+  display:flex;
+  flex-direction:column;
+}
+
+.product-card.featured{
+  border:2px solid #BFDBFE;
+  box-shadow:0 22px 46px rgba(37,99,235,.14);
 }
 
 .module-actions{
@@ -438,46 +682,107 @@ h2{
   margin-top:18px;
 }
 
-.qr-box{
-  display:none;
-  margin-top:14px;
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin:16px 0 4px;
+}
+
+.price{
+  color:var(--navy);
+  font-size:1.5rem;
+  font-weight:900;
+  letter-spacing:-.05em;
+}
+
+.price small{
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:800;
+}
+
+.placeholder-note{
   background:#F8FAFC;
   border:1px dashed #CBD5E1;
-  border-radius:16px;
-  padding:14px;
-  gap:13px;
+  color:#64748B;
+  border-radius:15px;
+  padding:12px;
+  font-size:.82rem;
+  font-weight:700;
+  margin-top:14px;
+}
+
+/* QUICK START */
+
+.quickstart{
+  background:var(--navy);
+  color:white;
+  border-radius:34px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
   align-items:center;
 }
 
-.qr-box.show{display:flex}
-
-.fake-qr{
-  width:82px;
-  height:82px;
-  background:
-    linear-gradient(90deg,#111 10px,transparent 10px) 0 0/20px 20px,
-    linear-gradient(#111 10px,transparent 10px) 0 0/20px 20px,
-    #fff;
-  border:8px solid #fff;
-  box-shadow:inset 0 0 0 2px #111;
-}
-
-.sample{
-  background:var(--navy);
+.quickstart h2{
   color:white;
-  border-radius:32px;
-  padding:30px;
 }
 
-.sample h2{color:white}
-.sample p{color:#CBD5E1;margin:12px 0 22px}
+.quickstart p{
+  color:#CBD5E1;
+  margin:12px 0 20px;
+}
+
+.quick-list{
+  display:grid;
+  gap:12px;
+}
+
+.quick-item{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:18px;
+  padding:14px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:12px;
+  align-items:start;
+}
+
+.quick-check{
+  width:30px;
+  height:30px;
+  border-radius:999px;
+  background:#D1FAE5;
+  color:#047857;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+
+.quick-item strong{
+  display:block;
+  color:white;
+}
+
+.quick-item span{
+  color:#CBD5E1;
+  font-size:.86rem;
+  font-weight:700;
+}
+
+/* SAMPLE */
 
 .sample-shell{
   background:white;
   color:var(--text);
-  border-radius:24px;
-  padding:20px;
-  margin-top:22px;
+  border-radius:26px;
+  padding:22px;
+  box-shadow:var(--shadow-soft);
 }
 
 .progress{
@@ -490,8 +795,8 @@ h2{
 
 .bar{
   height:100%;
-  width:33%;
-  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  width:35%;
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--emerald));
 }
 
 .question{
@@ -511,7 +816,13 @@ h2{
   border-radius:13px;
   margin-top:9px;
   cursor:pointer;
-  font-weight:700;
+  font-weight:800;
+  color:#334155;
+}
+
+.option:hover{
+  border-color:#BFDBFE;
+  background:#EFF6FF;
 }
 
 .feedback{
@@ -519,7 +830,7 @@ h2{
   margin-top:14px;
   padding:12px;
   border-radius:13px;
-  font-weight:700;
+  font-weight:800;
 }
 
 .feedback.good{
@@ -528,36 +839,122 @@ h2{
   color:#166534;
 }
 
-.dashboard{
+/* FILTER TOOLBAR */
+
+.toolbar{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:24px;
+  box-shadow:var(--shadow-soft);
+  padding:18px;
+  margin-bottom:24px;
+}
+
+.search-row{
   display:grid;
-  grid-template-columns:.85fr 1.15fr;
-  gap:22px;
-  align-items:start;
-}
-
-.status{
-  display:flex;
-  justify-content:space-between;
+  grid-template-columns:1fr auto;
   gap:12px;
-  border-bottom:1px solid var(--border);
-  padding:13px 0;
-  font-size:.9rem;
+  margin-bottom:14px;
 }
 
-.status strong{color:var(--navy)}
-.status span{color:var(--muted);font-weight:700}
+input{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:13px 14px;
+  font-weight:800;
+  background:#F8FAFC;
+  color:#1F2937;
+}
 
-footer{
+.filters{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.filter{
+  border:1px solid var(--border);
+  background:white;
+  color:#334155;
+  padding:10px 13px;
+  border-radius:999px;
+  font-size:.84rem;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.filter.active{
+  background:var(--navy);
+  color:white;
+}
+
+/* NEWSLETTER / EMAIL */
+
+.email-box{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  padding:30px;
+  display:grid;
+  grid-template-columns:1fr .85fr;
+  gap:24px;
+  align-items:center;
+}
+
+.email-box p{
+  color:var(--muted);
+  margin-top:10px;
+}
+
+.email-form{
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:20px;
+}
+
+.email-form label{
+  display:block;
+  font-size:.78rem;
+  font-weight:900;
+  color:#475569;
+  margin-bottom:6px;
+}
+
+.email-form input{
+  margin-bottom:12px;
+}
+
+/* FOOTER */
+
+.footer{
   width:min(1180px,92%);
   margin:auto;
-  padding:34px 0 46px;
+  padding:36px 0 48px;
   color:#64748B;
   font-size:.9rem;
-  font-weight:600;
+  font-weight:700;
   display:flex;
   justify-content:space-between;
-  gap:16px;
+  gap:18px;
   flex-wrap:wrap;
+  border-top:1px solid var(--border);
+}
+
+.footer-links{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.footer-links a{
+  color:#334155;
+}
+
+.footer-links a:hover{
+  color:var(--blue);
 }
 
 .toast{
@@ -568,11 +965,11 @@ footer{
   color:white;
   padding:13px 16px;
   border-radius:14px;
-  font-weight:800;
+  font-weight:900;
   opacity:0;
   transform:translateY(10px);
   transition:.2s ease;
-  z-index:50;
+  z-index:999;
 }
 
 .toast.show{
@@ -580,84 +977,155 @@ footer{
   transform:translateY(0);
 }
 
-@media(max-width:980px){
-  .hero,.dashboard{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .grid-3{grid-template-columns:1fr 1fr}
-  .section-head{display:block}
-  .section-head p{margin-top:12px}
+/* RESPONSIVE */
+
+@media(max-width:1050px){
+  .hero,
+  .quickstart,
+  .email-box{
+    grid-template-columns:1fr;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .grid-3{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .trust-strip{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-head p{
+    margin-top:12px;
+  }
 }
 
-@media(max-width:640px){
-  .nav{flex-direction:column;align-items:flex-start}
-  .links{justify-content:flex-start}
-  .grid,.grid-3{grid-template-columns:1fr}
-  .module-actions{grid-template-columns:1fr}
+@media(max-width:760px){
+  .nav{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .links{
+    justify-content:flex-start;
+  }
+
+  .hero{
+    gap:26px;
+    margin-top:24px;
+  }
+
+  .grid,
+  .grid-3,
+  .trust-strip{
+    grid-template-columns:1fr;
+  }
+
+  .module-actions{
+    grid-template-columns:1fr;
+  }
+
+  .search-row{
+    grid-template-columns:1fr;
+  }
+
+  .quickstart{
+    padding:26px;
+    border-radius:28px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header class="nav">
-  <a class="brand" href="#home">
-    <span class="logo"></span>
-    <span>Vivid Lessons</span>
-  </a>
+<div class="nav-wrap">
+  <header class="nav">
+    <a class="brand" href="index.html" aria-label="Vivid Lessons Home">
+      <span class="logo" aria-hidden="true"></span>
+      <span class="brand-copy">
+        <span class="brand-name">vividlessons</span>
+        <span class="brand-tagline">Learn. Apply. Succeed.</span>
+      </span>
+    </a>
 
-  <nav class="links">
-    <a href="#collections">Collections</a>
-    <a href="#preview">Sample Preview</a>
-    <a href="#modules">Modules</a>
-    <a href="#access">Teacher Access</a>
-    <a href="#support">Support</a>
-    <a class="login-pill" href="#dashboard">Teacher Login</a>
-  </nav>
-</header>
+    <nav class="links" aria-label="Main navigation">
+      <a href="modules.html">Modules</a>
+      <a href="personal-finance.html">Personal Finance</a>
+      <a href="ap-business.html">AP Business</a>
+      <a href="business-101.html">Business Basics</a>
+      <a href="marketing.html">Marketing</a>
+      <a href="projects.html">Projects</a>
+      <a href="free-resources.html">Free</a>
+      <a href="about-vivid-lessons.html">About</a>
+      <a class="sample-top" href="sample-module.html">Try Sample Module</a>
+    </nav>
+  </header>
 
-<main id="home">
+  <div class="category-tabs" aria-label="Category shortcuts">
+    <a href="#personal-finance">Personal Finance</a>
+    <a href="#ap-business">AP Business</a>
+    <a href="#business-basics">Business Basics</a>
+    <a href="#marketing">Marketing</a>
+    <a href="#career">Career Readiness</a>
+    <a href="#projects">Projects</a>
+    <a href="#worksheets">Worksheets</a>
+    <a href="#free">Free Resources</a>
+    <a href="#future">All Subjects</a>
+  </div>
+</div>
+
+<main>
 
 <section class="hero">
   <div>
-    <div class="eyebrow"><span class="dot"></span> Interactive curriculum platform</div>
+    <div class="eyebrow"><span class="dot"></span> New era of classroom materials</div>
 
     <h1>
-      Interactive Curriculum for
+      A Premium Catalog of Interactive Lessons for
       <span class="gradient">Modern Classrooms.</span>
     </h1>
 
-    <p>
-      Vivid Lessons helps teachers launch polished, student-ready modules with guided activities,
-      instant feedback, QR/link sharing, and teacher access tools. Built first for business,
-      finance, marketing, and career readiness — designed to grow into more subjects over time.
+    <p class="hero-subtitle">
+      Modern classroom materials made for the new age of students.
     </p>
 
-    <div class="info-box">
-      <strong>Buy once. Log in. Launch lessons for a full year.</strong>
-      <p>
-        Teachers purchase a module or bundle, receive a username and password, and unlock one year
-        of access starting on first successful use.
-      </p>
+    <p class="hero-small">
+      Business, finance, and career readiness lessons students can actually interact and engage with.
+      Built first for practical classroom use, with a growing structure for future subjects.
+    </p>
+
+    <div class="hero-lines">
+      <div class="hero-line">Student-facing modules with guided progression, feedback, reflection, and completion evidence.</div>
+      <div class="hero-line">Teacher-ready resources for business, personal finance, marketing, projects, and sub plans.</div>
+      <div class="hero-line">Single module purchases, course bundles, and classroom-ready previews connected to Shopify.</div>
     </div>
 
     <div class="actions">
-      <a class="btn btn-primary" href="#collections">Explore Collections</a>
-      <a class="btn btn-secondary" href="#preview">Try Sample Module</a>
-      <a class="btn btn-secondary" href="#modules">Shop Modules</a>
+      <a class="btn btn-primary" href="sample-module.html">Try Sample Module</a>
+      <a class="btn btn-secondary" href="#shop">Shop Featured Modules</a>
+      <a class="btn btn-secondary" href="#collections">Explore Categories</a>
     </div>
   </div>
 
-  <aside class="panel">
+  <aside class="panel" aria-label="Teacher quick start preview">
     <div class="preview-top">
-      <small>Featured platform preview</small>
-      <h3>Student-ready lessons with teacher access built in.</h3>
+      <small>Teacher quick start</small>
+      <h3>Launch a lesson, share a link or QR code, and collect student completion evidence.</h3>
     </div>
 
     <div class="preview-row">
       <div class="num">01</div>
       <div>
-        <strong>Launch a module</strong>
-        <span>Teacher opens purchased lesson</span>
+        <strong>Choose a module</strong>
+        <span>Single lesson, bundle, project, or free preview</span>
       </div>
       <div class="ready">Ready</div>
     </div>
@@ -665,343 +1133,619 @@ footer{
     <div class="preview-row">
       <div class="num">02</div>
       <div>
-        <strong>Share student link or QR</strong>
-        <span>Students join without accounts</span>
+        <strong>Students interact</strong>
+        <span>Checks, feedback, scenarios, reflection, certificate</span>
       </div>
-      <div class="ready">Ready</div>
+      <div class="ready">Active</div>
     </div>
 
     <div class="preview-row">
       <div class="num">03</div>
       <div>
-        <strong>Collect completion data</strong>
-        <span>Score, reflection, and progress</span>
+        <strong>Teacher reviews</strong>
+        <span>Completion data, scores, reflections, classroom records</span>
       </div>
-      <div class="ready">Ready</div>
+      <div class="ready">Tracked</div>
+    </div>
+
+    <div class="actions" style="margin-top:18px">
+      <a class="btn btn-primary" href="sample-module.html">Open Sample</a>
+      <a class="btn btn-secondary" href="teacher-dashboard.html">Teacher Dashboard</a>
     </div>
   </aside>
+</section>
+
+<section class="trust-strip" aria-label="Platform benefits">
+  <div class="trust-card">
+    <strong>Interactive</strong>
+    <span>Students respond, apply, and complete.</span>
+  </div>
+  <div class="trust-card">
+    <strong>Teacher Ready</strong>
+    <span>Built for links, QR codes, and fast launch.</span>
+  </div>
+  <div class="trust-card">
+    <strong>Business Focused</strong>
+    <span>Finance, marketing, career, and entrepreneurship.</span>
+  </div>
+  <div class="trust-card">
+    <strong>Future Ready</strong>
+    <span>Designed to expand into more subjects.</span>
+  </div>
 </section>
 
 <section class="section" id="collections">
   <div class="section-head">
     <div>
-      <div class="kicker">Collections</div>
-      <h2>Start with our featured collections.</h2>
+      <div class="kicker">Browse categories</div>
+      <h2>Start with the strongest classroom collections.</h2>
     </div>
     <p>
-      Business and finance are the first major collections, but the site is structured
-      so future subject areas can be added without rebranding the whole platform.
+      Vivid Lessons begins with business, finance, marketing, and career readiness because those subjects
+      connect naturally to real-world decisions students can actually practice.
     </p>
   </div>
 
   <div class="grid">
-    <a class="card course-card" href="ap-business.html">
+    <a class="card course-card" id="personal-finance" href="personal-finance.html">
       <div>
+        <div class="icon-bubble">$</div>
         <span class="pill">Priority Build</span>
+        <h3>Personal Finance</h3>
+        <p>Budgeting, banking, HYSA, credit scores, taxes, insurance, investing, index funds, and real money decisions.</p>
+        <div class="meta">
+          <span class="pill pill-green">High demand</span>
+          <span class="pill">Interactive</span>
+        </div>
+      </div>
+      <div class="course-link">View Personal Finance <span>→</span></div>
+    </a>
+
+    <a class="card course-card" id="ap-business" href="ap-business.html">
+      <div>
+        <div class="icon-bubble">AP</div>
+        <span class="pill">Course Collection</span>
         <h3>AP Business</h3>
-        <p>Vocabulary, business models, entrepreneurship, strategy, marketing, finance, and applied case work.</p>
+        <p>Business concepts, vocabulary, decision-making, strategy, entrepreneurship, marketing, finance, and applied case work.</p>
+        <div class="meta">
+          <span class="pill">Vocabulary</span>
+          <span class="pill">Modules</span>
+        </div>
       </div>
-      <div class="course-link">View Collection <span>→</span></div>
+      <div class="course-link">View AP Business <span>→</span></div>
     </a>
 
-    <a class="card course-card" href="personal-finance.html">
+    <a class="card course-card" id="business-basics" href="business-101.html">
       <div>
-        <span class="pill">Priority Build</span>
-        <h3>Personal Financial Management</h3>
-        <p>Paychecks, budgeting, credit, insurance, taxes, renting, transportation, and investing basics.</p>
+        <div class="icon-bubble">B</div>
+        <span class="pill">Foundations</span>
+        <h3>Business Basics</h3>
+        <p>Business foundations, entrepreneurship, company creation, products, pricing, customer needs, and teamwork.</p>
+        <div class="meta">
+          <span class="pill">Beginner friendly</span>
+          <span class="pill">Projects</span>
+        </div>
       </div>
-      <div class="course-link">View Collection <span>→</span></div>
+      <div class="course-link">View Business Basics <span>→</span></div>
     </a>
 
-    <a class="card course-card" href="marketing.html">
+    <a class="card course-card" id="marketing" href="marketing.html">
       <div>
-        <span class="pill">Collection</span>
+        <div class="icon-bubble">M</div>
+        <span class="pill">High Engagement</span>
         <h3>Marketing Fundamentals</h3>
-        <p>Branding, attention, sports marketing, entertainment, events, advertising, and consumer behavior.</p>
+        <p>Branding, attention, advertising, consumer behavior, social media, sports marketing, entertainment, and events.</p>
+        <div class="meta">
+          <span class="pill">Campaigns</span>
+          <span class="pill">Real examples</span>
+        </div>
       </div>
-      <div class="course-link">View Collection <span>→</span></div>
+      <div class="course-link">View Marketing <span>→</span></div>
     </a>
 
-    <a class="card course-card" href="business-101.html">
+    <a class="card course-card" id="career" href="modules.html">
       <div>
-        <span class="pill">Collection</span>
-        <h3>Business 101</h3>
-        <p>Foundations of business, entrepreneurship, company creation, products, pricing, and teamwork.</p>
+        <div class="icon-bubble">CR</div>
+        <span class="pill">Growing Category</span>
+        <h3>Career Readiness</h3>
+        <p>Resumes, interviews, workplace communication, professionalism, leadership, career exploration, and employability skills.</p>
+        <div class="meta">
+          <span class="pill">Life skills</span>
+          <span class="pill">Workplace</span>
+        </div>
       </div>
-      <div class="course-link">View Collection <span>→</span></div>
+      <div class="course-link">View Modules <span>→</span></div>
+    </a>
+
+    <a class="card course-card" id="projects" href="projects.html">
+      <div>
+        <div class="icon-bubble">P</div>
+        <span class="pill">Project-Based</span>
+        <h3>Projects</h3>
+        <p>Business creation, Shark Tank pitches, festivals, branding, sponsorships, theme parks, and presentation-ready work.</p>
+        <div class="meta">
+          <span class="pill">Rubrics</span>
+          <span class="pill">Creative</span>
+        </div>
+      </div>
+      <div class="course-link">Browse Projects <span>→</span></div>
+    </a>
+
+    <a class="card course-card" id="worksheets" href="worksheets.html">
+      <div>
+        <div class="icon-bubble">W</div>
+        <span class="pill">Printable + Digital</span>
+        <h3>Worksheets</h3>
+        <p>Clean printable organizers, guided activities, vocabulary practice, decision tools, and classroom-ready resources.</p>
+        <div class="meta">
+          <span class="pill">Low prep</span>
+          <span class="pill">Teacher ready</span>
+        </div>
+      </div>
+      <div class="course-link">Browse Worksheets <span>→</span></div>
+    </a>
+
+    <a class="card course-card" id="future" href="modules.html">
+      <div>
+        <div class="icon-bubble">+</div>
+        <span class="pill">Future Expansion</span>
+        <h3>All Subjects</h3>
+        <p>A growing structure for interactive learning modules across business, finance, social studies, STEM, ELA, and more.</p>
+        <div class="meta">
+          <span class="pill">Expandable</span>
+          <span class="pill">Modern learning</span>
+        </div>
+      </div>
+      <div class="course-link">Explore Modules <span>→</span></div>
     </a>
   </div>
 </section>
 
-<section class="section" id="preview">
-  <div class="sample">
-    <div class="kicker" style="color:#BAE6FD">Free sample preview</div>
-    <h2>Preview the student module experience.</h2>
-    <p>
-      Teachers can preview how a Vivid Lessons module feels before buying:
-      guided progression, active checks, feedback, reflection, and completion.
-    </p>
+<section class="section" id="sample">
+  <div class="quickstart">
+    <div>
+      <div class="kicker" style="color:#BAE6FD">Sample module experience</div>
+      <h2>Let teachers experience the product immediately.</h2>
+      <p>
+        The sample module is your best conversion tool. It shows the actual student experience:
+        locked sections, active response checks, instant feedback, reflection, scoring, and a certificate.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="sample-module.html">Try Sample Module</a>
+        <a class="btn btn-secondary" href="free-resources.html">View Free Resources</a>
+      </div>
+    </div>
 
     <div class="sample-shell">
       <h3>Student Module Preview</h3>
-      <div class="progress"><div class="bar" id="bar"></div></div>
+      <div class="progress"><div class="bar"></div></div>
 
       <div class="question">
         <strong>Quick Check:</strong>
-        What makes Vivid Lessons modules different from a normal worksheet?
+        What makes an interactive module different from a normal worksheet?
 
-        <button class="option" onclick="rightAnswer()">They include guided progression, feedback, and student completion tracking.</button>
-        <button class="option" onclick="wrongAnswer()">They are only printable PDFs.</button>
-        <button class="option" onclick="wrongAnswer()">They are only teacher lecture notes.</button>
+        <button class="option" onclick="showFeedback()">It gives students guided steps, feedback, and completion evidence.</button>
+        <button class="option" onclick="showFeedback()">It is only a printable page with questions.</button>
+        <button class="option" onclick="showFeedback()">It is only teacher lecture notes.</button>
 
-        <div class="feedback good" id="feedback">
+        <div class="feedback good" id="sampleFeedback">
           Correct — the goal is active learning, not just reading or printing.
         </div>
-      </div>
-
-      <div class="actions" style="margin-top:18px">
-        <button class="btn btn-primary" onclick="toast('Sample module would open as its own full page.')">Launch Full Sample</button>
-        <button class="btn btn-secondary" onclick="copyLink('/sample-module.html')">Copy Sample Link</button>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="modules">
+<section class="section" id="shop">
   <div class="section-head">
     <div>
-      <div class="kicker">Shop modules</div>
-      <h2>Module library connected to Shopify.</h2>
+      <div class="kicker">Featured products</div>
+      <h2>Shop single modules, bundles, and classroom-ready resources.</h2>
     </div>
     <p>
-      Replace each Shopify placeholder with the final Shopify product link.
-      Each card can represent a single module, mini bundle, or full collection.
+      Replace each Shopify placeholder with your final product links when your store products are published.
+      Keep the module previews active so teachers can test the experience first.
+    </p>
+  </div>
+
+  <div class="toolbar">
+    <div class="search-row">
+      <input id="searchInput" placeholder="Search modules by topic: budgeting, credit, taxes, AP Business, marketing, projects..." oninput="filterProducts()">
+      <button class="btn btn-primary" onclick="clearSearch()">Clear</button>
+    </div>
+
+    <div class="filters">
+      <button class="filter active" onclick="setFilter('all',this)">All</button>
+      <button class="filter" onclick="setFilter('finance',this)">Personal Finance</button>
+      <button class="filter" onclick="setFilter('business',this)">Business</button>
+      <button class="filter" onclick="setFilter('marketing',this)">Marketing</button>
+      <button class="filter" onclick="setFilter('career',this)">Career</button>
+      <button class="filter" onclick="setFilter('project',this)">Projects</button>
+      <button class="filter" onclick="setFilter('free',this)">Free</button>
+    </div>
+  </div>
+
+  <div class="grid-3" id="productGrid">
+
+    <article class="card product-card featured product free business finance marketing career" data-title="sample interactive module free preview student certificate feedback completion">
+      <span class="pill pill-green">Free Preview</span>
+      <h3>Sample Interactive Module</h3>
+      <p>Preview the Vivid Lessons format: guided progression, student checks, instant feedback, reflection, score, and certificate.</p>
+      <div class="meta">
+        <span class="pill">8–12 min</span>
+        <span class="pill">Student-facing</span>
+        <span class="pill">Certificate</span>
+      </div>
+      <div class="price-row">
+        <div class="price">Free</div>
+        <small>Preview</small>
+      </div>
+      <div class="module-actions">
+        <a class="btn btn-primary btn-small" href="sample-module.html">Launch Sample</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/sample-module.html')">Copy Link</button>
+      </div>
+    </article>
+
+    <article class="card product-card product finance" data-title="personal finance paycheck taxes deductions net pay budgeting high school">
+      <span class="pill">Personal Finance</span>
+      <h3>Your First Paycheck</h3>
+      <p>Gross pay, deductions, taxes, net pay, and real paycheck decision-making for high school students.</p>
+      <div class="meta">
+        <span class="pill">25–35 min</span>
+        <span class="pill">Auto-graded</span>
+        <span class="pill">Teacher key</span>
+      </div>
+      <div class="price-row">
+        <div class="price">$9<span><small> module</small></span></div>
+        <small>Placeholder</small>
+      </div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-PAYCHECK-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-primary btn-small" href="personal-finance.html">View Category</a>
+      </div>
+      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+    </article>
+
+    <article class="card product-card product finance" data-title="budgeting basics spending plan needs wants saving decisions">
+      <span class="pill">Personal Finance</span>
+      <h3>Budgeting Basics</h3>
+      <p>Students build spending plans, compare needs and wants, make trade-offs, and practice real-world budgeting choices.</p>
+      <div class="meta">
+        <span class="pill">25–35 min</span>
+        <span class="pill">Scenario-based</span>
+        <span class="pill">Student activity</span>
+      </div>
+      <div class="price-row">
+        <div class="price">$9<span><small> module</small></span></div>
+        <small>Placeholder</small>
+      </div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-BUDGETING-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-primary btn-small" href="personal-finance.html">View Category</a>
+      </div>
+      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+    </article>
+
+    <article class="card product-card product finance" data-title="credit score calculation credit cards loans payment history credit utilization">
+      <span class="pill">Personal Finance</span>
+      <h3>Credit Scores 101</h3>
+      <p>Payment history, credit utilization, debt, loans, credit cards, and how financial choices affect a credit score.</p>
+      <div class="meta">
+        <span class="pill">30–40 min</span>
+        <span class="pill">High demand</span>
+        <span class="pill">Interactive</span>
+      </div>
+      <div class="price-row">
+        <div class="price">$12<span><small> module</small></span></div>
+        <small>Placeholder</small>
+      </div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-CREDIT-SCORES-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-primary btn-small" href="personal-finance.html">View Category</a>
+      </div>
+      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+    </article>
+
+    <article class="card product-card product finance" data-title="index funds investing retirement compound interest stock market personal finance">
+      <span class="pill">Personal Finance</span>
+      <h3>Index Funds & Investing</h3>
+      <p>Students compare saving, investing, risk, diversification, index funds, compound growth, and long-term decision-making.</p>
+      <div class="meta">
+        <span class="pill">30–45 min</span>
+        <span class="pill">Investing</span>
+        <span class="pill">Future-ready</span>
+      </div>
+      <div class="price-row">
+        <div class="price">$12<span><small> module</small></span></div>
+        <small>Placeholder</small>
+      </div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-INDEX-FUNDS-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-primary btn-small" href="personal-finance.html">View Category</a>
+      </div>
+      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+    </article>
+
+    <article class="card product-card product finance" data-title="taxes income tax payroll tax filing refunds paycheck deductions">
+      <span class="pill">Personal Finance</span>
+      <h3>Taxes & Filing Basics</h3>
+      <p>Income taxes, payroll deductions, filing basics, refunds, local examples, and real-world tax vocabulary.</p>
+      <div class="meta">
+        <span class="pill">30–45 min</span>
+        <span class="pill">Mandate-ready</span>
+        <span class="pill">State packs later</span>
+      </div>
+      <div class="price-row">
+        <div class="price">$12<span><small> module</small></span></div>
+        <small>Placeholder</small>
+      </div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-TAXES-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-primary btn-small" href="personal-finance.html">View Category</a>
+      </div>
+      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+    </article>
+
+    <article class="card product-card product business" data-title="business basics entrepreneurship company creation product service branding">
+      <span class="pill">Business Basics</span>
+      <h3>Build Your Own Company</h3>
+      <p>Students create a company, product or service, brand identity, slogan, billboard concept, and early business pitch.</p>
+      <div class="meta">
+        <span class="pill">Project</span>
+        <span class="pill">Entrepreneurship</span>
+        <span class="pill">Presentation</span>
+      </div>
+      <div class="price-row">
+        <div class="price">$15<span><small> project</small></span></div>
+        <small>Placeholder</small>
+      </div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-COMPANY-PROJECT-LINK.com" target="_blank">Buy Project</a>
+        <a class="btn btn-primary btn-small" href="business-101.html">View Category</a>
+      </div>
+      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+    </article>
+
+    <article class="card product-card product marketing" data-title="marketing fundamentals branding attention economy advertising consumer behavior sports entertainment">
+      <span class="pill">Marketing</span>
+      <h3>Attention Economy</h3>
+      <p>Students analyze how brands, platforms, creators, sports, entertainment, and advertisers compete for attention.</p>
+      <div class="meta">
+        <span class="pill">25–35 min</span>
+        <span class="pill">High engagement</span>
+        <span class="pill">Current examples</span>
+      </div>
+      <div class="price-row">
+        <div class="price">$9<span><small> module</small></span></div>
+        <small>Placeholder</small>
+      </div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-ATTENTION-ECONOMY-LINK.com" target="_blank">Buy Module</a>
+        <a class="btn btn-primary btn-small" href="marketing.html">View Category</a>
+      </div>
+      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+    </article>
+
+    <article class="card product-card product career" data-title="career readiness resumes interviews workplace communication professionalism">
+      <span class="pill">Career Readiness</span>
+      <h3>Resume & Interview Starter</h3>
+      <p>Students practice job-readiness basics, resume language, interview responses, workplace communication, and professionalism.</p>
+      <div class="meta">
+        <span class="pill">25–35 min</span>
+        <span class="pill">Life skills</span>
+        <span class="pill">Career</span>
+      </div>
+      <div class="price-row">
+        <div class="price">$9<span><small> module</small></span></div>
+        <small>Placeholder</small>
+      </div>
+      <div class="module-actions">
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-CAREER-READINESS-LINK.com" target="_blank">Buy Module</a>
+        <a class="btn btn-primary btn-small" href="modules.html">View Modules</a>
+      </div>
+      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+    </article>
+
+  </div>
+</section>
+
+<section class="section" id="bundles">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Module to bundle path</div>
+      <h2>Single purchases now, bundles when teachers want more.</h2>
+    </div>
+    <p>
+      This keeps the homepage teacher-friendly instead of district-heavy. Teachers can buy one module,
+      try the system, then upgrade to collections later.
     </p>
   </div>
 
   <div class="grid-3">
+    <article class="card">
+      <span class="pill">Entry Point</span>
+      <h3>Single Module</h3>
+      <p>Best for teachers who want one ready-to-use lesson for tomorrow.</p>
+      <div class="meta">
+        <span class="pill">$9–$15</span>
+        <span class="pill">Fast purchase</span>
+      </div>
+      <a class="btn btn-primary btn-small" href="#shop">Shop Modules</a>
+    </article>
 
     <article class="card">
-      <span class="pill">Free Preview</span>
-      <h3>How Interactive Modules Work</h3>
-      <p>Short sample showing student start screen, instant feedback, progress, reflection, and completion certificate.</p>
-      <div class="meta"><span class="pill">8–12 min</span><span class="pill">Free</span></div>
+      <span class="pill">Best Value</span>
+      <h3>Mini Bundle</h3>
+      <p>Group related modules by topic, unit, course section, or classroom need.</p>
+      <div class="meta">
+        <span class="pill">$29–$79</span>
+        <span class="pill">Topic pack</span>
+      </div>
+      <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-BUNDLE-COLLECTION-LINK.com" target="_blank">Shop Bundles</a>
+    </article>
+
+    <article class="card">
+      <span class="pill">Course Collection</span>
+      <h3>Complete Collection</h3>
+      <p>Full category collections for Personal Finance, AP Business, Business Basics, or Marketing.</p>
+      <div class="meta">
+        <span class="pill">$149+</span>
+        <span class="pill">Full course path</span>
+      </div>
+      <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-COLLECTIONS-LINK.com" target="_blank">Shop Collections</a>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="free">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Free resources</div>
+      <h2>Give teachers a reason to trust the product.</h2>
+    </div>
+    <p>
+      Free resources help teachers preview the quality, test the style, and return when they need full modules.
+    </p>
+  </div>
+
+  <div class="grid-3">
+    <article class="card">
+      <span class="pill pill-green">Free</span>
+      <h3>Sample Interactive Module</h3>
+      <p>Full student-facing preview with sections, feedback, reflection, and a certificate.</p>
       <div class="module-actions">
-        <a class="btn btn-primary btn-small" href="#preview">Preview</a>
+        <a class="btn btn-primary btn-small" href="sample-module.html">Launch</a>
         <button class="btn btn-secondary btn-small" onclick="copyLink('/sample-module.html')">Copy Link</button>
       </div>
     </article>
 
     <article class="card">
-      <span class="pill">Personal Finance</span>
-      <h3>Your First Paycheck</h3>
-      <p>Gross pay, taxes, deductions, net pay, and real paycheck decision-making for high school students.</p>
-      <div class="meta"><span class="pill">25–35 min</span><span class="pill">Teacher Key</span></div>
+      <span class="pill pill-green">Free</span>
+      <h3>Free Resource Library</h3>
+      <p>Classroom templates, previews, bellringers, planning tools, and student-ready resources.</p>
       <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy on Shopify</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/modules/your-first-paycheck.html')">Copy Link</button>
-        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-paycheck')">Show QR</button>
-        <button class="btn btn-primary btn-small" onclick="toast('Teacher login required after purchase.')">Launch</button>
-      </div>
-      <div class="qr-box" id="qr-paycheck">
-        <div class="fake-qr"></div>
-        <div><strong>Student QR Placeholder</strong><br><small>Replace with QR for /modules/your-first-paycheck.html</small></div>
+        <a class="btn btn-primary btn-small" href="free-resources.html">Open Library</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/free-resources.html')">Copy Link</button>
       </div>
     </article>
 
     <article class="card">
-      <span class="pill">Personal Finance</span>
-      <h3>Smart Spending</h3>
-      <p>Needs, wants, trade-offs, budgeting choices, spending plans, and consumer decision-making.</p>
-      <div class="meta"><span class="pill">25–35 min</span><span class="pill">Auto-Graded</span></div>
+      <span class="pill pill-green">Free Preview</span>
+      <h3>Teacher Dashboard Preview</h3>
+      <p>Preview how teacher launch tools, completions, access, and module records can look.</p>
       <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy on Shopify</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/modules/smart-spending.html')">Copy Link</button>
-        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-spending')">Show QR</button>
-        <button class="btn btn-primary btn-small" onclick="toast('Teacher login required after purchase.')">Launch</button>
-      </div>
-      <div class="qr-box" id="qr-spending">
-        <div class="fake-qr"></div>
-        <div><strong>Student QR Placeholder</strong><br><small>Replace with QR for /modules/smart-spending.html</small></div>
+        <a class="btn btn-primary btn-small" href="teacher-dashboard.html">Open Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/teacher-dashboard.html')">Copy Link</button>
       </div>
     </article>
-
-    <article class="card">
-      <span class="pill">AP Business</span>
-      <h3>AP Business Unit 1 Foundations</h3>
-      <p>Business purpose, stakeholders, objectives, ownership, entrepreneurship, and AP vocabulary checks.</p>
-      <div class="meta"><span class="pill">30–45 min</span><span class="pill">Unit 1</span></div>
-      <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy on Shopify</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/ap-business/unit-1.html')">Copy Link</button>
-        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-ap1')">Show QR</button>
-        <button class="btn btn-primary btn-small" onclick="toast('Teacher login required after purchase.')">Launch</button>
-      </div>
-      <div class="qr-box" id="qr-ap1">
-        <div class="fake-qr"></div>
-        <div><strong>Student QR Placeholder</strong><br><small>Replace with QR for /ap-business/unit-1.html</small></div>
-      </div>
-    </article>
-
-    <article class="card">
-      <span class="pill">Business 101</span>
-      <h3>Build Your Own Company</h3>
-      <p>Students create a company, product/service, logo, slogan, billboard, and early pitch concept.</p>
-      <div class="meta"><span class="pill">Project</span><span class="pill">Entrepreneurship</span></div>
-      <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Buy on Shopify</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/business-101/company-project.html')">Copy Link</button>
-        <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-company')">Show QR</button>
-        <button class="btn btn-primary btn-small" onclick="toast('Teacher login required after purchase.')">Launch</button>
-      </div>
-      <div class="qr-box" id="qr-company">
-        <div class="fake-qr"></div>
-        <div><strong>Student QR Placeholder</strong><br><small>Replace with QR for /business-101/company-project.html</small></div>
-      </div>
-    </article>
-
-    <article class="card">
-      <span class="pill">Future Collection</span>
-      <h3>New Subject Area</h3>
-      <p>Placeholder for future curriculum areas such as career readiness, economics, technology, AI literacy, or other subjects.</p>
-      <div class="meta"><span class="pill">Expandable</span><span class="pill">Future</span></div>
-      <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-LINK-HERE.com" target="_blank">Shopify Link</a>
-        <button class="btn btn-secondary btn-small" onclick="toast('Future module placeholder.')">Details</button>
-      </div>
-    </article>
-
   </div>
 </section>
 
-<section class="section" id="dashboard">
-  <div class="section-head">
+<section class="section">
+  <div class="email-box">
     <div>
-      <div class="kicker">Teacher portal</div>
-      <h2>One clean dashboard after login.</h2>
+      <div class="kicker">Launch updates</div>
+      <h2>Get new modules, bundles, and free classroom materials.</h2>
+      <p>
+        Placeholder signup area. Connect this to Shopify Email, Mailchimp, ConvertKit, or a Google Form later.
+      </p>
     </div>
-    <p>
-      Students do not need accounts. Teachers share the student link or QR code
-      from the purchased module.
-    </p>
-  </div>
 
-  <div class="dashboard">
-    <aside class="card">
-      <span class="pill">Demo Account</span>
-      <h3>License Details</h3>
+    <form class="email-form" onsubmit="event.preventDefault(); toast('Signup placeholder — connect this to Shopify Email or your email platform.');">
+      <label for="email">Teacher Email</label>
+      <input id="email" type="email" placeholder="teacher@example.com" required>
 
-      <div class="status"><strong>Teacher</strong><span>Demo User</span></div>
-      <div class="status"><strong>Status</strong><span>Active Preview</span></div>
-      <div class="status"><strong>License</strong><span>1 Year</span></div>
-      <div class="status"><strong>Activation</strong><span>First Login</span></div>
+      <label for="interest">Main Interest</label>
+      <input id="interest" placeholder="Personal Finance, Business, Marketing, Projects...">
 
-      <button class="btn btn-primary" style="width:100%;margin-top:18px" onclick="toast('Demo teacher dashboard opened.')">Open Demo Dashboard</button>
-    </aside>
-
-    <div class="card">
-      <span class="pill">Purchased Modules</span>
-      <h3>Your Module Dashboard</h3>
-      <p style="margin-bottom:16px">After login, the teacher sees only the modules or bundles they purchased.</p>
-
-      <div class="card">
-        <span class="pill">Purchased</span>
-        <h3>Personal Financial Management — Your First Paycheck</h3>
-        <p>Launch the student module, copy the link, display the QR code, or download the teacher key.</p>
-        <div class="module-actions">
-          <button class="btn btn-primary btn-small" onclick="toast('Module launch placeholder.')">Launch Module</button>
-          <button class="btn btn-secondary btn-small" onclick="toast('Teacher key placeholder.')">Teacher Key</button>
-          <button class="btn btn-secondary btn-small" onclick="copyLink('/modules/your-first-paycheck.html')">Copy Student Link</button>
-          <button class="btn btn-secondary btn-small" onclick="toggleQR('qr-dashboard')">Show QR</button>
-        </div>
-        <div class="qr-box" id="qr-dashboard">
-          <div class="fake-qr"></div>
-          <div><strong>Student QR Code</strong><br><small>Students scan this to open the module.</small></div>
-        </div>
+      <button class="btn btn-primary" type="submit" style="width:100%">Notify Me</button>
+      <div class="placeholder-note">
+        Replace this form with your Shopify Email, Google Form, or email marketing embed.
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="access">
-  <div class="section-head">
-    <div>
-      <div class="kicker">Teacher access</div>
-      <h2>Simple license model.</h2>
-    </div>
-    <p>
-      Clear for teachers before purchase. Easy to explain on Shopify product pages.
-    </p>
-  </div>
-
-  <div class="grid-3">
-    <div class="card">
-      <span class="pill">Step 1</span>
-      <h3>Buy a module or bundle</h3>
-      <p>Shopify checkout handles payment. Each product page describes the module, time estimate, included resources, and grade/course fit.</p>
-    </div>
-
-    <div class="card">
-      <span class="pill">Step 2</span>
-      <h3>Receive teacher login</h3>
-      <p>The teacher receives a unique username and password for the purchased module or bundle.</p>
-    </div>
-
-    <div class="card">
-      <span class="pill">Step 3</span>
-      <h3>Share with students</h3>
-      <p>Teachers launch the module, copy the student link, show the QR code, and use the teacher resources for one year after first login.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="support">
-  <div class="card">
-    <span class="pill">Contact / Support</span>
-    <h2>Questions about access?</h2>
-    <p>
-      Replace this with your final support email and Shopify support language.
-      Example: support@vividlessons.com
-    </p>
+    </form>
   </div>
 </section>
 
 </main>
 
-<footer>
-  <div>© 2026 Vivid Lessons</div>
-  <div>Learn. Apply. Succeed.</div>
+<footer class="footer">
+  <div>
+    <strong>Vivid Lessons</strong><br>
+    Learn. Apply. Succeed.
+  </div>
+
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="modules.html">Modules</a>
+    <a href="personal-finance.html">Personal Finance</a>
+    <a href="ap-business.html">AP Business</a>
+    <a href="business-101.html">Business Basics</a>
+    <a href="marketing.html">Marketing</a>
+    <a href="projects.html">Projects</a>
+    <a href="free-resources.html">Free</a>
+    <a href="about-vivid-lessons.html">About</a>
+  </div>
+
+  <div>
+    © <span id="year"></span> Vivid Lessons. All rights reserved.
+  </div>
 </footer>
 
 <div class="toast" id="toast">Copied.</div>
 
 <script>
-function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2200);
+let currentFilter = "all";
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function toast(message){
+  const t = document.getElementById("toast");
+  t.textContent = message;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+function showFeedback(){
+  document.getElementById("sampleFeedback").classList.add("good");
 }
 
 function copyLink(path){
-  const link=location.origin + path;
-  navigator.clipboard?.writeText(link).then(()=>toast('Student link copied.'));
+  const url = window.location.origin + path;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(() => toast("Link copied: " + path));
+  } else {
+    toast("Copy this link: " + url);
+  }
 }
 
-function toggleQR(id){
-  document.getElementById(id).classList.toggle('show');
+function setFilter(filter, btn){
+  currentFilter = filter;
+
+  document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+
+  filterProducts();
 }
 
-function rightAnswer(){
-  document.getElementById('feedback').className='feedback good';
-  document.getElementById('feedback').textContent='Correct — the goal is active learning, not just reading or printing.';
-  document.getElementById('bar').style.width='100%';
+function clearSearch(){
+  document.getElementById("searchInput").value = "";
+  currentFilter = "all";
+  document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+  document.querySelector(".filter").classList.add("active");
+  filterProducts();
 }
 
-function wrongAnswer(){
-  document.getElementById('feedback').className='feedback good';
-  document.getElementById('feedback').textContent='Not quite. The key difference is guided progression, feedback, links/QR access, and completion tracking.';
-  document.getElementById('bar').style.width='66%';
+function filterProducts(){
+  const query = document.getElementById("searchInput").value.toLowerCase().trim();
+  const cards = document.querySelectorAll(".product");
+
+  cards.forEach(card => {
+    const title = card.getAttribute("data-title") || "";
+    const matchesSearch = !query || title.includes(query);
+    const matchesFilter = currentFilter === "all" || card.classList.contains(currentFilter);
+
+    card.style.display = matchesSearch && matchesFilter ? "flex" : "none";
+  });
 }
 </script>
 
