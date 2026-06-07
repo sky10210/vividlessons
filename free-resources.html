@@ -3,67 +3,94 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Free Resources | Vivid Lessons</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<meta name="description" content="Free Vivid Lessons classroom resources, sample modules, teacher dashboard previews, worksheets, templates, and student-ready learning tools for modern classrooms." />
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --navy:#0D1B2A;
   --blue:#2563EB;
+  --blue-dark:#1D4ED8;
   --cyan:#22D3EE;
   --emerald:#10B981;
   --white:#F8FAFC;
+  --gray:#F1F5F9;
+  --card:#FFFFFF;
   --text:#102033;
   --muted:#64748B;
   --border:#E2E8F0;
   --shadow:0 18px 45px rgba(13,27,42,.10);
+  --shadow-soft:0 12px 28px rgba(15,23,42,.07);
   --radius:22px;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   font-family:Poppins,sans-serif;
-  background:linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 50%,#F8FAFC 100%);
+  background:
+    radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 32%),
+    radial-gradient(circle at top right,rgba(37,99,235,.12),transparent 34%),
+    linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 48%,#F8FAFC 100%);
   color:var(--text);
   line-height:1.6;
 }
 
-a{text-decoration:none;color:inherit}
-button,input{font-family:inherit}
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button,input{
+  font-family:inherit;
+}
 
 .nav{
   width:min(1180px,92%);
   margin:auto;
   padding:22px 0;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:20px;
+  justify-content:space-between;
+  gap:18px;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
-  font-weight:800;
-  color:var(--navy);
+  gap:13px;
+  min-width:max-content;
 }
 
 .logo{
-  width:46px;
-  height:46px;
-  border-radius:17px;
+  width:48px;
+  height:48px;
+  border-radius:18px;
   background:linear-gradient(135deg,var(--blue),var(--cyan));
   position:relative;
-  box-shadow:0 0 0 7px rgba(34,211,238,.12),0 16px 34px rgba(37,99,235,.32);
+  box-shadow:
+    0 0 0 7px rgba(34,211,238,.13),
+    0 16px 34px rgba(37,99,235,.31);
+  flex:0 0 auto;
 }
 
 .logo:before{
   content:"";
   position:absolute;
-  width:27px;
-  height:27px;
+  width:28px;
+  height:28px;
   border-left:5px solid white;
   border-bottom:5px solid white;
   transform:rotate(-45deg);
@@ -75,34 +102,60 @@ button,input{font-family:inherit}
 .logo:after{
   content:"";
   position:absolute;
-  width:13px;
-  height:13px;
+  width:14px;
+  height:14px;
   border-left:4px solid white;
   border-bottom:4px solid white;
   transform:rotate(-45deg);
   border-radius:3px;
   top:16px;
   left:17px;
+  opacity:.96;
+}
+
+.brand-copy{
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+}
+
+.brand-name{
+  font-size:1.25rem;
+  font-weight:900;
+  color:var(--navy);
+  letter-spacing:-.04em;
+}
+
+.brand-tagline{
+  margin-top:6px;
+  font-size:.68rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  color:var(--blue);
 }
 
 .links{
   display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+  align-items:center;
   justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
 .links a{
-  padding:10px 13px;
+  padding:9px 11px;
   border-radius:999px;
   color:#334155;
-  font-size:.88rem;
-  font-weight:700;
+  font-size:.82rem;
+  font-weight:800;
+  transition:.18s ease;
 }
 
 .links a:hover{
   background:white;
   color:var(--blue);
+  box-shadow:0 8px 20px rgba(15,23,42,.07);
 }
 
 .wrap{
@@ -111,47 +164,24 @@ button,input{font-family:inherit}
 }
 
 .hero{
-  margin:30px auto 26px;
-  background:var(--navy);
-  color:white;
-  border-radius:34px;
-  padding:38px;
-  box-shadow:var(--shadow);
-  position:relative;
-  overflow:hidden;
   display:grid;
-  grid-template-columns:1.04fr .96fr;
-  gap:28px;
-  align-items:center;
-}
-
-.hero:after{
-  content:"";
-  position:absolute;
-  width:360px;
-  height:360px;
-  right:-130px;
-  top:-130px;
-  border-radius:999px;
-  background:radial-gradient(circle,rgba(34,211,238,.36),transparent 65%);
+  grid-template-columns:1.05fr .95fr;
+  gap:34px;
+  align-items:start;
+  padding:30px 0 26px;
 }
 
 .eyebrow{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  background:rgba(255,255,255,.12);
-  color:#BAE6FD;
-  border:1px solid rgba(255,255,255,.15);
+  background:#E0F2FE;
+  color:#075985;
   border-radius:999px;
   padding:8px 13px;
-  font-size:.78rem;
+  font-size:.8rem;
   font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.12em;
   margin-bottom:18px;
-  position:relative;
-  z-index:2;
 }
 
 .dot{
@@ -159,47 +189,44 @@ button,input{font-family:inherit}
   height:9px;
   border-radius:50%;
   background:var(--emerald);
-  box-shadow:0 0 0 5px rgba(16,185,129,.16);
+  box-shadow:0 0 0 5px rgba(16,185,129,.14);
 }
 
-.hero h1{
-  font-size:clamp(2.4rem,5vw,4.7rem);
-  line-height:1;
-  letter-spacing:-.07em;
-  margin-bottom:18px;
-  position:relative;
-  z-index:2;
+h1{
+  font-size:clamp(2.55rem,5vw,5.05rem);
+  line-height:.98;
+  letter-spacing:-.075em;
+  color:var(--navy);
+  margin-bottom:20px;
 }
 
 .gradient{
-  background:linear-gradient(90deg,#93C5FD,#22D3EE);
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
 }
 
 .hero p{
-  color:#CBD5E1;
-  font-size:1.05rem;
+  color:#334155;
   max-width:760px;
-  position:relative;
-  z-index:2;
+  font-size:1.04rem;
+  font-weight:650;
+  margin-bottom:18px;
 }
 
-.hero-actions{
+.actions{
   display:flex;
   gap:12px;
   flex-wrap:wrap;
   margin-top:22px;
-  position:relative;
-  z-index:2;
 }
 
 .btn{
   border:0;
   cursor:pointer;
   border-radius:15px;
-  padding:12px 16px;
+  padding:13px 17px;
   font-weight:900;
   display:inline-flex;
   align-items:center;
@@ -208,12 +235,14 @@ button,input{font-family:inherit}
   transition:.2s ease;
 }
 
-.btn:hover{transform:translateY(-2px)}
+.btn:hover{
+  transform:translateY(-2px);
+}
 
 .btn-primary{
-  background:linear-gradient(135deg,var(--blue),#1D4ED8);
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
   color:white;
-  box-shadow:0 12px 24px rgba(37,99,235,.24);
+  box-shadow:0 14px 28px rgba(37,99,235,.25);
 }
 
 .btn-secondary{
@@ -222,106 +251,108 @@ button,input{font-family:inherit}
   border:1px solid var(--border);
 }
 
-.btn-download{
-  background:#DCFCE7;
-  color:#166534;
-}
-
 .btn-shopify{
   background:#95BF47;
   color:#102033;
 }
 
 .btn-small{
-  padding:9px 11px;
+  padding:10px 12px;
   font-size:.82rem;
 }
 
-.hero-card{
-  background:rgba(255,255,255,.09);
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:26px;
-  padding:22px;
+.panel{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  padding:24px;
+  align-self:start;
+}
+
+.panel-top{
+  background:var(--navy);
+  color:white;
+  border-radius:24px;
+  padding:24px;
+  margin-bottom:18px;
+  position:relative;
+  overflow:hidden;
+}
+
+.panel-top:after{
+  content:"";
+  position:absolute;
+  width:230px;
+  height:230px;
+  right:-90px;
+  top:-90px;
+  border-radius:999px;
+  background:radial-gradient(circle,rgba(34,211,238,.42),transparent 65%);
+}
+
+.panel-top small{
+  color:#BAE6FD;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+
+.panel-top h3{
+  font-size:1.48rem;
+  line-height:1.15;
+  margin-top:9px;
   position:relative;
   z-index:2;
 }
 
-.hero-card h3{
-  font-size:1.35rem;
-  line-height:1.2;
+.quick-row{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:14px;
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:#FBFDFF;
   margin-bottom:12px;
 }
 
-.check-row{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  padding:11px 0;
-  border-bottom:1px solid rgba(255,255,255,.1);
-}
-
-.check-row:last-child{border-bottom:0}
-
-.check{
-  color:#A7F3D0;
-  font-weight:900;
-}
-
-.check-row span{
-  color:#E2E8F0;
-  font-weight:700;
-  font-size:.92rem;
-}
-
-.toolbar{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:24px;
-  box-shadow:0 14px 30px rgba(15,23,42,.07);
-  padding:18px;
-  margin-bottom:24px;
-}
-
-.search-row{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:12px;
-  margin-bottom:14px;
-}
-
-input{
-  width:100%;
-  border:1px solid var(--border);
+.icon{
+  width:45px;
+  height:45px;
   border-radius:15px;
-  padding:13px 14px;
-  font-weight:700;
-  background:#F8FAFC;
-}
-
-.filters{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.filter{
-  border:1px solid var(--border);
-  background:white;
-  color:#334155;
-  padding:10px 13px;
-  border-radius:999px;
-  font-size:.84rem;
+  background:#E0F2FE;
+  color:var(--blue);
+  display:grid;
+  place-items:center;
   font-weight:900;
-  cursor:pointer;
 }
 
-.filter.active{
-  background:var(--navy);
-  color:white;
+.quick-row strong{
+  color:var(--navy);
+  display:block;
+  line-height:1.25;
+}
+
+.quick-row span{
+  color:var(--muted);
+  font-size:.82rem;
+  font-weight:700;
+}
+
+.free-badge{
+  background:#D1FAE5;
+  color:#047857;
+  border-radius:999px;
+  padding:7px 9px;
+  font-size:.72rem;
+  font-weight:900;
+  white-space:nowrap;
 }
 
 .section{
-  padding:48px 0;
+  padding:34px 0;
 }
 
 .section-head{
@@ -329,29 +360,29 @@ input{
   justify-content:space-between;
   align-items:end;
   gap:22px;
-  margin-bottom:24px;
+  margin-bottom:26px;
 }
 
 .kicker{
   color:var(--blue);
   font-weight:900;
   text-transform:uppercase;
-  letter-spacing:.12em;
+  letter-spacing:.13em;
   font-size:.76rem;
   margin-bottom:8px;
 }
 
 h2{
   color:var(--navy);
-  font-size:clamp(1.9rem,3vw,3rem);
+  font-size:clamp(1.95rem,3vw,3.15rem);
   line-height:1.05;
-  letter-spacing:-.055em;
+  letter-spacing:-.058em;
 }
 
 .section-head p{
-  max-width:560px;
+  max-width:680px;
   color:var(--muted);
-  font-weight:500;
+  font-weight:650;
 }
 
 .grid{
@@ -364,24 +395,42 @@ h2{
   background:white;
   border:1px solid var(--border);
   border-radius:var(--radius);
-  box-shadow:0 14px 30px rgba(15,23,42,.07);
+  box-shadow:var(--shadow-soft);
   padding:22px;
-}
-
-.card.featured{
-  border:2px solid #BFDBFE;
-  box-shadow:0 20px 45px rgba(37,99,235,.13);
 }
 
 .card h3{
   color:var(--navy);
   line-height:1.2;
-  margin:10px 0;
+  margin:10px 0 0;
+}
+
+.item-subtitle{
+  font-size:.82rem;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#64748B;
+  margin:4px 0 10px;
 }
 
 .card p{
   color:var(--muted);
   font-size:.92rem;
+}
+
+.free-card{
+  display:flex;
+  flex-direction:column;
+  min-height:295px;
+}
+
+.free-card.featured{
+  border:2px solid #BFDBFE;
+  box-shadow:0 22px 46px rgba(37,99,235,.14);
+  background:
+    radial-gradient(circle at top right,rgba(34,211,238,.16),transparent 42%),
+    white;
 }
 
 .pill{
@@ -395,7 +444,7 @@ h2{
   font-weight:900;
 }
 
-.free-pill{
+.pill-green{
   background:#DCFCE7;
   color:#166534;
 }
@@ -407,99 +456,63 @@ h2{
   margin:14px 0;
 }
 
-.card-actions{
+.item-actions{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:9px;
-  margin-top:18px;
+  margin-top:auto;
+  padding-top:18px;
 }
 
-.email-box{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:30px;
-  box-shadow:var(--shadow);
-  padding:30px;
-  display:grid;
-  grid-template-columns:1fr .9fr;
-  gap:24px;
-  align-items:center;
-}
-
-.email-box h2{
-  margin-bottom:10px;
-}
-
-.email-box p{
-  color:var(--muted);
-}
-
-.email-form{
-  background:#F8FAFC;
-  border:1px solid var(--border);
+.notice{
+  background:#FFFBEB;
+  border:1px solid #FDE68A;
+  color:#92400E;
   border-radius:22px;
-  padding:20px;
+  padding:18px;
+  font-weight:800;
 }
 
-.email-form label{
-  display:block;
-  font-size:.78rem;
-  font-weight:900;
-  color:#475569;
-  margin-bottom:6px;
-}
-
-.email-form input{
-  margin-bottom:12px;
-}
-
-.feature-row{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin-top:22px;
-}
-
-.feature{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 12px 28px rgba(15,23,42,.06);
-}
-
-.feature strong{
-  display:block;
-  color:var(--navy);
-  margin-bottom:6px;
-}
-
-.feature span{
-  color:var(--muted);
-  font-size:.88rem;
-  font-weight:600;
-}
-
-.upgrade{
+.bundle{
   background:var(--navy);
   color:white;
   border-radius:34px;
   padding:34px;
   box-shadow:var(--shadow);
   display:grid;
-  grid-template-columns:1fr auto;
-  gap:22px;
+  grid-template-columns:1fr .78fr;
+  gap:24px;
   align-items:center;
 }
 
-.upgrade h2{
+.bundle h2{
   color:white;
 }
 
-.upgrade p{
+.bundle p{
   color:#CBD5E1;
-  margin-top:8px;
-  max-width:760px;
+  margin-top:12px;
+}
+
+.price-card{
+  background:white;
+  color:var(--text);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:var(--shadow-soft);
+}
+
+.price{
+  color:#0D1B2A;
+  font-size:2.2rem;
+  font-weight:900;
+  letter-spacing:-.05em;
+}
+
+.price small{
+  color:#64748B;
+  font-size:.78rem;
+  font-weight:800;
 }
 
 .toast{
@@ -510,11 +523,11 @@ h2{
   color:white;
   padding:13px 16px;
   border-radius:14px;
-  font-weight:800;
+  font-weight:900;
   opacity:0;
   transform:translateY(10px);
   transition:.2s ease;
-  z-index:50;
+  z-index:999;
 }
 
 .toast.show{
@@ -525,31 +538,86 @@ h2{
 footer{
   width:min(1180px,92%);
   margin:auto;
-  padding:34px 0 46px;
+  padding:36px 0 48px;
   color:#64748B;
   font-size:.9rem;
-  font-weight:600;
+  font-weight:700;
   display:flex;
   justify-content:space-between;
-  gap:16px;
+  gap:18px;
+  flex-wrap:wrap;
+  border-top:1px solid var(--border);
+}
+
+.footer-links{
+  display:flex;
+  gap:14px;
   flex-wrap:wrap;
 }
 
-@media(max-width:980px){
-  .hero,.email-box,.upgrade{grid-template-columns:1fr}
-  .grid{grid-template-columns:1fr 1fr}
-  .feature-row{grid-template-columns:1fr 1fr}
-  .section-head{display:block}
-  .section-head p{margin-top:12px}
+.footer-links a{
+  color:#334155;
 }
 
-@media(max-width:640px){
-  .nav{flex-direction:column;align-items:flex-start}
-  .links{justify-content:flex-start}
-  .hero{padding:30px 24px}
-  .grid,.feature-row{grid-template-columns:1fr}
-  .card-actions{grid-template-columns:1fr}
-  .search-row{grid-template-columns:1fr}
+.footer-links a:hover{
+  color:var(--blue);
+}
+
+@media(max-width:1050px){
+  .hero,
+  .bundle{
+    grid-template-columns:1fr;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-head p{
+    margin-top:12px;
+  }
+}
+
+@media(max-width:760px){
+  .nav{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .links{
+    justify-content:flex-start;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .item-actions{
+    grid-template-columns:1fr;
+  }
+
+  .quick-row{
+    grid-template-columns:auto 1fr;
+  }
+
+  .free-badge{
+    grid-column:1/-1;
+    width:max-content;
+  }
+
+  .hero{
+    gap:26px;
+    padding-top:24px;
+  }
+
+  .bundle{
+    padding:26px;
+    border-radius:28px;
+  }
 }
 </style>
 </head>
@@ -557,17 +625,20 @@ footer{
 <body>
 
 <header class="nav">
-  <a class="brand" href="index.html">
-    <span class="logo"></span>
-    <span>Vivid Lessons</span>
+  <a class="brand" href="index.html" aria-label="Vivid Lessons Home">
+    <span class="logo" aria-hidden="true"></span>
+    <span class="brand-copy">
+      <span class="brand-name">vividlessons</span>
+      <span class="brand-tagline">Learn. Apply. Succeed.</span>
+    </span>
   </a>
 
-  <nav class="links">
+  <nav class="links" aria-label="Main navigation">
     <a href="index.html">Home</a>
+    <a href="#featured">Featured Free</a>
+    <a href="#teacher">Teacher Tools</a>
     <a href="modules.html">Modules</a>
     <a href="worksheets.html">Worksheets</a>
-    <a href="projects.html">Projects</a>
-    <a href="sub-plans.html">Sub Plans</a>
     <a href="teacher-dashboard.html">Teacher Login</a>
   </nav>
 </header>
@@ -576,289 +647,224 @@ footer{
 
 <section class="hero">
   <div>
-    <div class="eyebrow"><span class="dot"></span> Free classroom-ready resources</div>
+    <div class="eyebrow"><span class="dot"></span> Free classroom resources</div>
 
     <h1>
-      Try Modern Learning Resources
+      Try Vivid Lessons
       <span class="gradient">Before You Buy.</span>
     </h1>
 
     <p>
-      Explore free interactive previews, printable resources, planning templates, bellringers,
-      and classroom tools designed to help teachers launch engaging learning experiences quickly.
+      Free previews, sample modules, teacher tools, and classroom-ready resources
+      help teachers see the format before purchasing a full module or collection.
     </p>
 
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#library">Browse Free Resources</a>
-      <a class="btn btn-secondary" href="sample-module.html">Try Sample Module</a>
-      <a class="btn btn-secondary" href="modules.html">View Paid Modules</a>
+    <p>
+      Start with the sample interactive module, preview the teacher dashboard, or explore the growing library
+      of classroom resources built for modern students.
+    </p>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="sample-module.html">Try Sample Module</a>
+      <a class="btn btn-secondary" href="modules.html">Browse Full Catalog</a>
     </div>
   </div>
 
-  <aside class="hero-card">
-    <h3>Why offer free resources?</h3>
-
-    <div class="check-row">
-      <b class="check">✓</b>
-      <span>Preview the Vivid Lessons learning style</span>
+  <aside class="panel">
+    <div class="panel-top">
+      <small>Free preview path</small>
+      <h3>Teachers can test the product style before buying a full module or collection.</h3>
     </div>
 
-    <div class="check-row">
-      <b class="check">✓</b>
-      <span>Try activities with students before purchasing</span>
+    <div class="quick-row">
+      <div class="icon">1</div>
+      <div>
+        <strong>Open a sample</strong>
+        <span>Preview the student-facing format and interaction style.</span>
+      </div>
+      <div class="free-badge">Free</div>
     </div>
 
-    <div class="check-row">
-      <b class="check">✓</b>
-      <span>Download useful classroom tools instantly</span>
+    <div class="quick-row">
+      <div class="icon">2</div>
+      <div>
+        <strong>Review teacher tools</strong>
+        <span>Preview how launch tools, links, and completion records can work.</span>
+      </div>
+      <div class="free-badge">Free</div>
     </div>
 
-    <div class="check-row">
-      <b class="check">✓</b>
-      <span>See how modern learning experiences are structured</span>
+    <div class="quick-row">
+      <div class="icon">3</div>
+      <div>
+        <strong>Upgrade when ready</strong>
+        <span>Buy single modules or collections through Shopify later.</span>
+      </div>
+      <div class="free-badge">Optional</div>
     </div>
   </aside>
 </section>
 
-<section class="toolbar" id="library">
-  <div class="search-row">
-    <input id="searchInput" placeholder="Search free resources by type, topic, or classroom use..." oninput="filterCards()">
-    <button class="btn btn-primary" onclick="clearSearch()">Clear</button>
-  </div>
-
-  <div class="filters">
-    <button class="filter active" onclick="setFilter('all',this)">All</button>
-    <button class="filter" onclick="setFilter('sample',this)">Sample Modules</button>
-    <button class="filter" onclick="setFilter('worksheet',this)">Worksheets</button>
-    <button class="filter" onclick="setFilter('bellringer',this)">Bellringers</button>
-    <button class="filter" onclick="setFilter('project',this)">Project Templates</button>
-    <button class="filter" onclick="setFilter('planning',this)">Planning Pages</button>
-    <button class="filter" onclick="setFilter('teacher',this)">Teacher Tools</button>
-    <button class="filter" onclick="setFilter('future',this)">Future Freebies</button>
-  </div>
-</section>
-
-<section class="section">
+<section class="section" id="featured">
   <div class="section-head">
     <div>
-      <div class="kicker">Free library</div>
-      <h2>Start with resources teachers can use immediately.</h2>
+      <div class="kicker">Featured Free Resources</div>
+      <h2>Start with the best previews.</h2>
     </div>
     <p>
-      This page should become one of your strongest trust-builders. Teachers can try the format,
-      download useful tools, and then explore full modules or collections.
+      These free resources are designed to build trust, show the quality of the product,
+      and help teachers understand how Vivid Lessons works.
     </p>
   </div>
 
   <div class="grid">
-
-    <article class="card featured free-resource sample teacher" data-title="sample interactive module vivid lessons free preview certificate score">
-      <span class="pill free-pill">Free Preview</span>
+    <article class="card free-card featured">
+      <span class="pill pill-green">Free</span>
       <h3>Sample Interactive Module</h3>
-      <p>Experience the Vivid Lessons format: locked sections, learning cards, multiple question types, scoring, reflection, and certificate.</p>
+      <div class="item-subtitle">Student-facing preview</div>
+      <p>
+        A full sample experience showing guided sections, checks for understanding,
+        feedback, reflection, scoring, and a certificate.
+      </p>
+
       <div class="meta">
         <span class="pill">Interactive</span>
-        <span class="pill">8–12 min</span>
+        <span class="pill">Reflection</span>
         <span class="pill">Certificate</span>
       </div>
-      <div class="card-actions">
+
+      <div class="item-actions">
         <a class="btn btn-primary btn-small" href="sample-module.html">Launch Sample</a>
         <button class="btn btn-secondary btn-small" onclick="copyLink('/sample-module.html')">Copy Link</button>
       </div>
     </article>
 
-    <article class="card free-resource worksheet planning" data-title="decision making organizer free worksheet planning graphic organizer">
-      <span class="pill free-pill">Free Worksheet</span>
-      <h3>Decision-Making Organizer</h3>
-      <p>A universal organizer for comparing options, weighing trade-offs, and explaining a final choice.</p>
-      <div class="meta">
-        <span class="pill">PDF</span>
-        <span class="pill">Universal</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-download btn-small" href="free-resources/decision-making-organizer.pdf" download>Download</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/free-resources/decision-making-organizer.pdf')">Copy Link</button>
-      </div>
-    </article>
+    <article class="card free-card">
+      <span class="pill pill-green">Free Preview</span>
+      <h3>Teacher Dashboard Preview</h3>
+      <div class="item-subtitle">Teacher-facing preview</div>
+      <p>
+        Preview how teacher launch tools, QR links, access flow, completions,
+        scores, and student records can look.
+      </p>
 
-    <article class="card free-resource bellringer teacher" data-title="free bellringer pack warm up prompts classroom discussion">
-      <span class="pill free-pill">Free Bellringer</span>
-      <h3>5 Bellringer Prompt Pack</h3>
-      <p>A short starter pack of classroom warm-ups designed for discussion, writing, and quick student response.</p>
       <div class="meta">
-        <span class="pill">PDF</span>
-        <span class="pill">Warm-Ups</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-download btn-small" href="free-resources/free-bellringer-pack.pdf" download>Download</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/free-resources/free-bellringer-pack.pdf')">Copy Link</button>
-      </div>
-    </article>
-
-    <article class="card free-resource project planning" data-title="project planning template free classroom project">
-      <span class="pill free-pill">Free Template</span>
-      <h3>Project Planning Template</h3>
-      <p>A flexible planning page for student projects with goals, roles, timeline, deliverables, and reflection.</p>
-      <div class="meta">
-        <span class="pill">PDF</span>
-        <span class="pill">Project-Based</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-download btn-small" href="free-resources/project-planning-template.pdf" download>Download</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/free-resources/project-planning-template.pdf')">Copy Link</button>
-      </div>
-    </article>
-
-    <article class="card free-resource worksheet" data-title="vocabulary practice free worksheet terms examples non examples">
-      <span class="pill free-pill">Free Worksheet</span>
-      <h3>Vocabulary Practice Sheet</h3>
-      <p>A reusable vocabulary page where students define terms, write examples, identify non-examples, and apply the word.</p>
-      <div class="meta">
-        <span class="pill">PDF</span>
-        <span class="pill">Any Subject</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-download btn-small" href="free-resources/vocabulary-practice-sheet.pdf" download>Download</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/free-resources/vocabulary-practice-sheet.pdf')">Copy Link</button>
-      </div>
-    </article>
-
-    <article class="card free-resource worksheet teacher" data-title="exit ticket free reflection lesson close">
-      <span class="pill free-pill">Free Exit Ticket</span>
-      <h3>Learning Reflection Exit Ticket</h3>
-      <p>A quick end-of-class reflection for what students learned, what confused them, and what they can apply.</p>
-      <div class="meta">
-        <span class="pill">PDF</span>
-        <span class="pill">Reflection</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-download btn-small" href="free-resources/learning-reflection-exit-ticket.pdf" download>Download</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/free-resources/learning-reflection-exit-ticket.pdf')">Copy Link</button>
-      </div>
-    </article>
-
-    <article class="card free-resource teacher planning" data-title="teacher module launch checklist free planning guide">
-      <span class="pill free-pill">Teacher Tool</span>
-      <h3>Module Launch Checklist</h3>
-      <p>A simple teacher checklist for preparing a module, sharing the link, displaying the QR code, and checking completions.</p>
-      <div class="meta">
-        <span class="pill">PDF</span>
         <span class="pill">Teacher Tool</span>
+        <span class="pill">Launch Flow</span>
+        <span class="pill">Completions</span>
       </div>
-      <div class="card-actions">
-        <a class="btn btn-download btn-small" href="free-resources/module-launch-checklist.pdf" download>Download</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/free-resources/module-launch-checklist.pdf')">Copy Link</button>
+
+      <div class="item-actions">
+        <a class="btn btn-primary btn-small" href="teacher-dashboard.html">Open Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/teacher-dashboard.html')">Copy Link</button>
       </div>
     </article>
 
-    <article class="card free-resource sample worksheet" data-title="free preview packet vivid lessons resource sampler">
-      <span class="pill free-pill">Free Sampler</span>
-      <h3>Vivid Lessons Resource Sampler</h3>
-      <p>A preview packet that introduces the resource style, sample worksheet format, and sample classroom activity structure.</p>
+    <article class="card free-card">
+      <span class="pill pill-green">Free Preview</span>
+      <h3>Credit Scores 101 Preview</h3>
+      <div class="item-subtitle">Limited module preview</div>
+      <p>
+        Preview the beginning of a real paid module. See how students move through content,
+        answer questions, and reach locked full access.
+      </p>
+
       <div class="meta">
-        <span class="pill">PDF</span>
-        <span class="pill">Sampler</span>
+        <span class="pill">Personal Finance</span>
+        <span class="pill">Credit</span>
+        <span class="pill">Preview</span>
       </div>
-      <div class="card-actions">
-        <a class="btn btn-download btn-small" href="free-resources/vivid-lessons-resource-sampler.pdf" download>Download</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/free-resources/vivid-lessons-resource-sampler.pdf')">Copy Link</button>
+
+      <div class="item-actions">
+        <a class="btn btn-primary btn-small" href="modules/pfm-credit-scores-101-preview.html">Open Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/modules/pfm-credit-scores-101-preview.html')">Copy Link</button>
       </div>
     </article>
-
-    <article class="card free-resource future" data-title="future free resource placeholder">
-      <span class="pill">Coming Soon</span>
-      <h3>Future Free Resource</h3>
-      <p>Placeholder for future free resources such as mini-lessons, printable packs, sample projects, or subject-specific tools.</p>
-      <div class="meta">
-        <span class="pill">Future</span>
-        <span class="pill">Expandable</span>
-      </div>
-      <div class="card-actions">
-        <button class="btn btn-secondary btn-small" onclick="toast('Add future free resource here.')">Details</button>
-        <button class="btn btn-secondary btn-small" onclick="toast('Add download link later.')">Add Later</button>
-      </div>
-    </article>
-
   </div>
 </section>
 
-<section class="section">
-  <div class="email-box">
-    <div>
-      <div class="kicker">Optional lead magnet area</div>
-      <h2>Build a list of interested teachers.</h2>
-      <p>
-        Later, connect this form to Shopify Email, Mailchimp, ConvertKit, or another email tool.
-        Offer a free download pack in exchange for an email address.
-      </p>
-      <p>
-        Suggested offer: <strong>Free Modern Classroom Starter Pack</strong> with a sample module link,
-        worksheet, bellringer, exit ticket, and project planning template.
-      </p>
-    </div>
-
-    <div class="email-form">
-      <label>Name</label>
-      <input placeholder="Teacher name">
-
-      <label>Email</label>
-      <input placeholder="teacher@email.com">
-
-      <button class="btn btn-primary" style="width:100%" onclick="toast('Email signup placeholder. Connect later.')">Get Free Starter Pack</button>
-    </div>
-  </div>
-</section>
-
-<section class="section">
+<section class="section" id="teacher">
   <div class="section-head">
     <div>
-      <div class="kicker">Why free resources matter</div>
-      <h2>Free resources build trust before the first purchase.</h2>
+      <div class="kicker">Teacher starting points</div>
+      <h2>Helpful links for testing the system.</h2>
     </div>
     <p>
-      Teachers are more likely to buy when they can see the design quality, classroom usefulness,
-      and student experience before paying.
+      These links help preview the current site structure before the full Shopify and licensing system is finished.
     </p>
   </div>
 
-  <div class="feature-row">
-    <div class="feature">
-      <strong>Preview Quality</strong>
-      <span>Teachers can see the visual style and structure before purchasing.</span>
-    </div>
+  <div class="grid">
+    <article class="card free-card">
+      <span class="pill">Catalog</span>
+      <h3>All Modules</h3>
+      <div class="item-subtitle">Master module catalog</div>
+      <p>
+        Browse the public module catalog. Real module cards pull from the master module data file.
+      </p>
 
-    <div class="feature">
-      <strong>Reduce Risk</strong>
-      <span>Free resources make the first interaction feel low-pressure.</span>
-    </div>
+      <div class="item-actions">
+        <a class="btn btn-primary btn-small" href="modules.html">Open Catalog</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/modules.html')">Copy Link</button>
+      </div>
+    </article>
 
-    <div class="feature">
-      <strong>Build Trust</strong>
-      <span>Useful freebies show that the paid products will be worth exploring.</span>
-    </div>
+    <article class="card free-card">
+      <span class="pill">Catalog</span>
+      <h3>Worksheet Catalog</h3>
+      <div class="item-subtitle">Master worksheet catalog</div>
+      <p>
+        Browse the worksheet page. Real worksheets will populate from the master worksheet data file.
+      </p>
 
-    <div class="feature">
-      <strong>Start the Funnel</strong>
-      <span>Free samples can lead teachers toward modules, projects, and collections.</span>
-    </div>
+      <div class="item-actions">
+        <a class="btn btn-primary btn-small" href="worksheets.html">Open Worksheets</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/worksheets.html')">Copy Link</button>
+      </div>
+    </article>
+
+    <article class="card free-card">
+      <span class="pill">Collection</span>
+      <h3>Personal Finance</h3>
+      <div class="item-subtitle">Course collection preview</div>
+      <p>
+        See the clean course collection layout with modules, worksheets, resources, and a collection option.
+      </p>
+
+      <div class="item-actions">
+        <a class="btn btn-primary btn-small" href="personal-finance.html">Open Page</a>
+        <button class="btn btn-secondary btn-small" onclick="copyLink('/personal-finance.html')">Copy Link</button>
+      </div>
+    </article>
   </div>
 </section>
 
 <section class="section">
-  <div class="upgrade">
+  <div class="notice">
+    Free resources are public previews. Paid modules should use limited previews publicly, with full access handled later through the teacher dashboard, license keys, or Shopify delivery flow.
+  </div>
+</section>
+
+<section class="section">
+  <div class="bundle">
     <div>
-      <div class="kicker" style="color:#BAE6FD">Ready for more?</div>
-      <h2>Explore the full Vivid Lessons library.</h2>
+      <div class="kicker" style="color:#BAE6FD">Ready for more</div>
+      <h2>Move from free previews to full modules.</h2>
       <p>
-        Move from free samples to complete interactive modules, downloadable worksheets,
-        project-based learning resources, and no-prep classroom tools.
+        Teachers can start with free previews, then purchase individual modules or course collections
+        once the Shopify product links are connected.
       </p>
     </div>
 
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="modules.html">View Modules</a>
-      <a class="btn btn-secondary" href="worksheets.html">Browse Worksheets</a>
-      <a class="btn btn-secondary" href="projects.html">View Projects</a>
+    <div class="price-card">
+      <span class="pill">Next Step</span>
+      <div class="price">$12 <small>/ sample module price point</small></div>
+      <p>Single paid modules can launch first, then bundles can be added later.</p>
+
+      <div class="actions" style="margin-top:18px">
+        <a class="btn btn-shopify" href="https://YOUR-SHOPIFY-FEATURED-COLLECTION-LINK.com" target="_blank">Shop Featured</a>
+        <a class="btn btn-secondary" href="modules.html">Browse Catalog</a>
+      </div>
     </div>
   </div>
 </section>
@@ -866,47 +872,46 @@ footer{
 </main>
 
 <footer>
-  <div>© 2026 Vivid Lessons</div>
-  <div>Learn. Apply. Succeed.</div>
+  <div>
+    <strong>Vivid Lessons</strong><br>
+    Learn. Apply. Succeed.
+  </div>
+
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="modules.html">Modules</a>
+    <a href="worksheets.html">Worksheets</a>
+    <a href="personal-finance.html">Personal Finance</a>
+    <a href="ap-business.html">AP Business</a>
+    <a href="business-101.html">Business Basics</a>
+    <a href="marketing.html">Marketing</a>
+    <a href="projects.html">Projects</a>
+  </div>
+
+  <div>
+    © <span id="year"></span> Vivid Lessons
+  </div>
 </footer>
 
 <div class="toast" id="toast">Copied.</div>
 
 <script>
-let currentFilter='all';
+document.getElementById("year").textContent = new Date().getFullYear();
 
-function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2200);
+function toast(message){
+  const t = document.getElementById("toast");
+  t.textContent = message;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2200);
 }
 
 function copyLink(path){
-  const link=location.origin + path;
-  navigator.clipboard?.writeText(link).then(()=>toast('Link copied.'));
-}
-
-function setFilter(filter,btn){
-  currentFilter=filter;
-  document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  filterCards();
-}
-
-function filterCards(){
-  const q=document.getElementById('searchInput').value.toLowerCase().trim();
-  document.querySelectorAll('.free-resource').forEach(card=>{
-    const matchesFilter=currentFilter==='all' || card.classList.contains(currentFilter);
-    const text=(card.dataset.title + ' ' + card.innerText).toLowerCase();
-    const matchesSearch=!q || text.includes(q);
-    card.style.display=matchesFilter && matchesSearch ? '' : 'none';
-  });
-}
-
-function clearSearch(){
-  document.getElementById('searchInput').value='';
-  filterCards();
+  const url = window.location.origin + path;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(() => toast("Link copied: " + path));
+  } else {
+    toast("Copy this link: " + url);
+  }
 }
 </script>
 
