@@ -7,6 +7,12 @@ This is the master catalog for real Vivid Lessons interactive modules.
 
 Add each real module here one time.
 
+Each paid module should have:
+- previewUrl = limited public preview
+- fullModuleUrl = full student module
+- launchUrl = teacher dashboard / access page
+- shopifyUrl = purchase page
+
 Use categories to control where it appears.
 
 Category options:
@@ -18,17 +24,6 @@ Category options:
 - projects
 - worksheets
 - free
-
-Use displayType to control the subtitle under the module title.
-
-Examples:
-displayType: "Interactive Lesson"
-displayType: "Project-Based Lesson"
-displayType: "Current Events Lesson"
-displayType: "Mini Module"
-
-Do not add placeholder modules here.
-Only add real modules that exist or are ready to sell/preview.
 */
 
 const VIVID_MODULES = [
@@ -47,10 +42,13 @@ const VIVID_MODULES = [
       "Students learn what affects a credit score and practice identifying smart credit behaviors through scenarios, matching, sorting, calculation, reflection, and a completion certificate.",
 
     questionCount: 9,
+    previewQuestionCount: 2,
+
     types: ["Scenario-Based", "Matching", "Calculator"],
     tags: ["Credit", "Credit Cards", "Loans", "Financial Decisions"],
 
-    previewUrl: "modules/pfm-credit-scores-101.html",
+    previewUrl: "modules/pfm-credit-scores-101-preview.html",
+    fullModuleUrl: "modules/pfm-credit-scores-101.html",
     launchUrl: "teacher-dashboard.html",
     shopifyUrl: "https://YOUR-SHOPIFY-CREDIT-SCORES-MODULE-LINK.com",
 
