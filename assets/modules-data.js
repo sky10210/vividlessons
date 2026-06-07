@@ -3,9 +3,9 @@
 VIVID LESSONS MODULE LIBRARY
 ============================================================
 
-This is the master catalog for all real Vivid Lessons modules.
+This is the master catalog for real Vivid Lessons modules.
 
-Add a module here one time.
+Add each real module here one time.
 
 Use categories to control where it appears.
 
