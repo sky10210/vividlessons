@@ -6,7 +6,7 @@
 
 <title>Personal Finance | Vivid Lessons</title>
 
-<meta name="description" content="Interactive personal finance lessons for credit, budgeting, investing, taxes, paychecks, insurance, renting, and real-world money decisions." />
+<meta name="description" content="Interactive personal finance lessons, worksheets, slides, infographics, and classroom resources for credit, budgeting, investing, taxes, paychecks, insurance, renting, and real-world money decisions." />
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -23,9 +23,6 @@
   --text:#102033;
   --muted:#64748B;
   --border:#E2E8F0;
-  --soft-blue:#EFF6FF;
-  --soft-cyan:#ECFEFF;
-  --soft-green:#ECFDF5;
   --shadow:0 18px 45px rgba(13,27,42,.10);
   --shadow-soft:0 12px 28px rgba(15,23,42,.07);
   --radius:22px;
@@ -169,9 +166,9 @@ button,input{
 .hero{
   display:grid;
   grid-template-columns:1.05fr .95fr;
-  gap:42px;
+  gap:34px;
   align-items:start;
-  padding:34px 0 46px;
+  padding:30px 0 26px;
 }
 
 .eyebrow{
@@ -212,7 +209,7 @@ h1{
 
 .hero p{
   color:#334155;
-  max-width:740px;
+  max-width:760px;
   font-size:1.04rem;
   font-weight:650;
   margin-bottom:18px;
@@ -311,7 +308,7 @@ h1{
 
 .quick-row{
   display:grid;
-  grid-template-columns:auto 1fr auto;
+  grid-template-columns:auto 1fr;
   align-items:center;
   gap:14px;
   padding:14px;
@@ -344,17 +341,8 @@ h1{
   font-weight:700;
 }
 
-.ready{
-  background:#D1FAE5;
-  color:#047857;
-  border-radius:999px;
-  padding:7px 9px;
-  font-size:.72rem;
-  font-weight:900;
-}
-
 .section{
-  padding:56px 0;
+  padding:34px 0;
 }
 
 .section-head{
@@ -382,9 +370,9 @@ h2{
 }
 
 .section-head p{
-  max-width:640px;
+  max-width:680px;
   color:var(--muted);
-  font-weight:600;
+  font-weight:650;
 }
 
 .grid{
@@ -404,7 +392,16 @@ h2{
 .card h3{
   color:var(--navy);
   line-height:1.2;
-  margin:10px 0;
+  margin:10px 0 0;
+}
+
+.item-subtitle{
+  font-size:.82rem;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#64748B;
+  margin:4px 0 10px;
 }
 
 .card p{
@@ -412,11 +409,17 @@ h2{
   font-size:.92rem;
 }
 
-.topic-card{
-  min-height:230px;
+.product-card{
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
+}
+
+.product-card.featured,
+.module-card.featured,
+.worksheet-card.featured,
+.resource-card.featured{
+  border:2px solid #BFDBFE;
+  box-shadow:0 22px 46px rgba(37,99,235,.14);
 }
 
 .pill{
@@ -430,16 +433,6 @@ h2{
   font-weight:900;
 }
 
-.pill-green{
-  background:#DCFCE7;
-  color:#166534;
-}
-
-.pill-cyan{
-  background:#CFFAFE;
-  color:#0E7490;
-}
-
 .meta{
   display:flex;
   gap:8px;
@@ -447,22 +440,11 @@ h2{
   margin:14px 0;
 }
 
-.module-actions{
+.item-actions{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:9px;
   margin-top:18px;
-}
-
-.product-card{
-  display:flex;
-  flex-direction:column;
-}
-
-.product-card.featured,
-.module-card.featured{
-  border:2px solid #BFDBFE;
-  box-shadow:0 22px 46px rgba(37,99,235,.14);
 }
 
 .price-row{
@@ -543,31 +525,14 @@ h2{
   font-size:2.2rem;
 }
 
-.info-strip{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-}
-
-.info-card{
+.empty-message{
+  grid-column:1/-1;
   background:white;
-  border:1px solid var(--border);
+  border:1px dashed #CBD5E1;
   border-radius:22px;
-  padding:18px;
-  box-shadow:var(--shadow-soft);
-}
-
-.info-card strong{
-  display:block;
-  color:var(--navy);
-  font-size:1rem;
-  margin-bottom:4px;
-}
-
-.info-card span{
-  color:var(--muted);
-  font-size:.86rem;
-  font-weight:700;
+  padding:24px;
+  color:#64748B;
+  font-weight:750;
 }
 
 .toast{
@@ -628,10 +593,6 @@ footer{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .info-strip{
-    grid-template-columns:repeat(2,1fr);
-  }
-
   .section-head{
     display:block;
   }
@@ -651,12 +612,11 @@ footer{
     justify-content:flex-start;
   }
 
-  .grid,
-  .info-strip{
+  .grid{
     grid-template-columns:1fr;
   }
 
-  .module-actions{
+  .item-actions{
     grid-template-columns:1fr;
   }
 
@@ -687,9 +647,9 @@ footer{
   <nav class="links" aria-label="Main navigation">
     <a href="index.html">Home</a>
     <a href="#modules">Modules</a>
-    <a href="#topics">Money Topics</a>
+    <a href="#worksheets">Worksheets</a>
+    <a href="#resources">Resources</a>
     <a href="modules.html">All Modules</a>
-    <a href="sample-module.html">Sample Preview</a>
     <a href="teacher-dashboard.html">Teacher Login</a>
   </nav>
 </header>
@@ -706,174 +666,107 @@ footer{
     </h1>
 
     <p>
-      Student-ready modules for credit, budgeting, paychecks, taxes, investing, insurance, renting,
-      transportation, and everyday financial decision-making.
+      Student-ready personal finance materials for credit, budgeting, paychecks, taxes, investing,
+      insurance, renting, transportation, and everyday financial decision-making.
     </p>
 
     <p>
-      Add a module once in the shared Vivid Lessons library, and it can automatically appear here,
-      on Business Basics, on All Modules, or on any other course page where it fits.
+      This page pulls from three master libraries: interactive modules, worksheets, and classroom resources.
+      Add an item once, categorize it as personal finance, and it appears here automatically.
     </p>
 
     <div class="actions">
       <a class="btn btn-primary" href="#modules">View Personal Finance Modules</a>
-      <a class="btn btn-secondary" href="modules/pfm-credit-scores-101.html">Preview Credit Scores 101</a>
-      <a class="btn btn-shopify" href="https://YOUR-SHOPIFY-PERSONAL-FINANCE-COLLECTION-LINK.com" target="_blank">Buy Collection</a>
+      <a class="btn btn-secondary" href="modules.html">Browse Full Catalog</a>
     </div>
   </div>
 
   <aside class="panel">
     <div class="panel-top">
-      <small>Finance module workflow</small>
-      <h3>Launch practical money lessons with scoring, reflection, and completion evidence.</h3>
+      <small>Three product libraries</small>
+      <h3>Modules first, worksheets next, then slides, infographics, and other resources.</h3>
     </div>
 
     <div class="quick-row">
-      <div class="icon">$</div>
+      <div class="icon">M</div>
       <div>
-        <strong>Money decisions</strong>
-        <span>Credit, budgets, taxes, investing, insurance</span>
+        <strong>Interactive modules</strong>
+        <span>Student-facing lessons with feedback, reflection, and certificates.</span>
       </div>
-      <div class="ready">Ready</div>
     </div>
 
     <div class="quick-row">
-      <div class="icon">Q</div>
+      <div class="icon">W</div>
       <div>
-        <strong>Interactive checks</strong>
-        <span>Scenarios, matching, sorting, calculations</span>
+        <strong>Worksheets</strong>
+        <span>Printable and digital resources for practice, review, and reinforcement.</span>
       </div>
-      <div class="ready">Active</div>
     </div>
 
     <div class="quick-row">
       <div class="icon">R</div>
       <div>
-        <strong>Reflection records</strong>
-        <span>Teachers can review student thinking</span>
+        <strong>Slides & resources</strong>
+        <span>Teacher-ready decks, infographics, posters, and classroom visuals.</span>
       </div>
-      <div class="ready">Tracked</div>
     </div>
   </aside>
-</section>
-
-<section class="section" id="topics">
-  <div class="section-head">
-    <div>
-      <div class="kicker">Money topics</div>
-      <h2>Core personal finance areas.</h2>
-    </div>
-    <p>
-      These topic cards organize the course while the actual module cards below are generated from
-      the shared module library.
-    </p>
-  </div>
-
-  <div class="grid">
-    <article class="card topic-card">
-      <div>
-        <span class="pill">Credit</span>
-        <h3>Credit Scores & Borrowing</h3>
-        <p>Credit scores, credit cards, loans, payment history, utilization, and borrowing decisions.</p>
-        <div class="meta">
-          <span class="pill">Scenario-Based</span>
-          <span class="pill">Calculator</span>
-        </div>
-      </div>
-      <a class="btn btn-secondary btn-small" href="#modules">View Modules</a>
-    </article>
-
-    <article class="card topic-card">
-      <div>
-        <span class="pill">Budgeting</span>
-        <h3>Budgeting & Spending</h3>
-        <p>Income, expenses, needs, wants, trade-offs, savings goals, and real-world spending choices.</p>
-        <div class="meta">
-          <span class="pill">Decision-Making</span>
-          <span class="pill">Reflection</span>
-        </div>
-      </div>
-      <a class="btn btn-secondary btn-small" href="#modules">View Modules</a>
-    </article>
-
-    <article class="card topic-card">
-      <div>
-        <span class="pill">Paychecks</span>
-        <h3>Paychecks & Taxes</h3>
-        <p>Gross pay, net pay, payroll deductions, income taxes, filing basics, refunds, and withholding.</p>
-        <div class="meta">
-          <span class="pill">Vocabulary</span>
-          <span class="pill">Calculator</span>
-        </div>
-      </div>
-      <a class="btn btn-secondary btn-small" href="#modules">View Modules</a>
-    </article>
-
-    <article class="card topic-card">
-      <div>
-        <span class="pill">Investing</span>
-        <h3>Saving & Investing</h3>
-        <p>Saving, investing, risk, compound growth, index funds, diversification, and long-term planning.</p>
-        <div class="meta">
-          <span class="pill">Calculator</span>
-          <span class="pill">Scenario-Based</span>
-        </div>
-      </div>
-      <a class="btn btn-secondary btn-small" href="#modules">View Modules</a>
-    </article>
-
-    <article class="card topic-card">
-      <div>
-        <span class="pill">Protection</span>
-        <h3>Insurance & Risk</h3>
-        <p>Auto, renters, health, phone, travel, deductibles, premiums, claims, and risk transfer.</p>
-        <div class="meta">
-          <span class="pill">Real Life</span>
-          <span class="pill">Case Study</span>
-        </div>
-      </div>
-      <a class="btn btn-secondary btn-small" href="#modules">View Modules</a>
-    </article>
-
-    <article class="card topic-card">
-      <div>
-        <span class="pill">Adulting</span>
-        <h3>Renting, Cars & Life Costs</h3>
-        <p>Renting, transportation, car ownership, monthly costs, contracts, deposits, and adult money choices.</p>
-        <div class="meta">
-          <span class="pill">Applied</span>
-          <span class="pill">Student Life</span>
-        </div>
-      </div>
-      <a class="btn btn-secondary btn-small" href="#modules">View Modules</a>
-    </article>
-  </div>
 </section>
 
 <section class="section" id="modules">
   <div class="section-head">
     <div>
       <div class="kicker">Personal Finance Modules</div>
-      <h2>Interactive money lessons for real life.</h2>
+      <h2>Interactive money lessons.</h2>
     </div>
     <p>
-      These cards are pulled from <strong>assets/modules-data.js</strong>. Add a module once, assign it to
-      <strong>personal-finance</strong>, and it appears here automatically.
+      These are real interactive modules currently available in the Vivid Lessons library.
+      Add a module to <strong>assets/modules-data.js</strong> and categorize it as
+      <strong>personal-finance</strong> to show it here.
     </p>
   </div>
 
   <div class="grid" id="moduleLibrary"></div>
 </section>
 
+<section class="section" id="worksheets">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Personal Finance Worksheets</div>
+      <h2>Printable and digital practice resources.</h2>
+    </div>
+    <p>
+      Worksheets appear here only after they are added to <strong>assets/worksheets-data.js</strong>
+      and categorized as <strong>personal-finance</strong>.
+    </p>
+  </div>
+
+  <div class="grid" id="worksheetLibrary"></div>
+</section>
+
+<section class="section" id="resources">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Slides, Infographics & Resources</div>
+      <h2>Teacher-ready classroom materials.</h2>
+    </div>
+    <p>
+      Slides, infographics, posters, and other resources appear here only after they are added to
+      <strong>assets/resources-data.js</strong> and categorized as <strong>personal-finance</strong>.
+    </p>
+  </div>
+
+  <div class="grid" id="resourceLibrary"></div>
+</section>
+
 <section class="section">
   <div class="bundle">
     <div>
-      <div class="kicker" style="color:#BAE6FD">Full collection license</div>
+      <div class="kicker" style="color:#BAE6FD">Full collection option</div>
       <h2>Personal Finance Collection</h2>
       <p>
-        Includes student-ready interactive modules, teacher launch tools, student links,
-        reflection evidence, completion certificates, and a structure that can grow into
-        a complete personal finance course.
+        A future bundle for teachers who want the complete Personal Finance set:
+        modules, worksheets, slides, infographics, and classroom-ready resources.
       </p>
     </div>
 
@@ -884,43 +777,8 @@ footer{
 
       <div class="actions" style="margin-top:18px">
         <a class="btn btn-shopify" href="https://YOUR-SHOPIFY-PERSONAL-FINANCE-COLLECTION-LINK.com" target="_blank">Buy Collection</a>
-        <a class="btn btn-secondary" href="sample-module.html">Preview First</a>
+        <a class="btn btn-secondary" href="modules.html">Browse Catalog</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-head">
-    <div>
-      <div class="kicker">Teacher access</div>
-      <h2>Built for practical classroom launch.</h2>
-    </div>
-    <p>
-      Use one module as a short lesson, combine several into a mini-unit, or build the full course
-      around the growing Personal Finance library.
-    </p>
-  </div>
-
-  <div class="info-strip">
-    <div class="info-card">
-      <strong>Fast launch</strong>
-      <span>Open a module, share the link, or display a QR code.</span>
-    </div>
-
-    <div class="info-card">
-      <strong>Auto-scored checks</strong>
-      <span>Students complete questions, scenarios, and applied activities.</span>
-    </div>
-
-    <div class="info-card">
-      <strong>Reflection evidence</strong>
-      <span>Teachers can review student thinking, not just scores.</span>
-    </div>
-
-    <div class="info-card">
-      <strong>Reusable library</strong>
-      <span>One module can appear in multiple course pages.</span>
     </div>
   </div>
 </section>
@@ -948,10 +806,17 @@ footer{
   </div>
 </footer>
 
-<div class="toast" id="toast">Copied.</div>
+<div class="toast" id="toast">Ready.</div>
 
 <script src="assets/modules-data.js"></script>
 <script src="assets/module-renderer.js"></script>
+
+<script src="assets/worksheets-data.js"></script>
+<script src="assets/worksheet-renderer.js"></script>
+
+<script src="assets/resources-data.js"></script>
+<script src="assets/resource-renderer.js"></script>
+
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -962,16 +827,11 @@ function toast(msg){
   setTimeout(() => t.classList.remove("show"), 2200);
 }
 
-function copyLink(path){
-  const link = location.origin + path;
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(link).then(() => toast("Link copied."));
-  } else {
-    toast("Copy this link: " + link);
-  }
-}
-
-renderModuleLibrary("personal-finance", "moduleLibrary");
+window.addEventListener("DOMContentLoaded", function(){
+  renderModuleLibrary("personal-finance", "moduleLibrary");
+  renderWorksheetLibrary("personal-finance", "worksheetLibrary");
+  renderResourceLibrary("personal-finance", "resourceLibrary");
+});
 </script>
 
 </body>
