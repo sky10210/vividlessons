@@ -31,6 +31,15 @@ order: {
   "all": 1
 }
 
+Use displayType to control the subtitle under the module title.
+
+Examples:
+displayType: "Interactive Lesson"
+displayType: "Project-Based Lesson"
+displayType: "Current Events Lesson"
+displayType: "Worksheet Pack"
+displayType: "Mini Module"
+
 Do not add placeholder modules here.
 Only add real modules that exist or are ready to sell/preview.
 */
@@ -39,6 +48,7 @@ const VIVID_MODULES = [
   {
     id: "pfm-credit-scores-101",
     title: "Credit Scores 101",
+    displayType: "Interactive Lesson",
 
     categories: ["personal-finance", "business-basics"],
     courseLabels: ["Personal Finance", "Business Basics"],
