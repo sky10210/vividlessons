@@ -3,7 +3,7 @@
 VIVID LESSONS MODULE LIBRARY
 ============================================================
 
-This is the master catalog for real Vivid Lessons modules.
+This is the master catalog for real Vivid Lessons interactive modules.
 
 Add each real module here one time.
 
@@ -19,25 +19,12 @@ Category options:
 - worksheets
 - free
 
-Example:
-categories: ["personal-finance", "business-basics"]
-
-Use order to manually control placement on each page.
-
-Example:
-order: {
-  "personal-finance": 1,
-  "business-basics": 4,
-  "all": 1
-}
-
 Use displayType to control the subtitle under the module title.
 
 Examples:
 displayType: "Interactive Lesson"
 displayType: "Project-Based Lesson"
 displayType: "Current Events Lesson"
-displayType: "Worksheet Pack"
 displayType: "Mini Module"
 
 Do not add placeholder modules here.
