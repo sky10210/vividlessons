@@ -6,12 +6,12 @@
 
 <title>Vivid Lessons | Interactive Lessons for Modern Classrooms</title>
 
-<meta name="description" content="Vivid Lessons is a premium catalog of interactive classroom materials for business, personal finance, marketing, career readiness, projects, worksheets, and modern student learning." />
-<meta name="keywords" content="interactive lessons, modern classroom materials, personal finance curriculum, business education lessons, AP business, career readiness, marketing lessons, teacher resources, student modules, classroom activities, high school business curriculum" />
+<meta name="description" content="Vivid Lessons is a premium catalog of interactive classroom materials for business, personal finance, marketing, current events, projects, worksheets, and modern student learning." />
+<meta name="keywords" content="interactive lessons, modern classroom materials, personal finance curriculum, business education lessons, AP business, current events lessons, marketing lessons, teacher resources, student modules, classroom activities, high school business curriculum" />
 <meta name="author" content="Vivid Lessons" />
 
 <meta property="og:title" content="Vivid Lessons | Interactive Lessons for Modern Classrooms" />
-<meta property="og:description" content="Modern classroom materials made for the new age of students. Business, finance, and career readiness lessons students can actually interact and engage with." />
+<meta property="og:description" content="Modern classroom materials made for the new age of students. Business, finance, current events, and career-ready lessons students can actually interact and engage with." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://vividlessons.com" />
 
@@ -25,7 +25,7 @@
   "name":"Vivid Lessons",
   "url":"https://vividlessons.com",
   "slogan":"Learn. Apply. Succeed.",
-  "description":"Interactive classroom materials and student-ready lessons for business, finance, marketing, career readiness, projects, worksheets, and modern learning."
+  "description":"Interactive classroom materials and student-ready lessons for business, finance, marketing, current events, projects, worksheets, and modern learning."
 }
 </script>
 
@@ -40,10 +40,10 @@
       "position":1,
       "item":{
         "@type":"Product",
-        "name":"Sample Interactive Module",
-        "description":"Free preview of the Vivid Lessons student module experience.",
+        "name":"Credit Scores 101",
+        "description":"Interactive personal finance module where students learn what affects a credit score and practice smart credit behaviors.",
         "brand":{"@type":"Brand","name":"Vivid Lessons"},
-        "category":"Interactive Classroom Module"
+        "category":"Personal Finance Curriculum"
       }
     },
     {
@@ -51,10 +51,10 @@
       "position":2,
       "item":{
         "@type":"Product",
-        "name":"Personal Finance Modules",
-        "description":"Interactive personal finance lessons for budgeting, credit, taxes, investing, insurance, and real-world money decisions.",
+        "name":"Sample Interactive Module",
+        "description":"Free preview of the Vivid Lessons student module experience.",
         "brand":{"@type":"Brand","name":"Vivid Lessons"},
-        "category":"Personal Finance Curriculum"
+        "category":"Interactive Classroom Module"
       }
     },
     {
@@ -122,19 +122,12 @@ button,input{
   font-family:inherit;
 }
 
-.container{
-  width:min(1180px,92%);
-  margin:auto;
-}
-
-/* NAV */
-
 .nav-wrap{
   position:sticky;
   top:0;
   z-index:100;
   backdrop-filter:blur(18px);
-  background:rgba(248,250,252,.84);
+  background:rgba(248,250,252,.86);
   border-bottom:1px solid rgba(226,232,240,.82);
 }
 
@@ -245,8 +238,6 @@ button,input{
   box-shadow:0 12px 24px rgba(37,99,235,.24);
 }
 
-/* CATEGORY TABS */
-
 .category-tabs{
   width:min(1180px,92%);
   margin:0 auto;
@@ -278,16 +269,18 @@ button,input{
   border-color:#BFDBFE;
 }
 
-/* HERO */
-
 .hero{
   width:min(1180px,92%);
   margin:34px auto 0;
   display:grid;
   grid-template-columns:1.04fr .96fr;
   gap:42px;
-  align-items:center;
+  align-items:start;
   padding-bottom:48px;
+}
+
+.hero-main{
+  padding-top:0;
 }
 
 .eyebrow{
@@ -330,7 +323,7 @@ h1{
   color:#334155;
   max-width:740px;
   font-size:1.08rem;
-  font-weight:600;
+  font-weight:700;
   margin-bottom:16px;
 }
 
@@ -417,6 +410,7 @@ h1{
   border-radius:30px;
   box-shadow:var(--shadow);
   padding:24px;
+  align-self:start;
 }
 
 .preview-top{
@@ -499,8 +493,6 @@ h1{
   font-weight:900;
 }
 
-/* TRUST STRIP */
-
 .trust-strip{
   width:min(1180px,92%);
   margin:0 auto 24px;
@@ -529,8 +521,6 @@ h1{
   font-size:.86rem;
   font-weight:700;
 }
-
-/* GENERAL SECTIONS */
 
 .section{
   width:min(1180px,92%);
@@ -567,8 +557,6 @@ h2{
   color:var(--muted);
   font-weight:600;
 }
-
-/* GRIDS */
 
 .grid{
   display:grid;
@@ -703,6 +691,30 @@ h2{
   font-weight:800;
 }
 
+.description-panel{
+  display:none;
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:15px;
+  margin-top:14px;
+}
+
+.description-panel.show{
+  display:block;
+}
+
+.description-panel strong{
+  color:var(--navy);
+}
+
+.description-panel ul{
+  margin:10px 0 0 19px;
+  color:#475569;
+  font-size:.88rem;
+  font-weight:650;
+}
+
 .placeholder-note{
   background:#F8FAFC;
   border:1px dashed #CBD5E1;
@@ -713,8 +725,6 @@ h2{
   font-weight:700;
   margin-top:14px;
 }
-
-/* QUICK START */
 
 .quickstart{
   background:var(--navy);
@@ -736,46 +746,6 @@ h2{
   color:#CBD5E1;
   margin:12px 0 20px;
 }
-
-.quick-list{
-  display:grid;
-  gap:12px;
-}
-
-.quick-item{
-  background:rgba(255,255,255,.09);
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:18px;
-  padding:14px;
-  display:grid;
-  grid-template-columns:auto 1fr;
-  gap:12px;
-  align-items:start;
-}
-
-.quick-check{
-  width:30px;
-  height:30px;
-  border-radius:999px;
-  background:#D1FAE5;
-  color:#047857;
-  display:grid;
-  place-items:center;
-  font-weight:900;
-}
-
-.quick-item strong{
-  display:block;
-  color:white;
-}
-
-.quick-item span{
-  color:#CBD5E1;
-  font-size:.86rem;
-  font-weight:700;
-}
-
-/* SAMPLE */
 
 .sample-shell{
   background:white;
@@ -839,8 +809,6 @@ h2{
   color:#166534;
 }
 
-/* FILTER TOOLBAR */
-
 .toolbar{
   background:white;
   border:1px solid var(--border);
@@ -889,8 +857,6 @@ input{
   color:white;
 }
 
-/* NEWSLETTER / EMAIL */
-
 .email-box{
   background:white;
   border:1px solid var(--border);
@@ -926,8 +892,6 @@ input{
 .email-form input{
   margin-bottom:12px;
 }
-
-/* FOOTER */
 
 .footer{
   width:min(1180px,92%);
@@ -976,8 +940,6 @@ input{
   opacity:1;
   transform:translateY(0);
 }
-
-/* RESPONSIVE */
 
 @media(max-width:1050px){
   .hero,
@@ -1074,7 +1036,7 @@ input{
     <a href="#ap-business">AP Business</a>
     <a href="#business-basics">Business Basics</a>
     <a href="#marketing">Marketing</a>
-    <a href="#career">Career Readiness</a>
+    <a href="#current-events">Current Events</a>
     <a href="#projects">Projects</a>
     <a href="#worksheets">Worksheets</a>
     <a href="#free">Free Resources</a>
@@ -1085,7 +1047,7 @@ input{
 <main>
 
 <section class="hero">
-  <div>
+  <div class="hero-main">
     <div class="eyebrow"><span class="dot"></span> New era of classroom materials</div>
 
     <h1>
@@ -1098,13 +1060,13 @@ input{
     </p>
 
     <p class="hero-small">
-      Business, finance, and career readiness lessons students can actually interact and engage with.
+      Business, finance, current events, and real-world learning experiences students can actually interact and engage with.
       Built first for practical classroom use, with a growing structure for future subjects.
     </p>
 
     <div class="hero-lines">
       <div class="hero-line">Student-facing modules with guided progression, feedback, reflection, and completion evidence.</div>
-      <div class="hero-line">Teacher-ready resources for business, personal finance, marketing, projects, and sub plans.</div>
+      <div class="hero-line">Teacher-ready resources for business, personal finance, marketing, projects, current events, and sub plans.</div>
       <div class="hero-line">Single module purchases, course bundles, and classroom-ready previews connected to Shopify.</div>
     </div>
 
@@ -1166,7 +1128,7 @@ input{
   </div>
   <div class="trust-card">
     <strong>Business Focused</strong>
-    <span>Finance, marketing, career, and entrepreneurship.</span>
+    <span>Finance, marketing, current events, and entrepreneurship.</span>
   </div>
   <div class="trust-card">
     <strong>Future Ready</strong>
@@ -1181,7 +1143,7 @@ input{
       <h2>Start with the strongest classroom collections.</h2>
     </div>
     <p>
-      Vivid Lessons begins with business, finance, marketing, and career readiness because those subjects
+      Vivid Lessons begins with business, finance, marketing, and current events because those subjects
       connect naturally to real-world decisions students can actually practice.
     </p>
   </div>
@@ -1243,18 +1205,18 @@ input{
       <div class="course-link">View Marketing <span>→</span></div>
     </a>
 
-    <a class="card course-card" id="career" href="modules.html">
+    <a class="card course-card" id="current-events" href="modules.html">
       <div>
-        <div class="icon-bubble">CR</div>
-        <span class="pill">Growing Category</span>
-        <h3>Career Readiness</h3>
-        <p>Resumes, interviews, workplace communication, professionalism, leadership, career exploration, and employability skills.</p>
+        <div class="icon-bubble">CE</div>
+        <span class="pill">World Explained</span>
+        <h3>Current Events & World Issues</h3>
+        <p>Student-friendly explainers for major news, global conflicts, economics, culture, politics, and world issues.</p>
         <div class="meta">
-          <span class="pill">Life skills</span>
-          <span class="pill">Workplace</span>
+          <span class="pill">Current Events</span>
+          <span class="pill">Real world</span>
         </div>
       </div>
-      <div class="course-link">View Modules <span>→</span></div>
+      <div class="course-link">Explore Current Events <span>→</span></div>
     </a>
 
     <a class="card course-card" id="projects" href="projects.html">
@@ -1343,14 +1305,14 @@ input{
       <h2>Shop single modules, bundles, and classroom-ready resources.</h2>
     </div>
     <p>
-      Replace each Shopify placeholder with your final product links when your store products are published.
-      Keep the module previews active so teachers can test the experience first.
+      Product cards now focus on preview, description, purchase, and launch.
+      Copy links and QR tools belong inside the teacher launch/dashboard experience.
     </p>
   </div>
 
   <div class="toolbar">
     <div class="search-row">
-      <input id="searchInput" placeholder="Search modules by topic: budgeting, credit, taxes, AP Business, marketing, projects..." oninput="filterProducts()">
+      <input id="searchInput" placeholder="Search modules by topic: credit, budgeting, taxes, AP Business, marketing, current events..." oninput="filterProducts()">
       <button class="btn btn-primary" onclick="clearSearch()">Clear</button>
     </div>
 
@@ -1359,7 +1321,7 @@ input{
       <button class="filter" onclick="setFilter('finance',this)">Personal Finance</button>
       <button class="filter" onclick="setFilter('business',this)">Business</button>
       <button class="filter" onclick="setFilter('marketing',this)">Marketing</button>
-      <button class="filter" onclick="setFilter('career',this)">Career</button>
+      <button class="filter" onclick="setFilter('current',this)">Current Events</button>
       <button class="filter" onclick="setFilter('project',this)">Projects</button>
       <button class="filter" onclick="setFilter('free',this)">Free</button>
     </div>
@@ -1367,183 +1329,350 @@ input{
 
   <div class="grid-3" id="productGrid">
 
-    <article class="card product-card featured product free business finance marketing career" data-title="sample interactive module free preview student certificate feedback completion">
+    <article class="card product-card featured product finance" data-title="credit scores 101 personal finance credit cards loans utilization payment history">
+      <span class="pill">Personal Finance</span>
+      <h3>Credit Scores 101</h3>
+      <p>Students learn what affects a credit score and practice identifying smart credit behaviors.</p>
+
+      <div class="meta">
+        <span class="pill">9 Questions</span>
+        <span class="pill">Scenario-Based</span>
+        <span class="pill">Reflection</span>
+        <span class="pill">Certificate</span>
+      </div>
+
+      <div class="price-row">
+        <div class="price">$12<span><small> module</small></span></div>
+        <small>Launch ready</small>
+      </div>
+
+      <div class="module-actions">
+        <a class="btn btn-primary btn-small" href="modules/pfm-credit-scores-101.html">Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="toggleDescription('desc-credit')">Description</button>
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-CREDIT-SCORES-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-secondary btn-small" href="teacher-dashboard.html">Launch</a>
+      </div>
+
+      <div class="description-panel" id="desc-credit">
+        <strong>Inside this module:</strong>
+        <ul>
+          <li>What a credit score is</li>
+          <li>Why credit scores matter</li>
+          <li>Payment history</li>
+          <li>Credit utilization</li>
+          <li>Credit cards and loans</li>
+          <li>Matching credit factors</li>
+          <li>Sorting smart credit steps</li>
+          <li>Credit utilization calculation</li>
+          <li>Final credit decision</li>
+          <li>Reflection and certificate</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="card product-card product free business finance marketing current" data-title="sample interactive module free preview student certificate feedback completion">
       <span class="pill pill-green">Free Preview</span>
       <h3>Sample Interactive Module</h3>
       <p>Preview the Vivid Lessons format: guided progression, student checks, instant feedback, reflection, score, and certificate.</p>
+
       <div class="meta">
-        <span class="pill">8–12 min</span>
-        <span class="pill">Student-facing</span>
+        <span class="pill">7 Questions</span>
+        <span class="pill">Interactive</span>
+        <span class="pill">Reflection</span>
         <span class="pill">Certificate</span>
       </div>
+
       <div class="price-row">
         <div class="price">Free</div>
         <small>Preview</small>
       </div>
-      <div class="module-actions">
-        <a class="btn btn-primary btn-small" href="sample-module.html">Launch Sample</a>
-        <button class="btn btn-secondary btn-small" onclick="copyLink('/sample-module.html')">Copy Link</button>
-      </div>
-    </article>
 
-    <article class="card product-card product finance" data-title="personal finance paycheck taxes deductions net pay budgeting high school">
-      <span class="pill">Personal Finance</span>
-      <h3>Your First Paycheck</h3>
-      <p>Gross pay, deductions, taxes, net pay, and real paycheck decision-making for high school students.</p>
-      <div class="meta">
-        <span class="pill">25–35 min</span>
-        <span class="pill">Auto-graded</span>
-        <span class="pill">Teacher key</span>
-      </div>
-      <div class="price-row">
-        <div class="price">$9<span><small> module</small></span></div>
-        <small>Placeholder</small>
-      </div>
       <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-PAYCHECK-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
-        <a class="btn btn-primary btn-small" href="personal-finance.html">View Category</a>
+        <a class="btn btn-primary btn-small" href="sample-module.html">Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="toggleDescription('desc-sample')">Description</button>
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-FREE-PREVIEW-LINK.com" target="_blank">Shopify Page</a>
+        <a class="btn btn-secondary btn-small" href="teacher-dashboard.html">Launch</a>
       </div>
-      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+
+      <div class="description-panel" id="desc-sample">
+        <strong>Inside this sample:</strong>
+        <ul>
+          <li>Student start form</li>
+          <li>Locked module sections</li>
+          <li>Multiple choice check</li>
+          <li>Word bank activity</li>
+          <li>Matching activity</li>
+          <li>Sorting activity</li>
+          <li>Calculation scenario</li>
+          <li>Required reflection and certificate</li>
+        </ul>
+      </div>
     </article>
 
     <article class="card product-card product finance" data-title="budgeting basics spending plan needs wants saving decisions">
       <span class="pill">Personal Finance</span>
       <h3>Budgeting Basics</h3>
       <p>Students build spending plans, compare needs and wants, make trade-offs, and practice real-world budgeting choices.</p>
+
       <div class="meta">
-        <span class="pill">25–35 min</span>
-        <span class="pill">Scenario-based</span>
-        <span class="pill">Student activity</span>
+        <span class="pill">9 Questions</span>
+        <span class="pill">Scenario-Based</span>
+        <span class="pill">Reflection</span>
+        <span class="pill">Certificate</span>
       </div>
+
       <div class="price-row">
         <div class="price">$9<span><small> module</small></span></div>
         <small>Placeholder</small>
       </div>
-      <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-BUDGETING-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
-        <a class="btn btn-primary btn-small" href="personal-finance.html">View Category</a>
-      </div>
-      <div class="placeholder-note">Replace with final Shopify product URL.</div>
-    </article>
 
-    <article class="card product-card product finance" data-title="credit score calculation credit cards loans payment history credit utilization">
-      <span class="pill">Personal Finance</span>
-      <h3>Credit Scores 101</h3>
-      <p>Payment history, credit utilization, debt, loans, credit cards, and how financial choices affect a credit score.</p>
-      <div class="meta">
-        <span class="pill">30–40 min</span>
-        <span class="pill">High demand</span>
-        <span class="pill">Interactive</span>
-      </div>
-      <div class="price-row">
-        <div class="price">$12<span><small> module</small></span></div>
-        <small>Placeholder</small>
-      </div>
       <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-CREDIT-SCORES-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
-        <a class="btn btn-primary btn-small" href="personal-finance.html">View Category</a>
+        <a class="btn btn-primary btn-small" href="sample-module.html">Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="toggleDescription('desc-budgeting')">Description</button>
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-BUDGETING-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-secondary btn-small" href="teacher-dashboard.html">Launch</a>
       </div>
-      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+
+      <div class="description-panel" id="desc-budgeting">
+        <strong>Planned sections:</strong>
+        <ul>
+          <li>What a budget is</li>
+          <li>Income and expenses</li>
+          <li>Needs vs wants</li>
+          <li>Spending trade-offs</li>
+          <li>Savings goals</li>
+          <li>Real-life budget scenario</li>
+          <li>Reflection and certificate</li>
+        </ul>
+      </div>
     </article>
 
     <article class="card product-card product finance" data-title="index funds investing retirement compound interest stock market personal finance">
       <span class="pill">Personal Finance</span>
       <h3>Index Funds & Investing</h3>
-      <p>Students compare saving, investing, risk, diversification, index funds, compound growth, and long-term decision-making.</p>
+      <p>Students compare saving, investing, risk, diversification, index funds, compound growth, and long-term decisions.</p>
+
       <div class="meta">
-        <span class="pill">30–45 min</span>
-        <span class="pill">Investing</span>
-        <span class="pill">Future-ready</span>
+        <span class="pill">10 Questions</span>
+        <span class="pill">Calculator</span>
+        <span class="pill">Reflection</span>
+        <span class="pill">Certificate</span>
       </div>
+
       <div class="price-row">
         <div class="price">$12<span><small> module</small></span></div>
         <small>Placeholder</small>
       </div>
+
       <div class="module-actions">
+        <a class="btn btn-primary btn-small" href="sample-module.html">Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="toggleDescription('desc-index')">Description</button>
         <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-INDEX-FUNDS-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
-        <a class="btn btn-primary btn-small" href="personal-finance.html">View Category</a>
+        <a class="btn btn-secondary btn-small" href="teacher-dashboard.html">Launch</a>
       </div>
-      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+
+      <div class="description-panel" id="desc-index">
+        <strong>Planned sections:</strong>
+        <ul>
+          <li>Saving vs investing</li>
+          <li>Risk and reward</li>
+          <li>What index funds are</li>
+          <li>Diversification</li>
+          <li>Compound growth</li>
+          <li>Long-term investing scenario</li>
+          <li>Reflection and certificate</li>
+        </ul>
+      </div>
     </article>
 
     <article class="card product-card product finance" data-title="taxes income tax payroll tax filing refunds paycheck deductions">
       <span class="pill">Personal Finance</span>
       <h3>Taxes & Filing Basics</h3>
-      <p>Income taxes, payroll deductions, filing basics, refunds, local examples, and real-world tax vocabulary.</p>
+      <p>Students learn income taxes, payroll deductions, filing basics, refunds, and real-world tax vocabulary.</p>
+
       <div class="meta">
-        <span class="pill">30–45 min</span>
-        <span class="pill">Mandate-ready</span>
-        <span class="pill">State packs later</span>
+        <span class="pill">10 Questions</span>
+        <span class="pill">Scenario-Based</span>
+        <span class="pill">Reflection</span>
+        <span class="pill">Certificate</span>
       </div>
+
       <div class="price-row">
         <div class="price">$12<span><small> module</small></span></div>
         <small>Placeholder</small>
       </div>
+
       <div class="module-actions">
+        <a class="btn btn-primary btn-small" href="sample-module.html">Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="toggleDescription('desc-taxes')">Description</button>
         <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-TAXES-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
-        <a class="btn btn-primary btn-small" href="personal-finance.html">View Category</a>
+        <a class="btn btn-secondary btn-small" href="teacher-dashboard.html">Launch</a>
       </div>
-      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+
+      <div class="description-panel" id="desc-taxes">
+        <strong>Planned sections:</strong>
+        <ul>
+          <li>Why taxes exist</li>
+          <li>Gross pay vs net pay</li>
+          <li>Payroll deductions</li>
+          <li>Federal, state, and local taxes</li>
+          <li>Filing basics</li>
+          <li>Refunds and withholding</li>
+          <li>Reflection and certificate</li>
+        </ul>
+      </div>
     </article>
 
-    <article class="card product-card product business" data-title="business basics entrepreneurship company creation product service branding">
+    <article class="card product-card product business project" data-title="business basics entrepreneurship company creation product service branding">
       <span class="pill">Business Basics</span>
       <h3>Build Your Own Company</h3>
       <p>Students create a company, product or service, brand identity, slogan, billboard concept, and early business pitch.</p>
+
       <div class="meta">
-        <span class="pill">Project</span>
-        <span class="pill">Entrepreneurship</span>
-        <span class="pill">Presentation</span>
+        <span class="pill">12 Activities</span>
+        <span class="pill">Project-Based</span>
+        <span class="pill">Reflection</span>
+        <span class="pill">Certificate</span>
       </div>
+
       <div class="price-row">
         <div class="price">$15<span><small> project</small></span></div>
         <small>Placeholder</small>
       </div>
+
       <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-COMPANY-PROJECT-LINK.com" target="_blank">Buy Project</a>
-        <a class="btn btn-primary btn-small" href="business-101.html">View Category</a>
+        <a class="btn btn-primary btn-small" href="business-101.html">Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="toggleDescription('desc-company')">Description</button>
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-COMPANY-PROJECT-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-secondary btn-small" href="teacher-dashboard.html">Launch</a>
       </div>
-      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+
+      <div class="description-panel" id="desc-company">
+        <strong>Planned sections:</strong>
+        <ul>
+          <li>Choose a business idea</li>
+          <li>Define the customer</li>
+          <li>Create the product or service</li>
+          <li>Build a brand identity</li>
+          <li>Create slogan and visual direction</li>
+          <li>Prepare a pitch concept</li>
+          <li>Reflection and certificate</li>
+        </ul>
+      </div>
     </article>
 
     <article class="card product-card product marketing" data-title="marketing fundamentals branding attention economy advertising consumer behavior sports entertainment">
       <span class="pill">Marketing</span>
       <h3>Attention Economy</h3>
       <p>Students analyze how brands, platforms, creators, sports, entertainment, and advertisers compete for attention.</p>
+
       <div class="meta">
-        <span class="pill">25–35 min</span>
-        <span class="pill">High engagement</span>
-        <span class="pill">Current examples</span>
+        <span class="pill">9 Questions</span>
+        <span class="pill">Current Examples</span>
+        <span class="pill">Reflection</span>
+        <span class="pill">Certificate</span>
       </div>
+
       <div class="price-row">
         <div class="price">$9<span><small> module</small></span></div>
         <small>Placeholder</small>
       </div>
+
       <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-ATTENTION-ECONOMY-LINK.com" target="_blank">Buy Module</a>
-        <a class="btn btn-primary btn-small" href="marketing.html">View Category</a>
+        <a class="btn btn-primary btn-small" href="marketing.html">Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="toggleDescription('desc-attention')">Description</button>
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-ATTENTION-ECONOMY-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-secondary btn-small" href="teacher-dashboard.html">Launch</a>
       </div>
-      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+
+      <div class="description-panel" id="desc-attention">
+        <strong>Planned sections:</strong>
+        <ul>
+          <li>What attention means in marketing</li>
+          <li>Platforms and algorithms</li>
+          <li>Creators and influencers</li>
+          <li>Sports and entertainment attention</li>
+          <li>Brand competition</li>
+          <li>Campaign decision scenario</li>
+          <li>Reflection and certificate</li>
+        </ul>
+      </div>
     </article>
 
-    <article class="card product-card product career" data-title="career readiness resumes interviews workplace communication professionalism">
-      <span class="pill">Career Readiness</span>
-      <h3>Resume & Interview Starter</h3>
-      <p>Students practice job-readiness basics, resume language, interview responses, workplace communication, and professionalism.</p>
+    <article class="card product-card product current" data-title="why prices change current events economics inflation supply demand prices">
+      <span class="pill">Current Events</span>
+      <h3>Why Do Prices Change?</h3>
+      <p>Students learn how supply, demand, shortages, inflation, conflict, and consumer behavior can affect prices.</p>
+
       <div class="meta">
-        <span class="pill">25–35 min</span>
-        <span class="pill">Life skills</span>
-        <span class="pill">Career</span>
+        <span class="pill">8 Questions</span>
+        <span class="pill">Current Events</span>
+        <span class="pill">Reflection</span>
+        <span class="pill">Certificate</span>
       </div>
+
       <div class="price-row">
         <div class="price">$9<span><small> module</small></span></div>
         <small>Placeholder</small>
       </div>
+
       <div class="module-actions">
-        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-CAREER-READINESS-LINK.com" target="_blank">Buy Module</a>
-        <a class="btn btn-primary btn-small" href="modules.html">View Modules</a>
+        <a class="btn btn-primary btn-small" href="sample-module.html">Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="toggleDescription('desc-prices')">Description</button>
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-PRICES-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-secondary btn-small" href="teacher-dashboard.html">Launch</a>
       </div>
-      <div class="placeholder-note">Replace with final Shopify product URL.</div>
+
+      <div class="description-panel" id="desc-prices">
+        <strong>Planned sections:</strong>
+        <ul>
+          <li>Why prices move</li>
+          <li>Supply and demand</li>
+          <li>Shortages and scarcity</li>
+          <li>Inflation in everyday life</li>
+          <li>Global events and prices</li>
+          <li>Student decision scenario</li>
+          <li>Reflection and certificate</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="card product-card product current" data-title="hezbollah explained current events middle east world issues conflict">
+      <span class="pill">Current Events</span>
+      <h3>Who Is Hezbollah?</h3>
+      <p>A classroom-ready explainer that helps students understand the group, region, background, and why it appears in the news.</p>
+
+      <div class="meta">
+        <span class="pill">8 Questions</span>
+        <span class="pill">World Issues</span>
+        <span class="pill">Reflection</span>
+        <span class="pill">Certificate</span>
+      </div>
+
+      <div class="price-row">
+        <div class="price">$9<span><small> module</small></span></div>
+        <small>Placeholder</small>
+      </div>
+
+      <div class="module-actions">
+        <a class="btn btn-primary btn-small" href="sample-module.html">Preview</a>
+        <button class="btn btn-secondary btn-small" onclick="toggleDescription('desc-hezbollah')">Description</button>
+        <a class="btn btn-shopify btn-small" href="https://YOUR-SHOPIFY-HEZBOLLAH-MODULE-LINK.com" target="_blank">Buy on Shopify</a>
+        <a class="btn btn-secondary btn-small" href="teacher-dashboard.html">Launch</a>
+      </div>
+
+      <div class="description-panel" id="desc-hezbollah">
+        <strong>Planned sections:</strong>
+        <ul>
+          <li>Where Hezbollah is based</li>
+          <li>Basic background and origins</li>
+          <li>Why the group is controversial</li>
+          <li>Regional conflict context</li>
+          <li>How to read news carefully</li>
+          <li>Current event scenario</li>
+          <li>Reflection and certificate</li>
+        </ul>
+      </div>
     </article>
 
   </div>
@@ -1587,7 +1716,7 @@ input{
     <article class="card">
       <span class="pill">Course Collection</span>
       <h3>Complete Collection</h3>
-      <p>Full category collections for Personal Finance, AP Business, Business Basics, or Marketing.</p>
+      <p>Full category collections for Personal Finance, AP Business, Business Basics, Marketing, or Current Events.</p>
       <div class="meta">
         <span class="pill">$149+</span>
         <span class="pill">Full course path</span>
@@ -1656,7 +1785,7 @@ input{
       <input id="email" type="email" placeholder="teacher@example.com" required>
 
       <label for="interest">Main Interest</label>
-      <input id="interest" placeholder="Personal Finance, Business, Marketing, Projects...">
+      <input id="interest" placeholder="Personal Finance, Business, Marketing, Current Events, Projects...">
 
       <button class="btn btn-primary" type="submit" style="width:100%">Notify Me</button>
       <div class="placeholder-note">
@@ -1718,12 +1847,17 @@ function copyLink(path){
   }
 }
 
+function toggleDescription(id){
+  const panel = document.getElementById(id);
+  if(panel){
+    panel.classList.toggle("show");
+  }
+}
+
 function setFilter(filter, btn){
   currentFilter = filter;
-
   document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
-
   filterProducts();
 }
 
