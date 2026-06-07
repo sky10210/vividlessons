@@ -6,7 +6,7 @@
 
 <title>All Modules | Vivid Lessons</title>
 
-<meta name="description" content="Browse the full Vivid Lessons module library. Interactive classroom lessons for personal finance, business basics, AP Business, marketing, current events, projects, and more." />
+<meta name="description" content="Browse Vivid Lessons interactive learning modules for teachers, students, schools, and independent learners." />
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -164,9 +164,9 @@ button,input{
 .hero{
   display:grid;
   grid-template-columns:1.05fr .95fr;
-  gap:42px;
+  gap:30px;
   align-items:start;
-  padding:34px 0 46px;
+  padding:28px 0 18px;
 }
 
 .eyebrow{
@@ -294,7 +294,11 @@ h1{
 }
 
 .section{
-  padding:56px 0;
+  padding:34px 0;
+}
+
+#library{
+  padding-top:18px;
 }
 
 .section-head{
@@ -322,9 +326,9 @@ h2{
 }
 
 .section-head p{
-  max-width:640px;
+  max-width:690px;
   color:var(--muted);
-  font-weight:600;
+  font-weight:650;
 }
 
 .toolbar{
@@ -392,7 +396,16 @@ input{
 .card h3{
   color:var(--navy);
   line-height:1.2;
-  margin:10px 0;
+  margin:10px 0 0;
+}
+
+.module-subtitle{
+  font-size:.82rem;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#64748B;
+  margin:4px 0 10px;
 }
 
 .card p{
@@ -647,7 +660,7 @@ footer{
 
 <section class="hero">
   <div>
-    <div class="eyebrow"><span class="dot"></span> Full module library</div>
+    <div class="eyebrow"><span class="dot"></span> Interactive module library</div>
 
     <h1>
       Browse Every
@@ -655,42 +668,43 @@ footer{
     </h1>
 
     <p>
-      This page automatically displays every real module added to the master library file:
-      <strong>assets/modules-data.js</strong>.
+      Explore the full Vivid Lessons library of interactive business, finance, and current-events learning experiences.
+      These modules are built for modern classrooms, independent learners, and practical real-world learning.
     </p>
 
     <p>
-      Add a module once, choose its subject categories, set its order, and it appears on the right course pages automatically.
+      Teachers can preview, purchase, and launch modules with ease, while students engage with structured lessons,
+      active checks, reflection, and completion-based learning experiences.
     </p>
   </div>
 
   <aside class="panel">
     <div class="panel-top">
-      <small>How this works</small>
-      <h3>One module entry can populate multiple subject pages.</h3>
+      <small>Built for real use</small>
+      <h3>Designed for teachers, engaging for students, and clear for buyers.</h3>
     </div>
 
     <div class="quick-row">
-      <div class="icon">1</div>
+      <div class="icon">T</div>
       <div>
-        <strong>Add module data</strong>
-        <span>Edit assets/modules-data.js</span>
+        <strong>Teacher-friendly</strong>
+        <span>Easy to preview, purchase, and launch in class.</span>
       </div>
     </div>
 
     <div class="quick-row">
-      <div class="icon">2</div>
+      <div class="icon">S</div>
       <div>
-        <strong>Choose categories</strong>
-        <span>Personal Finance, Business Basics, Marketing, etc.</span>
+        <strong>Student-ready</strong>
+        <span>Interactive lessons with reflection and completion evidence.</span>
       </div>
     </div>
 
     <div class="quick-row">
-      <div class="icon">3</div>
+      <div class="icon">B</div>
       <div>
-        <strong>Cards appear</strong>
-        <span>All Modules and matching course pages update automatically.</span>
+        <strong>Buyer clear</strong>
+        <span>See the topic, question count, format, and learning focus before purchase.</span>
       </div>
     </div>
   </aside>
@@ -700,11 +714,12 @@ footer{
   <div class="section-head">
     <div>
       <div class="kicker">Module catalog</div>
-      <h2>Only real modules show here.</h2>
+      <h2>Interactive lessons for teachers, students, and modern learners.</h2>
     </div>
     <p>
-      No sample cards, no placeholder products, and no time estimates.
-      Cards display question count, activity type, reflection, certificate, preview, description, purchase, and launch.
+      Browse classroom-ready lessons built for real engagement. Each module includes guided learning,
+      active questions, reflection, a certificate of completion, and clear preview and purchase options
+      for teachers, schools, and independent learners.
     </p>
   </div>
 
@@ -778,26 +793,32 @@ function setCategory(category, button){
   button.classList.add("active");
 
   renderModuleLibrary(category, "moduleLibrary");
-  searchVisibleCards();
+  setTimeout(searchVisibleCards, 50);
 }
 
 function searchVisibleCards(){
-  const query = document.getElementById("searchInput").value.toLowerCase().trim();
+  const input = document.getElementById("searchInput");
+  const query = input ? input.value.toLowerCase().trim() : "";
   const cards = document.querySelectorAll(".module-card");
 
   cards.forEach(card => {
-    const haystack = card.getAttribute("data-title").toLowerCase();
+    const haystack = (card.getAttribute("data-title") || card.textContent || "").toLowerCase();
     const match = !query || haystack.includes(query);
     card.style.display = match ? "flex" : "none";
   });
 }
 
 function clearSearch(){
-  document.getElementById("searchInput").value = "";
+  const input = document.getElementById("searchInput");
+  if(input){
+    input.value = "";
+  }
   searchVisibleCards();
 }
 
-renderModuleLibrary("all", "moduleLibrary");
+window.addEventListener("DOMContentLoaded", function(){
+  renderModuleLibrary("all", "moduleLibrary");
+});
 </script>
 
 </body>
