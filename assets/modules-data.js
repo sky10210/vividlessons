@@ -63,7 +63,7 @@ const VIVID_MODULES = [
     launchUrl: "teacher-dashboard.html",
     shopifyUrl: "https://YOUR-SHOPIFY-CREDIT-SCORES-MODULE-LINK.com",
 
-    price: "$12",
+    price: "$9",
     priceLabel: "module",
 
     reflectionRequired: true,
@@ -92,6 +92,63 @@ const VIVID_MODULES = [
       "Required reflection and certificate"
     ]
   }
+
+{
+  id: "pfm-financial-planning-goal-setting",
+  title: "Financial Planning & Goal Setting",
+  displayType: "Interactive Lesson",
+  moduleSize: "standard",
+  categories: ["personal-finance", "business-basics"],
+  courseLabels: ["Personal Finance", "Business Basics"],
+  homepage: true,
+  homepageOrder: null,
+  dateAdded: "2026-06-07",
+  homepageLabel: "New Module",
+  topic: "Financial Planning and Goal Setting",
+  productType: "Interactive Module",
+  description: "A grades 9–12 interactive personal finance module where students set financial goals, evaluate long-term financial impact, apply opportunity cost, compare realistic options, calculate monthly savings, and complete a reflection certificate.",
+  questionCount: 15,
+  previewQuestionCount: 3,
+  estimatedMinutes: "10–15",
+  types: ["Scenario-Based", "Matching", "Sorting", "Calculator"],
+  tags: ["Financial Goals", "Financial Planning", "Opportunity Cost", "SMART Goals", "Decision-Making"],
+  previewUrl: "modules/pfm-financial-planning-goal-setting-preview.html",
+  fullModuleUrl: "modules/pfm-financial-planning-goal-setting.html",
+  teacherGuideUrl: "teacher-guides/pfm-financial-planning-goal-setting-teacher-guide.html",
+  launchUrl: "teacher-dashboard.html",
+  shopifyUrl: "https://vividlessons.com/products/pfm-financial-planning-goal-setting",
+  price: "$14",
+  priceLabel: "module",
+  reflectionRequired: true,
+  certificateIncluded: true,
+  completionTracking: true,
+  autoScored: true,
+  featured: true,
+  order: {
+    "personal-finance": 3,
+    "business-basics": 6,
+    "all": 3
+  },
+  sections: [
+    "Financial goals",
+    "Goal timelines",
+    "Long-term financial impact",
+    "SMART goals",
+    "Opportunity cost",
+    "Systematic decision-making",
+    "Matching planning terms",
+    "Sorting goal planning steps",
+    "Fixing weak goals",
+    "Monthly savings calculation",
+    "Comparing financial choices",
+    "Real-world spending decision",
+    "Goal, cost, and timeline review",
+    "Final planning application",
+    "Opportunity cost standard check",
+    "Reflection and certificate"
+  ]
+}
+  
 ];
 
 function getModulesByCategory(category){
