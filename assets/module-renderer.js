@@ -46,9 +46,11 @@ function renderModuleCard(module, category){
   const descId = `desc-${safeId(module.id)}-${safeId(category)}`;
 
   const label =
-    module.courseLabels && module.courseLabels.length
-      ? module.courseLabels[0]
-      : module.productType || "Module";
+    category === "homepage" && module.homepageLabel
+      ? module.homepageLabel
+      : module.courseLabels && module.courseLabels.length
+        ? module.courseLabels[0]
+        : module.productType || "Module";
 
   const subtitle = module.displayType || "Interactive Lesson";
 
