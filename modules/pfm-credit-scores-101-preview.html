@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Credit Scores 101 Preview | Vivid Lessons</title>
+
+<meta name="description" content="Limited preview of the Credit Scores 101 interactive personal finance module from Vivid Lessons." />
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0D1B2A;
+  --blue:#2563EB;
+  --blue-dark:#1D4ED8;
+  --cyan:#22D3EE;
+  --emerald:#10B981;
+  --white:#F8FAFC;
+  --text:#102033;
+  --muted:#64748B;
+  --border:#E2E8F0;
+  --shadow:0 18px 45px rgba(13,27,42,.10);
+  --shadow-soft:0 12px 28px rgba(15,23,42,.07);
+  --radius:22px;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Poppins,sans-serif;
+  background:
+    radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 32%),
+    radial-gradient(circle at top right,rgba(37,99,235,.12),transparent 34%),
+    linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 48%,#F8FAFC 100%);
+  color:var(--text);
+  line-height:1.6;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button,input{
+  font-family:inherit;
+}
+
+.nav{
+  width:min(1120px,92%);
+  margin:auto;
+  padding:22px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.logo{
+  width:48px;
+  height:48px;
+  border-radius:18px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  position:relative;
+  box-shadow:
+    0 0 0 7px rgba(34,211,238,.13),
+    0 16px 34px rgba(37,99,235,.31);
+}
+
+.logo:before{
+  content:"";
+  position:absolute;
+  width:28px;
+  height:28px;
+  border-left:5px solid white;
+  border-bottom:5px solid white;
+  transform:rotate(-45deg);
+  border-radius:4px;
+  top:8px;
+  left:9px;
+}
+
+.logo:after{
+  content:"";
+  position:absolute;
+  width:14px;
+  height:14px;
+  border-left:4px solid white;
+  border-bottom:4px solid white;
+  transform:rotate(-45deg);
+  border-radius:3px;
+  top:16px;
+  left:17px;
+}
+
+.brand-copy{
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+}
+
+.brand-name{
+  font-size:1.25rem;
+  font-weight:900;
+  color:var(--navy);
+  letter-spacing:-.04em;
+}
+
+.brand-tagline{
+  margin-top:6px;
+  font-size:.68rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  color:var(--blue);
+}
+
+.links{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.links a{
+  padding:9px 11px;
+  border-radius:999px;
+  color:#334155;
+  font-size:.82rem;
+  font-weight:800;
+}
+
+.links a:hover{
+  background:white;
+  color:var(--blue);
+}
+
+.wrap{
+  width:min(1120px,92%);
+  margin:auto;
+}
+
+.hero{
+  background:var(--navy);
+  color:white;
+  border-radius:36px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  margin:12px 0 22px;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:360px;
+  height:360px;
+  right:-130px;
+  top:-130px;
+  border-radius:999px;
+  background:radial-gradient(circle,rgba(34,211,238,.36),transparent 65%);
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.16);
+  color:#BAE6FD;
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:.78rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  margin-bottom:16px;
+  position:relative;
+  z-index:2;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--emerald);
+  box-shadow:0 0 0 5px rgba(16,185,129,.16);
+}
+
+h1{
+  font-size:clamp(2.35rem,5vw,4.9rem);
+  line-height:1;
+  letter-spacing:-.07em;
+  margin-bottom:16px;
+  max-width:900px;
+  position:relative;
+  z-index:2;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#93C5FD,#22D3EE);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:#CBD5E1;
+  font-size:1.02rem;
+  max-width:820px;
+  position:relative;
+  z-index:2;
+}
+
+.meta{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+  position:relative;
+  z-index:2;
+}
+
+.pill{
+  display:inline-flex;
+  width:max-content;
+  background:#EFF6FF;
+  color:var(--blue);
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:.72rem;
+  font-weight:900;
+}
+
+.hero .pill{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.16);
+  color:#E0F2FE;
+}
+
+.preview-banner{
+  background:#FFFBEB;
+  border:1px solid #FDE68A;
+  color:#92400E;
+  border-radius:22px;
+  padding:18px;
+  margin-bottom:18px;
+  font-weight:800;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:18px;
+  align-items:start;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-soft);
+  padding:22px;
+}
+
+.card h2,
+.card h3{
+  color:var(--navy);
+  letter-spacing:-.04em;
+  line-height:1.12;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:.95rem;
+  margin-bottom:12px;
+}
+
+.lesson-card{
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:16px;
+}
+
+.lesson-card h3{
+  margin-bottom:8px;
+}
+
+.callout{
+  border-left:5px solid var(--blue);
+  background:white;
+  border-radius:16px;
+  padding:14px;
+  margin-top:12px;
+  color:#334155;
+  font-weight:700;
+}
+
+.activity{
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:18px;
+  margin-top:16px;
+}
+
+.activity h3{
+  color:var(--navy);
+  margin-bottom:8px;
+}
+
+.activity p{
+  color:#475569;
+  margin-bottom:12px;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+}
+
+.option{
+  width:100%;
+  text-align:left;
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:13px;
+  cursor:pointer;
+  font-weight:800;
+  color:#334155;
+}
+
+.option:hover{
+  border-color:#BFDBFE;
+  background:#EFF6FF;
+}
+
+.option.correct{
+  border-color:var(--emerald);
+  background:#DCFCE7;
+  color:#166534;
+}
+
+.option.wrong{
+  border-color:#FCA5A5;
+  background:#FEE2E2;
+  color:#991B1B;
+}
+
+.feedback{
+  display:none;
+  margin-top:12px;
+  border-radius:15px;
+  padding:12px;
+  font-weight:800;
+}
+
+.feedback.show{
+  display:block;
+}
+
+.feedback.good{
+  background:#DCFCE7;
+  color:#166534;
+}
+
+.feedback.bad{
+  background:#FEE2E2;
+  color:#991B1B;
+}
+
+.locked-box{
+  background:linear-gradient(135deg,#0D1B2A,#12365A);
+  color:white;
+  border-radius:28px;
+  padding:26px;
+  box-shadow:var(--shadow);
+}
+
+.locked-box h2{
+  color:white;
+  margin-bottom:10px;
+}
+
+.locked-box p{
+  color:#CBD5E1;
+  margin-bottom:14px;
+}
+
+.check-list{
+  display:grid;
+  gap:10px;
+  margin:16px 0;
+}
+
+.check{
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:16px;
+  padding:12px;
+  color:#E0F2FE;
+  font-weight:800;
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.btn{
+  border:0;
+  cursor:pointer;
+  border-radius:15px;
+  padding:13px 17px;
+  font-weight:900;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition:.2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  color:white;
+  box-shadow:0 14px 28px rgba(37,99,235,.25);
+}
+
+.btn-secondary{
+  background:white;
+  color:var(--navy);
+  border:1px solid var(--border);
+}
+
+.btn-shopify{
+  background:#95BF47;
+  color:#102033;
+}
+
+.section-list{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+.section-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:12px;
+  color:#334155;
+  font-weight:800;
+}
+
+.status{
+  color:#047857;
+  font-size:.8rem;
+  white-space:nowrap;
+}
+
+.locked{
+  color:#92400E;
+}
+
+footer{
+  width:min(1120px,92%);
+  margin:30px auto 50px;
+  color:#64748B;
+  font-size:.9rem;
+  font-weight:700;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:900px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:640px){
+  .nav{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .hero{
+    padding:28px 24px;
+    border-radius:30px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="logo"></span>
+    <span class="brand-copy">
+      <span class="brand-name">vividlessons</span>
+      <span class="brand-tagline">Learn. Apply. Succeed.</span>
+    </span>
+  </a>
+
+  <nav class="links">
+    <a href="../index.html">Home</a>
+    <a href="../modules.html">All Modules</a>
+    <a href="../personal-finance.html">Personal Finance</a>
+    <a href="../teacher-dashboard.html">Teacher Login</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="eyebrow"><span class="dot"></span> Preview Mode</div>
+
+  <h1>
+    Credit Scores 101
+    <span class="gradient">Interactive Lesson Preview.</span>
+  </h1>
+
+  <p>
+    This limited preview shows a sample of the full Credit Scores 101 module.
+    The complete module includes all 9 scored questions, matching, sorting, calculation practice,
+    required reflection, certificate, and teacher launch tools.
+  </p>
+
+  <div class="meta">
+    <span class="pill">2 of 9 Questions Previewed</span>
+    <span class="pill">Scenario-Based</span>
+    <span class="pill">Full Certificate Locked</span>
+    <span class="pill">Teacher Tools Included</span>
+  </div>
+</section>
+
+<div class="preview-banner">
+  Preview access is limited. Purchase the full module to unlock all questions, reflection, certificate, and teacher launch tools.
+</div>
+
+<div class="grid">
+
+  <section class="card">
+    <div class="lesson-card">
+      <h3>Sample Lesson: What Is a Credit Score?</h3>
+      <p>
+        A credit score is a number lenders use to estimate how risky it may be to lend someone money.
+        It is based on how a person has handled credit in the past.
+      </p>
+      <p>
+        A strong score can make it easier to qualify for loans, apartments, credit cards, and better interest rates.
+        A weak score can make borrowing more expensive or harder to get approved.
+      </p>
+      <div class="callout">
+        Key idea: A credit score is not your income. It is a snapshot of how you manage borrowed money.
+      </div>
+    </div>
+
+    <div class="activity">
+      <h3>Sample Question 1</h3>
+      <p>Which statement best describes a credit score?</p>
+
+      <div class="options">
+        <button class="option" onclick="answer(this,true,'Correct. A credit score helps lenders judge borrowing risk.')">
+          A number that helps lenders estimate how risky it may be to lend you money.
+        </button>
+
+        <button class="option" onclick="answer(this,false,'Not quite. Your income can matter, but it is not the same as your credit score.')">
+          The exact amount of money a person earns from their job each year.
+        </button>
+
+        <button class="option" onclick="answer(this,false,'Not quite. A credit score is not the total amount in your bank account.')">
+          The amount of money currently sitting in a checking or savings account.
+        </button>
+      </div>
+
+      <div class="feedback" id="fb1"></div>
+    </div>
+
+    <div class="activity">
+      <h3>Sample Question 2</h3>
+      <p>
+        Maya and Jordan both apply for the same car loan. Maya has a stronger credit score.
+        What is the most likely advantage Maya may receive?
+      </p>
+
+      <div class="options">
+        <button class="option" onclick="answer(this,false,'Not quite. A credit score does not guarantee free money.')">
+          Maya automatically gets the car for free without having to make payments.
+        </button>
+
+        <button class="option" onclick="answer(this,true,'Correct. A stronger score can help someone qualify for better loan terms.')">
+          Maya may qualify for a lower interest rate or better loan terms.
+        </button>
+
+        <button class="option" onclick="answer(this,false,'Not quite. Credit scores do not directly set a person’s paycheck.')">
+          Maya will automatically earn a higher paycheck from her employer.
+        </button>
+      </div>
+
+      <div class="feedback" id="fb2"></div>
+    </div>
+  </section>
+
+  <aside>
+    <div class="locked-box">
+      <h2>Unlock the Full Module</h2>
+      <p>
+        The complete version gives teachers the full student-ready lesson and launch tools.
+      </p>
+
+      <div class="check-list">
+        <div class="check">9 scored student questions</div>
+        <div class="check">Scenario-based credit decisions</div>
+        <div class="check">Matching credit factors activity</div>
+        <div class="check">Sorting smart credit steps</div>
+        <div class="check">Credit utilization calculation</div>
+        <div class="check">Required student reflection</div>
+        <div class="check">Completion certificate</div>
+        <div class="check">Teacher launch tools</div>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-shopify" href="https://YOUR-SHOPIFY-CREDIT-SCORES-MODULE-LINK.com" target="_blank">Buy Full Module</a>
+        <a class="btn btn-secondary" href="../personal-finance.html">Back to Personal Finance</a>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h2>Full Module Outline</h2>
+      <p>The preview shows only the beginning. The full lesson unlocks the complete sequence.</p>
+
+      <div class="section-list">
+        <div class="section-row"><span>What a credit score is</span><span class="status">Previewed</span></div>
+        <div class="section-row"><span>Why credit scores matter</span><span class="status">Previewed</span></div>
+        <div class="section-row"><span>Payment history</span><span class="status locked">Locked</span></div>
+        <div class="section-row"><span>Credit utilization</span><span class="status locked">Locked</span></div>
+        <div class="section-row"><span>Credit cards and loans</span><span class="status locked">Locked</span></div>
+        <div class="section-row"><span>Matching credit factors</span><span class="status locked">Locked</span></div>
+        <div class="section-row"><span>Sorting smart credit steps</span><span class="status locked">Locked</span></div>
+        <div class="section-row"><span>Credit utilization calculation</span><span class="status locked">Locked</span></div>
+        <div class="section-row"><span>Final credit decision</span><span class="status locked">Locked</span></div>
+        <div class="section-row"><span>Reflection and certificate</span><span class="status locked">Locked</span></div>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+</main>
+
+<footer>
+  <div>
+    <strong>Vivid Lessons</strong><br>
+    Learn. Apply. Succeed.
+  </div>
+  <div>
+    Preview mode. Full module available after purchase.
+  </div>
+</footer>
+
+<script>
+let clickedCount = 0;
+
+function answer(button, correct, message){
+  const activity = button.closest(".activity");
+  const options = activity.querySelectorAll(".option");
+  const feedback = activity.querySelector(".feedback");
+
+  options.forEach(opt => {
+    opt.style.pointerEvents = "none";
+    opt.disabled = true;
+  });
+
+  button.classList.add(correct ? "correct" : "wrong");
+  feedback.className = "feedback show " + (correct ? "good" : "bad");
+  feedback.textContent = message;
+
+  clickedCount++;
+}
+</script>
+
+</body>
+</html>
