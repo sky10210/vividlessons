@@ -13,6 +13,17 @@ Usage on a course page:
 <script>
   renderModuleLibrary("personal-finance", "moduleLibrary");
 </script>
+
+Category options:
+- all
+- personal-finance
+- ap-business
+- business-basics
+- marketing
+- current-events
+- projects
+- worksheets
+- free
 */
 
 function moduleTypePills(module){
@@ -52,19 +63,34 @@ function renderModuleCard(module, category){
       ? module.courseLabels[0]
       : module.productType || "Module";
 
+  const subtitle = module.displayType || "Interactive Lesson";
+
   const pills = moduleTypePills(module)
     .map(pill => `<span class="pill">${pill}</span>`)
     .join("");
 
   const sections = module.sections && module.sections.length
     ? module.sections.map(section => `<li>${section}</li>`).join("")
-    : `<li>Guided student module</li><li>Reflection and certificate</li>`;
+    : `<li>Guided student lesson</li><li>Reflection and certificate</li>`;
+
+  const searchText = [
+    module.title,
+    module.displayType,
+    module.topic,
+    module.productType,
+    module.description,
+    module.categories ? module.categories.join(" ") : "",
+    module.courseLabels ? module.courseLabels.join(" ") : "",
+    module.tags ? module.tags.join(" ") : "",
+    module.types ? module.types.join(" ") : ""
+  ].join(" ");
 
   return `
-    <article class="card product-card module-card ${module.featured ? "featured" : ""}" data-title="${module.title} ${module.topic} ${module.tags ? module.tags.join(" ") : ""}">
+    <article class="card product-card module-card ${module.featured ? "featured" : ""}" data-title="${searchText}">
       <span class="pill">${label}</span>
 
       <h3>${module.title}</h3>
+      <div class="module-subtitle">${subtitle}</div>
 
       <p>${module.description}</p>
 
@@ -102,7 +128,7 @@ function renderModuleLibrary(category, targetId){
 
   if(typeof VIVID_MODULES === "undefined"){
     target.innerHTML = `
-      <article class="card">
+      <article class="card empty-message">
         <span class="pill">Setup Needed</span>
         <h3>Module library not loaded</h3>
         <p>Check that assets/modules-data.js is linked before module-renderer.js.</p>
@@ -115,10 +141,10 @@ function renderModuleLibrary(category, targetId){
 
   if(!modules.length){
     target.innerHTML = `
-      <article class="card">
+      <article class="card empty-message">
         <span class="pill">Coming Soon</span>
         <h3>No modules added yet</h3>
-        <p>Modules added to assets/modules-data.js will appear here automatically.</p>
+        <p>Real modules added to assets/modules-data.js will appear here automatically.</p>
       </article>
     `;
     return;
