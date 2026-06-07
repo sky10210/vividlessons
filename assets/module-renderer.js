@@ -6,24 +6,8 @@ VIVID LESSONS MODULE CARD RENDERER
 This file reads assets/modules-data.js and displays module cards
 on course pages.
 
-Usage on a course page:
-
-<script src="assets/modules-data.js"></script>
-<script src="assets/module-renderer.js"></script>
-<script>
-  renderModuleLibrary("personal-finance", "moduleLibrary");
-</script>
-
-Category options:
-- all
-- personal-finance
-- ap-business
-- business-basics
-- marketing
-- current-events
-- projects
-- worksheets
-- free
+It hides empty sections automatically unless the target div has:
+data-show-empty="true"
 */
 
 function moduleTypePills(module){
@@ -90,7 +74,7 @@ function renderModuleCard(module, category){
       <span class="pill">${label}</span>
 
       <h3>${module.title}</h3>
-      <div class="module-subtitle">${subtitle}</div>
+      <div class="item-subtitle">${subtitle}</div>
 
       <p>${module.description}</p>
 
@@ -103,9 +87,9 @@ function renderModuleCard(module, category){
         <small>${module.autoScored ? "Auto-scored" : "Teacher reviewed"}</small>
       </div>
 
-      <div class="module-actions">
+      <div class="item-actions">
         <a class="btn btn-primary btn-small" href="${module.previewUrl}">Preview</a>
-        <button class="btn btn-secondary btn-small" onclick="toggleModuleDescription('${descId}')">Description</button>
+        <button class="btn btn-secondary btn-small" onclick="toggleItemDescription('${descId}')">Description</button>
         <a class="btn btn-shopify btn-small" href="${module.shopifyUrl}" target="_blank">Buy on Shopify</a>
         <a class="btn btn-secondary btn-small" href="${module.launchUrl}">Launch</a>
       </div>
@@ -126,7 +110,15 @@ function renderModuleLibrary(category, targetId){
     return;
   }
 
+  const section = target.closest("section");
+  const showEmpty = target.dataset.showEmpty === "true";
+
   if(typeof VIVID_MODULES === "undefined"){
+    if(section && !showEmpty){
+      section.style.display = "none";
+      return;
+    }
+
     target.innerHTML = `
       <article class="card empty-message">
         <span class="pill">Setup Needed</span>
@@ -140,9 +132,14 @@ function renderModuleLibrary(category, targetId){
   const modules = getModulesByCategory(category);
 
   if(!modules.length){
+    if(section && !showEmpty){
+      section.style.display = "none";
+      return;
+    }
+
     target.innerHTML = `
       <article class="card empty-message">
-        <span class="pill">Coming Soon</span>
+        <span class="pill">No Items</span>
         <h3>No modules added yet</h3>
         <p>Real modules added to assets/modules-data.js will appear here automatically.</p>
       </article>
@@ -150,12 +147,16 @@ function renderModuleLibrary(category, targetId){
     return;
   }
 
+  if(section){
+    section.style.display = "";
+  }
+
   target.innerHTML = modules
     .map(module => renderModuleCard(module, category))
     .join("");
 }
 
-function toggleModuleDescription(id){
+function toggleItemDescription(id){
   const panel = document.getElementById(id);
   if(panel){
     panel.classList.toggle("show");
