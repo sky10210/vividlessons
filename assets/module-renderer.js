@@ -3,11 +3,10 @@
 VIVID LESSONS MODULE CARD RENDERER
 ============================================================
 
-This file reads assets/modules-data.js and displays module cards
-on course pages.
+Reads assets/modules-data.js and displays module cards.
 
-It hides empty sections automatically unless the target div has:
-data-show-empty="true"
+Preview button goes to limited public preview.
+Launch button goes to teacher dashboard / full access path.
 */
 
 function moduleTypePills(module){
@@ -15,6 +14,10 @@ function moduleTypePills(module){
 
   if(module.questionCount){
     pills.push(`${module.questionCount} Questions`);
+  }
+
+  if(module.previewQuestionCount){
+    pills.push(`${module.previewQuestionCount} Preview`);
   }
 
   if(module.types && module.types.length){
@@ -95,8 +98,12 @@ function renderModuleCard(module, category){
       </div>
 
       <div class="description-panel" id="${descId}">
-        <strong>Inside this module:</strong>
+        <strong>Inside the full module:</strong>
         <ul>${sections}</ul>
+        <p style="margin-top:12px;color:#64748B;font-weight:700;font-size:.88rem;">
+          Preview includes ${module.previewQuestionCount || 2} sample questions.
+          Full access includes all ${module.questionCount || "module"} questions, reflection, certificate, and teacher launch tools.
+        </p>
       </div>
     </article>
   `;
