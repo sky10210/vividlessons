@@ -7,15 +7,7 @@ This is the master catalog for real Vivid Lessons interactive modules.
 
 Add each real module here one time.
 
-Each paid module should have:
-- previewUrl = limited public preview
-- fullModuleUrl = full student module
-- launchUrl = teacher dashboard / access page
-- shopifyUrl = purchase page
-
-Use categories to control where it appears.
-
-Category options:
+Course category options:
 - personal-finance
 - ap-business
 - business-basics
@@ -24,6 +16,18 @@ Category options:
 - projects
 - worksheets
 - free
+
+Homepage sorting:
+- homepage: true = show this module on homepage
+- homepageOrder: optional manual override
+- dateAdded: controls natural order
+- Newer modules appear lower by default unless homepageOrder is set
+
+Preview system:
+- previewUrl = limited public preview
+- fullModuleUrl = full student module
+- launchUrl = teacher dashboard / access page
+- shopifyUrl = purchase page
 */
 
 const VIVID_MODULES = [
@@ -34,6 +38,11 @@ const VIVID_MODULES = [
 
     categories: ["personal-finance", "business-basics"],
     courseLabels: ["Personal Finance", "Business Basics"],
+
+    homepage: true,
+    homepageOrder: null,
+    dateAdded: "2026-06-07",
+    homepageLabel: "New Module",
 
     topic: "Credit",
     productType: "Interactive Module",
@@ -84,6 +93,29 @@ const VIVID_MODULES = [
 ];
 
 function getModulesByCategory(category){
+  if(category === "homepage"){
+    return VIVID_MODULES
+      .filter(module => module.homepage === true)
+      .sort((a,b) => {
+        const aManual = a.homepageOrder;
+        const bManual = b.homepageOrder;
+
+        if(aManual !== null && aManual !== undefined && bManual !== null && bManual !== undefined){
+          return aManual - bManual;
+        }
+
+        if(aManual !== null && aManual !== undefined){
+          return -1;
+        }
+
+        if(bManual !== null && bManual !== undefined){
+          return 1;
+        }
+
+        return new Date(a.dateAdded || "2099-01-01") - new Date(b.dateAdded || "2099-01-01");
+      });
+  }
+
   return VIVID_MODULES
     .filter(module => category === "all" || module.categories.includes(category))
     .sort((a,b) => {
