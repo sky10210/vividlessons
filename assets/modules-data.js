@@ -26,6 +26,7 @@ Homepage sorting:
 Preview system:
 - previewUrl = limited public preview
 - fullModuleUrl = full student module
+- teacherGuideUrl = teacher guide / answer key page
 - launchUrl = teacher dashboard / access page
 - shopifyUrl = purchase page
 */
@@ -58,6 +59,7 @@ const VIVID_MODULES = [
 
     previewUrl: "modules/pfm-credit-scores-101-preview.html",
     fullModuleUrl: "modules/pfm-credit-scores-101.html",
+    teacherGuideUrl: "teacher-guides/pfm-credit-scores-101-teacher-guide.html",
     launchUrl: "teacher-dashboard.html",
     shopifyUrl: "https://YOUR-SHOPIFY-CREDIT-SCORES-MODULE-LINK.com",
 
