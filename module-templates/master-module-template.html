@@ -1,1 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<title>MODULE TITLE | Vivid Lessons</title>
+
+<meta name="description" content="Interactive Vivid Lessons module with guided sections, scored questions, reflection, certificate, and completion tracking." />
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script>
+/*
+============================================================
+VIVID LESSONS MODULE METADATA
+============================================================
+
+Update this block for every module.
+
+questionCount must match actual scored questions.
+Reflection is always required but does not count as a scored question unless intentionally graded.
+
+Difficulty has been removed from the master template.
+Use question count and question type tags instead.
+*/
+
+const MODULE_META = {
+  id: "category-module-name",
+  title: "Module Title",
+  category: "Personal Finance",
+  topic: "Topic Name",
+  productType: "Interactive Module",
+
+  shortDescription: "One clear sentence explaining what students learn and do in this module.",
+
+  questionCount: 5,
+  sectionCount: 6,
+
+  primaryQuestionTypes: [
+    "Scenario-Based",
+    "Multiple Choice Heavy"
+  ],
+
+  tags: [
+    "Tag 1",
+    "Tag 2",
+    "Tag 3"
+  ],
+
+  reflectionRequired: true,
+  certificateIncluded: true,
+  completionTracking: true,
+  autoScored: true,
+
+  previewUrl: "sample-module.html",
+  launchUrl: "teacher-dashboard.html",
+  shopifyUrl: "https://YOUR-SHOPIFY-LINK-HERE.com",
+
+  sections: [
+    "Hook and key idea",
+    "Core concept",
+    "Scenario practice",
+    "Application activity",
+    "Final check",
+    "Reflection and certificate"
+  ],
+
+  teacherTools: [
+    "Launch from dashboard",
+    "Copy student link",
+    "Display QR code",
+    "View completions",
+    "Review student reflection"
+  ],
+
+  standards: {
+    national: [],
+    state: [],
+    notes: ""
+  },
+
+  statePackReady: false,
+
+  completionFields: [
+    "Timestamp",
+    "First Name",
+    "Last Name",
+    "Class Period",
+    "Module ID",
+    "Module Title",
+    "Category",
+    "Score",
+    "Total Questions",
+    "Percent",
+    "Completed",
+    "Question Types",
+    "Answers",
+    "Time Started",
+    "Time Finished",
+    "Total Time",
+    "Reflection"
+  ],
+
+  lastUpdated: "2026-06-06",
+  version: "1.0"
+};
+</script>
+
+<style>
+:root{
+  --navy:#0D1B2A;
+  --blue:#2563EB;
+  --blue-dark:#1D4ED8;
+  --cyan:#22D3EE;
+  --emerald:#10B981;
+  --gold:#F59E0B;
+  --danger:#DC2626;
+  --white:#F8FAFC;
+  --soft:#F1F5F9;
+  --text:#102033;
+  --muted:#64748B;
+  --border:#E2E8F0;
+  --shadow:0 18px 45px rgba(13,27,42,.10);
+  --radius:24px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:Poppins,sans-serif;
+  background:
+    radial-gradient(circle at top left,rgba(34,211,238,.15),transparent 32%),
+    radial-gradient(circle at top right,rgba(37,99,235,.12),transparent 34%),
+    linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 48%,#F8FAFC 100%);
+  color:var(--text);
+  line-height:1.65;
+}
+
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font-family:inherit}
+
+.nav{
+  width:min(1120px,92%);
+  margin:auto;
+  padding:22px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:900;
+  color:var(--navy);
+}
+
+.logo{
+  width:46px;
+  height:46px;
+  border-radius:17px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  position:relative;
+  box-shadow:
+    0 0 0 7px rgba(34,211,238,.12),
+    0 16px 34px rgba(37,99,235,.32);
+}
+
+.logo:before{
+  content:"";
+  position:absolute;
+  width:27px;
+  height:27px;
+  border-left:5px solid white;
+  border-bottom:5px solid white;
+  transform:rotate(-45deg);
+  border-radius:4px;
+  top:8px;
+  left:9px;
+}
+
+.logo:after{
+  content:"";
+  position:absolute;
+  width:13px;
+  height:13px;
+  border-left:4px solid white;
+  border-bottom:4px solid white;
+  transform:rotate(-45deg);
+  border-radius:3px;
+  top:16px;
+  left:17px;
+}
+
+.brand-copy{
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+}
+
+.brand-name{
+  font-size:1.12rem;
+  letter-spacing:-.04em;
+}
+
+.brand-tagline{
+  margin-top:5px;
+  font-size:.63rem;
+  font-weight:900;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--blue);
+}
+
+.nav-links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.nav-links a{
+  padding:10px 13px;
+  border-radius:999px;
+  color:#334155;
+  font-size:.86rem;
+  font-weight:800;
+}
+
+.nav-links a:hover{
+  background:white;
+  color:var(--blue);
+}
+
+.wrap{
+  width:min(1120px,92%);
+  margin:8px auto 70px;
+}
+
+.hero{
+  background:var(--navy);
+  color:white;
+  border-radius:36px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  margin-bottom:22px;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:360px;
+  height:360px;
+  right:-130px;
+  top:-130px;
+  border-radius:999px;
+  background:radial-gradient(circle,rgba(34,211,238,.36),transparent 65%);
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.16);
+  color:#BAE6FD;
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:.78rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  margin-bottom:16px;
+  position:relative;
+  z-index:2;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--emerald);
+  box-shadow:0 0 0 5px rgba(16,185,129,.16);
+}
+
+.hero h1{
+  font-size:clamp(2.35rem,5vw,4.9rem);
+  line-height:1;
+  letter-spacing:-.07em;
+  margin-bottom:16px;
+  max-width:900px;
+  position:relative;
+  z-index:2;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#93C5FD,#22D3EE);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:#CBD5E1;
+  font-size:1.02rem;
+  max-width:820px;
+  position:relative;
+  z-index:2;
+}
+
+.module-meta-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+  position:relative;
+  z-index:2;
+}
+
+.meta-pill{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.16);
+  color:#E0F2FE;
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:.78rem;
+  font-weight:900;
+}
+
+.progress-shell{
+  margin-top:24px;
+  position:relative;
+  z-index:2;
+}
+
+.progress-top{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  color:#BAE6FD;
+  font-weight:900;
+  font-size:.88rem;
+  margin-bottom:8px;
+  flex-wrap:wrap;
+}
+
+.progress{
+  height:12px;
+  background:rgba(255,255,255,.14);
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--emerald));
+  transition:.35s ease;
+}
+
+.start-card,
+.section,
+.cert{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:28px;
+  box-shadow:0 14px 30px rgba(15,23,42,.07);
+}
+
+.start-card{
+  padding:22px;
+  margin-bottom:18px;
+}
+
+.start-card h2{
+  color:var(--navy);
+  font-size:1.55rem;
+  letter-spacing:-.04em;
+  margin-bottom:8px;
+}
+
+.start-card p{
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+label{
+  display:block;
+  color:#475569;
+  font-size:.78rem;
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--border);
+  background:#F8FAFC;
+  border-radius:14px;
+  padding:12px 13px;
+  font-weight:700;
+  color:#1F2937;
+}
+
+textarea{
+  resize:vertical;
+  min-height:120px;
+}
+
+.btn{
+  border:0;
+  cursor:pointer;
+  border-radius:15px;
+  padding:12px 15px;
+  font-weight:900;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  transition:.2s ease;
+}
+
+.btn:hover{transform:translateY(-2px)}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  color:white;
+  box-shadow:0 12px 24px rgba(37,99,235,.22);
+}
+
+.btn-secondary{
+  background:white;
+  color:var(--navy);
+  border:1px solid var(--border);
+}
+
+.btn-emerald{
+  background:#DCFCE7;
+  color:#166534;
+}
+
+.btn-small{
+  padding:9px 11px;
+  font-size:.82rem;
+}
+
+.module{
+  display:grid;
+  gap:18px;
+}
+
+.section{
+  overflow:hidden;
+}
+
+.section.locked{
+  opacity:.62;
+}
+
+.section-head{
+  padding:22px;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+
+.section-title h2{
+  color:var(--navy);
+  font-size:1.45rem;
+  line-height:1.15;
+  letter-spacing:-.04em;
+}
+
+.section-title p{
+  color:var(--muted);
+  font-size:.92rem;
+  margin-top:4px;
+}
+
+.badge{
+  display:inline-flex;
+  width:max-content;
+  background:#EFF6FF;
+  color:var(--blue);
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:.72rem;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.lock{
+  background:#F1F5F9;
+  color:#64748B;
+}
+
+.done{
+  background:#D1FAE5;
+  color:#047857;
+}
+
+.section-body{
+  padding:22px;
+}
+
+.lock-msg{
+  background:#F8FAFC;
+  border:1px dashed #CBD5E1;
+  color:#64748B;
+  border-radius:18px;
+  padding:18px;
+  font-weight:800;
+}
+
+.lesson-card{
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:16px;
+}
+
+.lesson-card h3{
+  color:var(--navy);
+  margin-bottom:8px;
+  letter-spacing:-.03em;
+}
+
+.lesson-card p{
+  color:#475569;
+  margin-bottom:10px;
+}
+
+.callout{
+  border-left:5px solid var(--blue);
+  background:white;
+  border-radius:16px;
+  padding:14px;
+  margin-top:12px;
+  color:#334155;
+  font-weight:700;
+}
+
+.activity{
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:18px;
+  margin-top:16px;
+}
+
+.activity h3{
+  color:var(--navy);
+  margin-bottom:8px;
+  letter-spacing:-.03em;
+}
+
+.activity p{
+  color:#475569;
+  margin-bottom:12px;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+}
+
+.option{
+  width:100%;
+  text-align:left;
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:13px;
+  cursor:pointer;
+  font-weight:800;
+  color:#334155;
+}
+
+.option:hover{
+  border-color:#BFDBFE;
+  background:#EFF6FF;
+}
+
+.option.correct{
+  border-color:var(--emerald);
+  background:#DCFCE7;
+  color:#166534;
+}
+
+.option.wrong{
+  border-color:#FCA5A5;
+  background:#FEE2E2;
+  color:#991B1B;
+}
+
+.feedback{
+  display:none;
+  margin-top:12px;
+  border-radius:15px;
+  padding:12px;
+  font-weight:800;
+}
+
+.feedback.show{display:block}
+.feedback.good{background:#DCFCE7;color:#166534}
+.feedback.bad{background:#FEE2E2;color:#991B1B}
+.feedback.neutral{background:#EFF6FF;color:#1D4ED8}
+
+.sort-list{
+  display:grid;
+  gap:10px;
+}
+
+.sort-item{
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  font-weight:800;
+  color:#334155;
+}
+
+.sort-controls{
+  display:flex;
+  gap:7px;
+  flex:0 0 auto;
+}
+
+.sort-controls button{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:white;
+  cursor:pointer;
+  font-weight:900;
+}
+
+.cert{
+  display:none;
+  margin-top:18px;
+  padding:30px;
+  text-align:center;
+  border:2px solid #BFDBFE;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.cert.show{display:block}
+
+.cert:after{
+  content:"";
+  position:absolute;
+  right:-130px;
+  top:-130px;
+  width:300px;
+  height:300px;
+  border-radius:999px;
+  background:radial-gradient(circle,rgba(34,211,238,.22),transparent 65%);
+}
+
+.cert-logo{
+  margin:0 auto 14px;
+}
+
+.cert .kicker{
+  color:var(--blue);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.76rem;
+  margin-bottom:8px;
+}
+
+.cert h2{
+  color:var(--navy);
+  font-size:2.25rem;
+  letter-spacing:-.055em;
+  line-height:1.05;
+  margin-bottom:8px;
+  position:relative;
+  z-index:2;
+}
+
+.cert p{
+  color:#475569;
+  position:relative;
+  z-index:2;
+}
+
+.cert-name{
+  font-size:1.7rem;
+  color:var(--blue);
+  font-weight:900;
+  margin:10px 0;
+  position:relative;
+  z-index:2;
+}
+
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:20px 0;
+  position:relative;
+  z-index:2;
+}
+
+.cert-stat{
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px;
+}
+
+.cert-stat strong{
+  display:block;
+  color:var(--navy);
+  font-size:1.05rem;
+  line-height:1.2;
+}
+
+.cert-stat span{
+  color:var(--muted);
+  font-weight:800;
+  font-size:.78rem;
+}
+
+.reflection-box{
+  background:#F8FAFC;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  margin:16px 0;
+  text-align:left;
+  position:relative;
+  z-index:2;
+}
+
+.reflection-box strong{
+  color:var(--navy);
+}
+
+.footer{
+  width:min(1120px,92%);
+  margin:30px auto 50px;
+  color:#64748B;
+  font-size:.9rem;
+  font-weight:700;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.toast{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:var(--navy);
+  color:white;
+  padding:13px 16px;
+  border-radius:14px;
+  font-weight:800;
+  opacity:0;
+  transform:translateY(10px);
+  transition:.2s ease;
+  z-index:50;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:900px){
+  .form-grid,
+  .cert-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:640px){
+  .nav{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav-links{
+    justify-content:flex-start;
+  }
+
+  .form-grid,
+  .cert-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .badge{
+    margin-top:12px;
+  }
+
+  .hero{
+    padding:28px 24px;
+    border-radius:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="logo"></span>
+    <span class="brand-copy">
+      <span class="brand-name">vividlessons</span>
+      <span class="brand-tagline">Learn. Apply. Succeed.</span>
+    </span>
+  </a>
+
+  <nav class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../modules.html">Modules</a>
+    <a href="../free-resources.html">Free Resources</a>
+    <a href="../teacher-dashboard.html">Teacher Login</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="eyebrow"><span class="dot"></span> Interactive module template</div>
+
+  <h1>
+    <span id="heroTitle">Module Title</span>
+    <span class="gradient">Interactive Lesson.</span>
+  </h1>
+
+  <p id="heroDescription">
+    One clear sentence explaining what students learn and do in this module.
+  </p>
+
+  <div class="module-meta-row">
+    <span class="meta-pill" id="questionPill">5 Questions</span>
+    <span class="meta-pill" id="typePill">Scenario-Based</span>
+    <span class="meta-pill">Reflection</span>
+    <span class="meta-pill">Certificate</span>
+  </div>
+
+  <div class="progress-shell">
+    <div class="progress-top">
+      <span id="progressText">Progress: 0%</span>
+      <span id="scoreText">Score: 0 / 5</span>
+      <span id="timeText">Started: Not started</span>
+    </div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+  </div>
+</section>
+
+<section class="start-card">
+  <h2>Student Start Form</h2>
+  <p>
+    Enter your information to begin. Sections unlock one at a time.
+    You must complete the reflection before the certificate appears.
+  </p>
+
+  <div class="form-grid">
+    <div>
+      <label>First Name</label>
+      <input id="firstName" placeholder="First name">
+    </div>
+
+    <div>
+      <label>Last Name</label>
+      <input id="lastName" placeholder="Last name">
+    </div>
+
+    <div>
+      <label>Class Period / Block</label>
+      <input id="classPeriod" placeholder="Example: 1, 2, 3, 4, A, B, Period 2">
+    </div>
+  </div>
+
+  <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
+    <button class="btn btn-primary" onclick="startModule()">Start Module</button>
+    <button class="btn btn-secondary" onclick="toast('Sections unlock one at a time. No auto-scroll is used.')">How this works</button>
+  </div>
+</section>
+
+<div class="module">
+
+<section class="section locked" id="sec1">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>1. Hook and Key Idea</h2>
+      <p>Short learning card plus first scored question.</p>
+    </div>
+    <span class="badge lock" id="badge1">Locked</span>
+  </div>
+  <div class="section-body" id="body1">
+    <div class="lock-msg">Complete the student start form to unlock this section.</div>
+  </div>
+</section>
+
+<section class="section locked" id="sec2">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>2. Core Concept</h2>
+      <p>Students practice identifying the important idea.</p>
+    </div>
+    <span class="badge lock" id="badge2">Locked</span>
+  </div>
+  <div class="section-body" id="body2">
+    <div class="lock-msg">Complete Section 1 to unlock this section.</div>
+  </div>
+</section>
+
+<section class="section locked" id="sec3">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>3. Scenario Practice</h2>
+      <p>Students apply the idea to a realistic situation.</p>
+    </div>
+    <span class="badge lock" id="badge3">Locked</span>
+  </div>
+  <div class="section-body" id="body3">
+    <div class="lock-msg">Complete Section 2 to unlock this section.</div>
+  </div>
+</section>
+
+<section class="section locked" id="sec4">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>4. Application Activity</h2>
+      <p>Matching, sorting, word bank, calculator, or another active task.</p>
+    </div>
+    <span class="badge lock" id="badge4">Locked</span>
+  </div>
+  <div class="section-body" id="body4">
+    <div class="lock-msg">Complete Section 3 to unlock this section.</div>
+  </div>
+</section>
+
+<section class="section locked" id="sec5">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>5. Final Check</h2>
+      <p>Students complete the last scored question before reflection.</p>
+    </div>
+    <span class="badge lock" id="badge5">Locked</span>
+  </div>
+  <div class="section-body" id="body5">
+    <div class="lock-msg">Complete Section 4 to unlock this section.</div>
+  </div>
+</section>
+
+<section class="section locked" id="sec6">
+  <div class="section-head">
+    <div class="section-title">
+      <h2>6. Reflection and Certificate</h2>
+      <p>Reflection is required before the certificate appears.</p>
+    </div>
+    <span class="badge lock" id="badge6">Locked</span>
+  </div>
+  <div class="section-body" id="body6">
+    <div class="lock-msg">Complete Section 5 to unlock this section.</div>
+  </div>
+</section>
+
+</div>
+
+<div class="cert" id="certificate">
+  <div class="logo cert-logo"></div>
+
+  <div class="kicker">Certificate of Completion</div>
+
+  <h2 id="certTitle">Outstanding Work!</h2>
+
+  <p>This certifies that</p>
+
+  <div class="cert-name" id="certName">Student Name</div>
+
+  <p>
+    successfully completed <strong id="certModule">Module Title</strong>.
+  </p>
+
+  <div class="cert-grid">
+    <div class="cert-stat">
+      <strong id="certScore">0 / 5</strong>
+      <span>Score</span>
+    </div>
+
+    <div class="cert-stat">
+      <strong id="certPercent">0%</strong>
+      <span>Percent</span>
+    </div>
+
+    <div class="cert-stat">
+      <strong id="certStarted">--</strong>
+      <span>Started</span>
+    </div>
+
+    <div class="cert-stat">
+      <strong id="certFinished">--</strong>
+      <span>Finished</span>
+    </div>
+  </div>
+
+  <div class="reflection-box">
+    <strong>Student Reflection:</strong>
+    <p id="certReflection"></p>
+  </div>
+
+  <button class="btn btn-secondary" onclick="window.print()">Print / Save Certificate</button>
+</div>
+
+</main>
+
+<footer class="footer">
+  <div>
+    <strong>Vivid Lessons</strong><br>
+    Learn. Apply. Succeed.
+  </div>
+  <div>
+    Module Template Version <span id="templateVersion">1.0</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Saved.</div>
+
+<script>
+let started = false;
+let startTime = null;
+let finishTime = null;
+let score = 0;
+let total = MODULE_META.questionCount;
+let completedSections = 0;
+let answers = {};
+let questionTypes = [];
+
+function initMeta(){
+  document.title = MODULE_META.title + " | Vivid Lessons";
+  document.getElementById("heroTitle").textContent = MODULE_META.title + " ";
+  document.getElementById("heroDescription").textContent = MODULE_META.shortDescription;
+  document.getElementById("questionPill").textContent = MODULE_META.questionCount + " Questions";
+  document.getElementById("typePill").textContent = MODULE_META.primaryQuestionTypes[0] || "Interactive";
+  document.getElementById("scoreText").textContent = "Score: 0 / " + MODULE_META.questionCount;
+  document.getElementById("certModule").textContent = MODULE_META.title;
+  document.getElementById("templateVersion").textContent = MODULE_META.version;
+}
+
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+function formatTime(date){
+  return date.toLocaleString([], {
+    month:"short",
+    day:"numeric",
+    year:"numeric",
+    hour:"numeric",
+    minute:"2-digit"
+  });
+}
+
+function updateProgress(){
+  const percent = Math.round((completedSections / MODULE_META.sectionCount) * 100);
+  document.getElementById("bar").style.width = percent + "%";
+  document.getElementById("progressText").textContent = "Progress: " + percent + "%";
+  document.getElementById("scoreText").textContent = "Score: " + score + " / " + total;
+
+  if(startTime){
+    document.getElementById("timeText").textContent = "Started: " + formatTime(startTime);
+  }
+}
+
+function unlock(n){
+  const sec = document.getElementById("sec" + n);
+  const badge = document.getElementById("badge" + n);
+
+  sec.classList.remove("locked");
+  badge.className = "badge";
+  badge.textContent = "Unlocked";
+
+  renderSection(n);
+}
+
+function completeSection(n){
+  const badge = document.getElementById("badge" + n);
+  badge.className = "badge done";
+  badge.textContent = "Complete";
+
+  completedSections = Math.max(completedSections, n);
+  updateProgress();
+
+  if(n < MODULE_META.sectionCount){
+    unlock(n + 1);
+    toast("Section " + (n + 1) + " unlocked. Scroll when ready.");
+  }
+}
+
+function startModule(){
+  const first = document.getElementById("firstName").value.trim();
+  const last = document.getElementById("lastName").value.trim();
+  const period = document.getElementById("classPeriod").value.trim();
+
+  if(!first || !last || !period){
+    toast("Enter first name, last name, and class period/block.");
+    return;
+  }
+
+  if(!started){
+    started = true;
+    startTime = new Date();
+    unlock(1);
+    updateProgress();
+    toast("Module started. Section 1 unlocked.");
+  } else {
+    toast("Module already started.");
+  }
+}
+
+function recordAnswer(questionNumber, type, answer, correct){
+  answers["Q" + questionNumber] = {
+    type,
+    answer,
+    correct
+  };
+
+  if(!questionTypes.includes(type)){
+    questionTypes.push(type);
+  }
+}
+
+function mc(button, questionNumber, isCorrect, feedbackText){
+  const activity = button.closest(".activity");
+  const options = activity.querySelectorAll(".option");
+  const feedback = activity.querySelector(".feedback");
+
+  options.forEach(opt => {
+    opt.disabled = true;
+    opt.style.pointerEvents = "none";
+  });
+
+  if(isCorrect){
+    button.classList.add("correct");
+    score++;
+    feedback.className = "feedback show good";
+  } else {
+    button.classList.add("wrong");
+    feedback.className = "feedback show bad";
+  }
+
+  feedback.textContent = feedbackText;
+
+  recordAnswer(questionNumber, "multiple-choice", button.textContent.trim(), isCorrect);
+
+  setTimeout(() => completeSection(questionNumber), 600);
+}
+
+function move(btn, dir){
+  const item = btn.closest(".sort-item");
+  const list = item.parentElement;
+
+  if(dir < 0 && item.previousElementSibling){
+    list.insertBefore(item, item.previousElementSibling);
+  }
+
+  if(dir > 0 && item.nextElementSibling){
+    list.insertBefore(item.nextElementSibling, item);
+  }
+}
+
+function checkSort(questionNumber){
+  const items = [...document.querySelectorAll("#sortList .sort-item")];
+  const order = items.map(item => item.dataset.step).join("");
+  const feedback = document.getElementById("fb" + questionNumber);
+  const correct = order === "1234";
+
+  if(correct){
+    score++;
+    feedback.className = "feedback show good";
+    feedback.textContent = "Correct. The workflow is in the right order.";
+  } else {
+    feedback.className = "feedback show bad";
+    feedback.textContent = "Not quite. Review the order, then continue.";
+  }
+
+  recordAnswer(questionNumber, "sorting", order, correct);
+
+  setTimeout(() => completeSection(questionNumber), 700);
+}
+
+/*
+============================================================
+SECTION CONTENT
+============================================================
+
+Replace the sample section content below for each real module.
+Keep data-question and data-type on every scored activity.
+*/
+
+function renderSection(n){
+  const body = document.getElementById("body" + n);
+
+  if(n === 1){
+    body.innerHTML = `
+      <div class="lesson-card">
+        <h3>Mini Lesson: Replace this hook</h3>
+        <p>
+          Add the opening explanation for this module. Keep it short, visual, and student-friendly.
+        </p>
+        <div class="callout">
+          Strong modules start with a real-world reason students should care.
+        </div>
+      </div>
+
+      <div class="activity" data-question="1" data-type="multiple-choice" data-points="1">
+        <h3>Question 1</h3>
+        <p>Which answer best describes the purpose of this opening section?</p>
+
+        <div class="options">
+          <button class="option" onclick="mc(this,1,true,'Correct. This section introduces the key idea and why it matters.')">
+            It introduces the key idea and explains why the topic matters.
+          </button>
+
+          <button class="option" onclick="mc(this,1,false,'Not quite. The opening section should do more than list random facts.')">
+            It lists random facts without connecting them to the lesson.
+          </button>
+
+          <button class="option" onclick="mc(this,1,false,'Not quite. The opening should prepare students for the activity.')">
+            It skips the lesson and only shows the final certificate.
+          </button>
+
+          <button class="option" onclick="mc(this,1,false,'Not quite. The opening should support learning, not distract from it.')">
+            It adds extra design without helping students understand the topic.
+          </button>
+        </div>
+
+        <div class="feedback" id="fb1"></div>
+      </div>
+    `;
+  }
+
+  if(n === 2){
+    body.innerHTML = `
+      <div class="lesson-card">
+        <h3>Mini Lesson: Replace this core concept</h3>
+        <p>
+          Add the main concept students need before moving into scenarios.
+        </p>
+      </div>
+
+      <div class="activity" data-question="2" data-type="multiple-choice" data-points="1">
+        <h3>Question 2</h3>
+        <p>Which statement best matches the core idea from this section?</p>
+
+        <div class="options">
+          <button class="option" onclick="mc(this,2,false,'Not quite. This answer is close but misses the main point.')">
+            A partially correct answer that is similar in length.
+          </button>
+
+          <button class="option" onclick="mc(this,2,true,'Correct. This matches the core idea from the section.')">
+            The correct answer written at a similar length as the others.
+          </button>
+
+          <button class="option" onclick="mc(this,2,false,'Not quite. Review the core idea before moving on.')">
+            A realistic mistake students might make after reading quickly.
+          </button>
+
+          <button class="option" onclick="mc(this,2,false,'Not quite. This answer sounds possible but is not the best fit.')">
+            Another believable distractor that is not obviously wrong.
+          </button>
+        </div>
+
+        <div class="feedback" id="fb2"></div>
+      </div>
+    `;
+  }
+
+  if(n === 3){
+    body.innerHTML = `
+      <div class="lesson-card">
+        <h3>Mini Lesson: Replace this scenario</h3>
+        <p>
+          Add a real classroom scenario, current event, financial decision, business decision, or student-facing example.
+        </p>
+      </div>
+
+      <div class="activity" data-question="3" data-type="scenario" data-points="1">
+        <h3>Question 3</h3>
+        <p>Based on the scenario, what is the best decision?</p>
+
+        <div class="options">
+          <button class="option" onclick="mc(this,3,false,'Not quite. This decision ignores part of the scenario.')">
+            A choice that seems fast but misses an important trade-off.
+          </button>
+
+          <button class="option" onclick="mc(this,3,false,'Not quite. This choice sounds safe but does not solve the main problem.')">
+            A choice that avoids risk but does not address the real need.
+          </button>
+
+          <button class="option" onclick="mc(this,3,true,'Correct. This decision uses the scenario details and balances the trade-offs.')">
+            The choice that best uses the scenario details and trade-offs.
+          </button>
+
+          <button class="option" onclick="mc(this,3,false,'Not quite. This choice focuses on the wrong priority.')">
+            A choice that focuses on the wrong priority in the situation.
+          </button>
+        </div>
+
+        <div class="feedback" id="fb3"></div>
+      </div>
+    `;
+  }
+
+  if(n === 4){
+    body.innerHTML = `
+      <div class="lesson-card">
+        <h3>Mini Lesson: Replace this application task</h3>
+        <p>
+          Use this section for matching, sorting, a word bank, calculator, or another active response.
+        </p>
+      </div>
+
+      <div class="activity" data-question="4" data-type="sorting" data-points="1">
+        <h3>Question 4: Sort the process</h3>
+        <p>Put the steps in the most logical order.</p>
+
+        <div class="sort-list" id="sortList">
+          <div class="sort-item" data-step="3">
+            Step 3 placeholder
+            <span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span>
+          </div>
+
+          <div class="sort-item" data-step="1">
+            Step 1 placeholder
+            <span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span>
+          </div>
+
+          <div class="sort-item" data-step="4">
+            Step 4 placeholder
+            <span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span>
+          </div>
+
+          <div class="sort-item" data-step="2">
+            Step 2 placeholder
+            <span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-small" style="margin-top:14px" onclick="checkSort(4)">Check Order</button>
+        <div class="feedback" id="fb4"></div>
+      </div>
+    `;
+  }
+
+  if(n === 5){
+    body.innerHTML = `
+      <div class="lesson-card">
+        <h3>Mini Lesson: Replace this final check</h3>
+        <p>
+          Use this section as the final scored question before the reflection.
+        </p>
+      </div>
+
+      <div class="activity" data-question="5" data-type="multiple-choice" data-points="1">
+        <h3>Question 5</h3>
+        <p>What is the strongest takeaway from this module?</p>
+
+        <div class="options">
+          <button class="option" onclick="mc(this,5,false,'Not quite. This takeaway is too narrow.')">
+            A narrow takeaway that only explains one small detail.
+          </button>
+
+          <button class="option" onclick="mc(this,5,true,'Correct. This takeaway captures the main learning goal.')">
+            A strong takeaway that captures the main learning goal.
+          </button>
+
+          <button class="option" onclick="mc(this,5,false,'Not quite. This takeaway ignores the real-world application.')">
+            A takeaway that ignores how the idea applies in real life.
+          </button>
+
+          <button class="option" onclick="mc(this,5,false,'Not quite. This takeaway is not supported by the lesson.')">
+            A takeaway that sounds related but is not supported here.
+          </button>
+        </div>
+
+        <div class="feedback" id="fb5"></div>
+      </div>
+    `;
+  }
+
+  if(n === 6){
+    body.innerHTML = `
+      <div class="lesson-card">
+        <h3>Final Reflection</h3>
+        <p>
+          Write a short reflection explaining what you learned and how it connects to real life.
+        </p>
+      </div>
+
+      <div class="activity" data-type="reflection">
+        <h3>Required Reflection</h3>
+        <p>What is one thing you learned, and where could this idea show up outside of class?</p>
+
+        <textarea id="reflection" placeholder="Write your reflection here..."></textarea>
+
+        <button class="btn btn-primary" style="margin-top:14px" onclick="finishModule()">Submit Reflection and Generate Certificate</button>
+        <div class="feedback" id="fb6"></div>
+      </div>
+    `;
+  }
+}
+
+function finishModule(){
+  const reflection = document.getElementById("reflection").value.trim();
+  const feedback = document.getElementById("fb6");
+
+  if(reflection.length < 20){
+    feedback.className = "feedback show bad";
+    feedback.textContent = "Please write a stronger reflection before finishing.";
+    return;
+  }
+
+  finishTime = new Date();
+  completedSections = MODULE_META.sectionCount;
+  updateProgress();
+
+  const badge = document.getElementById("badge6");
+  badge.className = "badge done";
+  badge.textContent = "Complete";
+
+  const first = document.getElementById("firstName").value.trim();
+  const last = document.getElementById("lastName").value.trim();
+  const percent = Math.round((score / total) * 100);
+
+  document.getElementById("certName").textContent = first + " " + last;
+  document.getElementById("certScore").textContent = score + " / " + total;
+  document.getElementById("certPercent").textContent = percent + "%";
+  document.getElementById("certStarted").textContent = formatTime(startTime);
+  document.getElementById("certFinished").textContent = formatTime(finishTime);
+  document.getElementById("certReflection").textContent = reflection;
+
+  document.getElementById("certificate").classList.add("show");
+
+  const completionRecord = buildCompletionRecord(reflection, percent);
+
+  console.log("Vivid Lessons Completion Record:", completionRecord);
+
+  /*
+  OPTIONAL GOOGLE SHEETS / APPS SCRIPT POST PLACEHOLDER
+
+  fetch("YOUR_APPS_SCRIPT_WEB_APP_URL", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(completionRecord)
+  });
+  */
+
+  toast("Module complete. Certificate generated.");
+}
+
+function buildCompletionRecord(reflection, percent){
+  const first = document.getElementById("firstName").value.trim();
+  const last = document.getElementById("lastName").value.trim();
+  const period = document.getElementById("classPeriod").value.trim();
+
+  const totalMinutes = Math.max(1, Math.round((finishTime - startTime) / 60000));
+
+  return {
+    timestamp: new Date().toISOString(),
+    firstName: first,
+    lastName: last,
+    classPeriod: period,
+    moduleId: MODULE_META.id,
+    moduleTitle: MODULE_META.title,
+    category: MODULE_META.category,
+    score: score,
+    totalQuestions: total,
+    percent: percent,
+    completed: true,
+    questionTypes: questionTypes.join(", "),
+    answers: JSON.stringify(answers),
+    timeStarted: startTime.toISOString(),
+    timeFinished: finishTime.toISOString(),
+    totalTime: totalMinutes + " minutes",
+    reflection: reflection
+  };
+}
+
+initMeta();
+</script>
+
+</body>
+</html>
