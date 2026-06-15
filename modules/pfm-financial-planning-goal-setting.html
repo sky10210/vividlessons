@@ -26,7 +26,7 @@ const MODULE_META = {
   previewUrl: "pfm-financial-planning-goal-setting-preview.html",
   launchUrl: "../teacher-dashboard.html",
   shopifyUrl: "https://vividlessons.com/products/pfm-financial-planning-goal-setting",
-  version: "3.1"
+  version: "3.3"
 };
 </script>
 <style>
@@ -44,7 +44,7 @@ const MODULE_META = {
 <div class="module" id="moduleSections"></div>
 <div class="cert" id="certificate"><div class="logo cert-logo"></div><div class="kicker">Certificate of Completion</div><h2>Outstanding Work!</h2><p>This certifies that</p><div class="cert-name" id="certName">Student Name</div><p>successfully completed <strong id="certModule">Financial Planning & Goal Setting</strong>.</p><div class="cert-grid"><div class="cert-stat"><strong id="certScore">0 / 15</strong><span>Score</span></div><div class="cert-stat"><strong id="certPercent">0%</strong><span>Percent</span></div><div class="cert-stat"><strong id="certStarted">--</strong><span>Started</span></div><div class="cert-stat"><strong id="certFinished">--</strong><span>Finished</span></div></div><div class="reflection-box"><strong>Student Reflection:</strong><p id="certReflection"></p></div><div class="answer-privacy-note"><strong>Note:</strong> Answer choices and feedback are hidden after completion to keep the activity fair for other students.</div><button class="btn btn-secondary" onclick="window.print()">Print / Save Certificate</button></div>
 </main>
-<footer class="footer"><div><strong>Vivid Lessons</strong><br>Learn. Apply. Succeed.</div><div>Module Version 3.1</div></footer><div class="toast" id="toast">Saved.</div>
+<footer class="footer"><div><strong>Vivid Lessons</strong><br>Learn. Apply. Succeed.</div><div>Module Version 3.3</div></footer><div class="toast" id="toast">Saved.</div>
 <script>
 const COMPLETION_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyYuTwmseLvhPuvlw-VzCaqeh4DpHHrSLOrPySj7hJe9pxji4nwHw-7CEqCUsOUZcc0/exec";
 const URL_PARAMS = new URLSearchParams(window.location.search);
@@ -78,6 +78,41 @@ const QUESTIONS = [
 ];
 let started=false,startTime=null,finishTime=null,score=0,total=MODULE_META.questionCount,completedSections=0,answers={},questionTypes=[];
 let completionLocked=false;
+
+function shuffleArray(array){
+  const copy = [...array];
+
+  for(let i = copy.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+
+  return copy;
+}
+
+function safeInlineText(text){
+  return String(text)
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"&apos;")
+    .replace(/\n/g," ");
+}
+
+function renderRandomizedOptions(q){
+  const randomized = shuffleArray(
+    q.options.map((optionText, index) => ({
+      text: optionText,
+      correct: index === q.correct,
+      feedback: index === q.correct ? q.feedbackGood : q.feedbackBad
+    }))
+  );
+
+  return randomized.map(choice => `
+    <button class="option" onclick="mc(this,${q.n},${choice.correct},'${safeInlineText(choice.feedback)}')">
+      ${choice.text}
+    </button>
+  `).join("");
+}
+
 function sectionHTML(q){
 let inner="";
 if(q.type==="matching"){
@@ -87,7 +122,7 @@ inner=`<div class="sort-list" id="sortList"><div class="sort-item" data-step="3"
 } else if(q.type==="calculator"){
 inner=`<div class="numeric-box"><div><label>Enter dollars per month</label><input id="calcAnswer" type="number" placeholder="Example: 150"></div><button class="btn btn-primary" onclick="checkNumeric()">Check Answer</button></div><div class="feedback" id="fb${q.n}"></div>`;
 } else {
-inner=`<div class="options">${q.options.map((o,i)=>`<button class="option" onclick="mc(this,${q.n},${i===q.correct},'${(i===q.correct?q.feedbackGood:q.feedbackBad).replace(/'/g,"&apos;")}')">${o}</button>`).join("")}</div><div class="feedback" id="fb${q.n}"></div>`;
+inner=`<div class="options">${renderRandomizedOptions(q)}</div><div class="feedback" id="fb${q.n}"></div>`;
 }
 return `<section class="section locked" id="sec${q.n}"><div class="section-head"><div class="section-title"><h2>${q.n}. ${q.title}</h2><p>${q.subtitle}</p></div><span class="badge lock" id="badge${q.n}">Locked</span></div><div class="section-body"><div class="lock-msg">${q.n===1?"Complete the student start form":"Complete Section "+(q.n-1)} to unlock this section.</div><div class="content"><div class="lesson-card"><h3>Mini Lesson</h3><p>${q.lesson}</p><div class="callout">${q.callout}</div></div><div class="activity" data-question="${q.n}" data-type="${q.type}" data-points="1"><h3>Question ${q.n}${q.type==="matching"?": Matching":q.type==="sorting"?": Sorting":q.type==="calculator"?": Calculation":""}</h3><p>${q.prompt}</p>${inner}</div></div></div></section>`;
 }
