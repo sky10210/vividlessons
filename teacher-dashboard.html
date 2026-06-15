@@ -108,6 +108,37 @@ td{color:#334155;font-weight:700}
 .footer{width:min(1240px,92%);margin:26px auto 48px;color:#64748B;font-size:.86rem;font-weight:700;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media(max-width:1040px){.layout{grid-template-columns:1fr}.sidebar{position:static}.module-card{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.nav{flex-direction:column;align-items:flex-start}.nav-links{justify-content:flex-start}.hero{padding:28px 24px;border-radius:30px}.stats,.filters{grid-template-columns:1fr}.section-head{display:block}.table-actions{margin-top:12px}.qr-row{grid-template-columns:1fr;text-align:center}.qr-row img{margin:auto}}
+
+body.modal-open{overflow:hidden}
+th.sortable{cursor:pointer;user-select:none}
+th.sortable:hover{color:var(--blue)}
+th.sortable .sort-mark{font-size:.72rem;color:#94A3B8;margin-left:5px}
+.session-summary{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;margin-top:12px}
+.session-code{font-weight:900;color:var(--navy);font-size:1.02rem}
+.short-link{font-size:.78rem;color:#64748B;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.modal-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.58);backdrop-filter:blur(8px);z-index:100;display:none;padding:24px;align-items:center;justify-content:center}
+.modal-backdrop.show{display:flex}
+.session-modal{width:min(920px,96vw);max-height:92vh;overflow:auto;background:white;border:1px solid rgba(226,232,240,.9);border-radius:34px;box-shadow:0 32px 80px rgba(2,6,23,.32);padding:30px;position:relative}
+.modal-close{position:absolute;right:20px;top:18px;width:42px;height:42px;border-radius:999px;border:1px solid var(--border);background:#F8FAFC;color:#0F172A;font-weight:900;font-size:1.15rem;cursor:pointer}
+.modal-header{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:start;border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:22px}
+.modal-header h2{font-size:clamp(1.75rem,3vw,2.65rem);line-height:1.05;letter-spacing:-.055em;color:var(--navy);max-width:640px;margin:8px 0}
+.modal-header p{color:#64748B;font-weight:700;max-width:620px}
+.launch-badge{background:#D1FAE5;color:#047857;border-radius:999px;padding:10px 14px;font-weight:900;white-space:nowrap}
+.modal-main{display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:center}
+.qr-card{background:#F8FAFC;border:1px solid var(--border);border-radius:28px;padding:20px;text-align:center}
+.qr-card img{width:280px;height:280px;max-width:100%;background:white;border:1px solid var(--border);border-radius:22px;padding:12px;box-shadow:0 14px 26px rgba(15,23,42,.08)}
+.qr-card span{display:block;margin-top:12px;color:#475569;font-weight:900;font-size:.86rem}
+.launch-details h3{font-size:1.6rem;color:var(--navy);line-height:1.12;margin-bottom:10px;letter-spacing:-.04em}
+.launch-details p{color:#64748B;font-weight:700;margin-bottom:16px}
+.student-instructions{display:grid;gap:10px;margin:18px 0}
+.instruction{display:flex;gap:10px;align-items:flex-start;background:#F8FAFC;border:1px solid var(--border);border-radius:16px;padding:12px;color:#334155;font-weight:800}
+.instruction-number{width:26px;height:26px;border-radius:999px;background:var(--blue);color:white;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;font-size:.78rem}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.compact-link{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:18px;padding:13px 14px;color:#1E3A8A;font-weight:900;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.compact-link code{font-family:Poppins,sans-serif;font-size:.86rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:1040px){.modal-main{grid-template-columns:1fr}.qr-card img{width:250px;height:250px}}
+@media(max-width:680px){.modal-backdrop{padding:12px}.session-modal{border-radius:24px;padding:22px}.modal-header{grid-template-columns:1fr}.launch-badge{width:max-content}.modal-actions{display:grid}.qr-card img{width:220px;height:220px}}
+
 </style>
 </head>
 
@@ -241,21 +272,19 @@ td{color:#334155;font-weight:700}
 
     <div class="session-panel" id="sessionPanel">
       <span class="pill success">Student Session Ready</span>
-      <div class="session-link" id="studentLinkText">Generate a session link to begin.</div>
-
-      <div class="qr-row">
-        <img id="qrImage" alt="Student session QR code" />
+      <div class="session-summary">
+        <span class="logo" style="width:42px;height:42px;border-radius:15px"></span>
         <div>
-          <h3 style="margin:0 0 6px">Classroom launch</h3>
-          <p>Project this QR code or copy the student link. Student completions will appear in this dashboard after submission.</p>
+          <div class="session-code" id="sessionCodeText">Session ready</div>
+          <div class="short-link" id="studentLinkText">Use the launch window or copy button.</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="actions">
-    <button class="btn btn-primary" onclick="generateSession()">Generate Student Session</button>
-    <button class="btn btn-navy" onclick="launchModule()">Launch Module</button>
+    <button class="btn btn-primary" onclick="generateSession()">Start Student Session</button>
+    <button class="btn btn-navy" onclick="openLaunchModal()">Show QR Launch Window</button>
     <button class="btn btn-secondary" onclick="copyStudentLink()">Copy Student Link</button>
     <button class="btn btn-secondary" onclick="openPreview()">Open Preview</button>
     <button class="btn btn-emerald" onclick="loadCompletions()">Refresh Completions</button>
@@ -269,7 +298,7 @@ td{color:#334155;font-weight:700}
     <div>
       <span class="pill">Student Records</span>
       <h2>Completions</h2>
-      <p>Filter, review, and export completion records without giving teachers access to the private master workbook.</p>
+      <p>Click table headers to sort. Names default alphabetically by last name. Percentages and dates are formatted for classroom use.</p>
     </div>
 
     <div class="table-actions">
@@ -292,14 +321,14 @@ td{color:#334155;font-weight:700}
   <table id="completionTable" style="display:none">
     <thead>
       <tr>
-        <th>Student</th>
-        <th>Class</th>
-        <th>Module</th>
-        <th>Score</th>
-        <th>Percent</th>
-        <th>Finished</th>
-        <th>Total Time</th>
-        <th>Session</th>
+        <th class="sortable" onclick="setSort('student')">Student <span class="sort-mark" id="sort-student">↑</span></th>
+        <th class="sortable" onclick="setSort('classPeriod')">Class <span class="sort-mark" id="sort-classPeriod"></span></th>
+        <th class="sortable" onclick="setSort('moduleTitle')">Module <span class="sort-mark" id="sort-moduleTitle"></span></th>
+        <th class="sortable" onclick="setSort('score')">Score <span class="sort-mark" id="sort-score"></span></th>
+        <th class="sortable" onclick="setSort('percent')">Percent <span class="sort-mark" id="sort-percent"></span></th>
+        <th class="sortable" onclick="setSort('finished')">Finished <span class="sort-mark" id="sort-finished"></span></th>
+        <th class="sortable" onclick="setSort('totalTime')">Total Time <span class="sort-mark" id="sort-totalTime"></span></th>
+        <th class="sortable" onclick="setSort('sessionId')">Session <span class="sort-mark" id="sort-sessionId"></span></th>
       </tr>
     </thead>
     <tbody id="completionRows"></tbody>
@@ -316,9 +345,54 @@ td{color:#334155;font-weight:700}
 
 </main>
 
+
+<div class="modal-backdrop" id="launchModal" onclick="backdropClose(event)">
+  <div class="session-modal" role="dialog" aria-modal="true" aria-labelledby="launchTitle">
+    <button class="modal-close" onclick="closeLaunchModal()" aria-label="Close launch window">×</button>
+
+    <div class="modal-header">
+      <div>
+        <span class="pill">Student Launch</span>
+        <h2 id="launchTitle">Financial Planning & Goal Setting Interactive Lesson</h2>
+        <p>Students scan the QR code or use the copied link to begin. Their completion record will return to this teacher dashboard.</p>
+      </div>
+      <span class="launch-badge">Ready to Scan</span>
+    </div>
+
+    <div class="modal-main">
+      <div class="qr-card">
+        <img id="modalQrImage" alt="Student session QR code" />
+        <span>Scan to open module</span>
+      </div>
+
+      <div class="launch-details">
+        <h3>Classroom directions</h3>
+        <p>Project this window for students. The full tracking link is hidden from view so the launch screen stays clean.</p>
+
+        <div class="student-instructions">
+          <div class="instruction"><span class="instruction-number">1</span><span>Scan the QR code with your device.</span></div>
+          <div class="instruction"><span class="instruction-number">2</span><span>Enter your first name, last name, and class period.</span></div>
+          <div class="instruction"><span class="instruction-number">3</span><span>Complete the module and submit the final reflection.</span></div>
+        </div>
+
+        <div class="compact-link">
+          <code id="modalShortLink">Session link ready</code>
+          <span class="pill success" id="modalSessionCode">Session</span>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-primary" onclick="copyStudentLink()">Copy Student Link</button>
+          <button class="btn btn-navy" onclick="launchModule()">Open Module</button>
+          <button class="btn btn-secondary" onclick="closeLaunchModal()">Close Window</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer class="footer">
   <div><strong>Vivid Lessons</strong> · Learn. Apply. Succeed.</div>
-  <div>Teacher Dashboard v2.0 · License + completion export</div>
+  <div>Teacher Dashboard v2.1 · Sortable records + QR launch window</div>
 </footer>
 
 <div class="toast" id="toast">Ready.</div>
@@ -338,10 +412,12 @@ const MODULES = [
 ];
 
 let currentSessionLink = "";
+let currentSessionId = "";
 let completions = [];
 let licenseValidated = false;
 let licenseData = null;
 let sessionsCreated = Number(localStorage.getItem("vlSessionsCreated") || "0");
+let sortState = { key:"student", direction:"asc" };
 
 document.getElementById("statSessions").textContent = sessionsCreated;
 
@@ -411,6 +487,7 @@ function clearLicense(){
   licenseValidated = false;
   licenseData = null;
   currentSessionLink = "";
+  currentSessionId = "";
   completions = [];
   document.getElementById("teacherEmail").value = "";
   document.getElementById("accessCode").value = "";
@@ -421,6 +498,8 @@ function clearLicense(){
   document.getElementById("statModules").textContent = "—";
   document.getElementById("statCompletions").textContent = "—";
   document.getElementById("statStatus").textContent = "Locked";
+  document.getElementById("sessionPanel").classList.remove("show");
+  closeLaunchModal();
   renderCompletions();
   toast("Saved access cleared.");
 }
@@ -455,7 +534,7 @@ async function validateLicense(){
 
     document.getElementById("teacherNameDisplay").textContent = data.teacherName || "Teacher";
     document.getElementById("licenseStatusDisplay").textContent = data.status || "Active";
-    document.getElementById("expiresDisplay").textContent = data.expiresAt || "—";
+    document.getElementById("expiresDisplay").textContent = formatDateShort(data.expiresAt) || "—";
     document.getElementById("orderDisplay").textContent = data.shopifyOrderNumber || "—";
     document.getElementById("statModules").textContent = (data.purchasedModuleIds || []).length || 1;
     document.getElementById("statStatus").textContent = "Active";
@@ -487,12 +566,12 @@ function buildStudentLink(){
   const module = MODULES[0];
   const teacherEmail = cleanValue("teacherEmail");
   const accessCode = cleanValue("accessCode");
-  const sessionId = generateSessionId();
+  currentSessionId = generateSessionId();
 
   const url = new URL(module.path, window.location.href);
   url.searchParams.set("teacherEmail", teacherEmail);
   url.searchParams.set("accessCode", accessCode);
-  url.searchParams.set("sessionId", sessionId);
+  url.searchParams.set("sessionId", currentSessionId);
   url.searchParams.set("moduleId", module.id);
   url.searchParams.set("source", "teacher-dashboard");
 
@@ -507,9 +586,15 @@ function generateSession(){
   localStorage.setItem("vlSessionsCreated", String(sessionsCreated));
   document.getElementById("statSessions").textContent = sessionsCreated;
 
-  document.getElementById("studentLinkText").textContent = currentSessionLink;
-  document.getElementById("qrImage").src = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" + encodeURIComponent(currentSessionLink);
+  const shortText = buildShortLinkText(currentSessionLink);
+  const codeText = "Session " + shortSessionCode(currentSessionId);
+
+  document.getElementById("studentLinkText").textContent = shortText;
+  document.getElementById("sessionCodeText").textContent = codeText;
   document.getElementById("sessionPanel").classList.add("show");
+
+  updateLaunchModalContent();
+  openLaunchModal();
 
   toast("Student session generated.");
 }
@@ -517,6 +602,39 @@ function generateSession(){
 function ensureSession(){
   if(!currentSessionLink) generateSession();
   return currentSessionLink;
+}
+
+function updateLaunchModalContent(){
+  if(!currentSessionLink) return;
+
+  const module = MODULES[0];
+  const shortText = buildShortLinkText(currentSessionLink);
+  const codeText = shortSessionCode(currentSessionId);
+
+  document.getElementById("launchTitle").textContent = module.title;
+  document.getElementById("modalShortLink").textContent = shortText;
+  document.getElementById("modalSessionCode").textContent = "Session " + codeText;
+  document.getElementById("modalQrImage").src = "https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=16&data=" + encodeURIComponent(currentSessionLink);
+}
+
+function openLaunchModal(){
+  const link = ensureSession();
+  if(!link) return;
+  updateLaunchModalContent();
+  document.getElementById("launchModal").classList.add("show");
+  document.body.classList.add("modal-open");
+}
+
+function closeLaunchModal(){
+  const modal = document.getElementById("launchModal");
+  if(modal) modal.classList.remove("show");
+  document.body.classList.remove("modal-open");
+}
+
+function backdropClose(event){
+  if(event.target.id === "launchModal"){
+    closeLaunchModal();
+  }
 }
 
 function launchModule(){
@@ -587,6 +705,22 @@ function updatePeriodFilter(){
   if(periods.includes(current)) select.value = current;
 }
 
+function setSort(key){
+  if(sortState.key === key){
+    sortState.direction = sortState.direction === "asc" ? "desc" : "asc";
+  }else{
+    sortState.key = key;
+    sortState.direction = key === "score" || key === "percent" ? "desc" : "asc";
+  }
+  renderCompletions();
+}
+
+function updateSortMarks(){
+  document.querySelectorAll(".sort-mark").forEach(mark => mark.textContent = "");
+  const active = document.getElementById("sort-" + sortState.key);
+  if(active) active.textContent = sortState.direction === "asc" ? "↑" : "↓";
+}
+
 function renderCompletions(){
   const table = document.getElementById("completionTable");
   const empty = document.getElementById("emptyState");
@@ -596,7 +730,7 @@ function renderCompletions(){
   const moduleFilter = document.getElementById("moduleFilter").value;
   const periodFilter = document.getElementById("periodFilter").value;
 
-  const rows = completions.filter(row => {
+  let rows = completions.filter(row => {
     const text = [
       row.FirstName,
       row.LastName,
@@ -614,6 +748,9 @@ function renderCompletions(){
     return matchesSearch && matchesModule && matchesPeriod;
   });
 
+  rows = sortRows(rows);
+  updateSortMarks();
+
   if(rows.length === 0){
     table.style.display = "none";
     empty.style.display = "block";
@@ -627,7 +764,7 @@ function renderCompletions(){
   empty.style.display = "none";
 
   body.innerHTML = rows.map(row => {
-    const student = `${row.FirstName || ""} ${row.LastName || ""}`.trim() || "Student";
+    const student = formatStudentName(row);
     const score = row.Score && row.TotalQuestions ? `${row.Score} / ${row.TotalQuestions}` : (row.Score || "—");
 
     return `<tr>
@@ -635,12 +772,52 @@ function renderCompletions(){
       <td>${escapeHtml(row.ClassPeriod || "—")}</td>
       <td>${escapeHtml(row.ModuleTitle || row.ModuleId || "—")}</td>
       <td class="score">${escapeHtml(score)}</td>
-      <td>${escapeHtml(row.Percent || "—")}</td>
-      <td>${escapeHtml(row.TimeFinished || row.Timestamp || "—")}</td>
+      <td>${escapeHtml(formatPercent(row.Percent))}</td>
+      <td>${escapeHtml(formatDateShort(row.TimeFinished || row.Timestamp))}</td>
       <td>${escapeHtml(row.TotalTime || "—")}</td>
-      <td class="muted">${escapeHtml(row.SessionId || "—")}</td>
+      <td class="muted">${escapeHtml(shortSessionCode(row.SessionId || "—"))}</td>
     </tr>`;
   }).join("");
+}
+
+function sortRows(rows){
+  const direction = sortState.direction === "asc" ? 1 : -1;
+
+  return [...rows].sort((a,b)=>{
+    let av = getSortValue(a, sortState.key);
+    let bv = getSortValue(b, sortState.key);
+
+    if(typeof av === "number" || typeof bv === "number"){
+      av = Number(av) || 0;
+      bv = Number(bv) || 0;
+      return (av - bv) * direction;
+    }
+
+    return String(av).localeCompare(String(bv), undefined, {numeric:true, sensitivity:"base"}) * direction;
+  });
+}
+
+function getSortValue(row,key){
+  switch(key){
+    case "student":
+      return `${row.LastName || ""}, ${row.FirstName || ""}`.trim();
+    case "classPeriod":
+      return row.ClassPeriod || "";
+    case "moduleTitle":
+      return row.ModuleTitle || row.ModuleId || "";
+    case "score":
+      return Number(row.Score || 0);
+    case "percent":
+      return percentNumber(row.Percent);
+    case "finished":
+      return dateNumber(row.TimeFinished || row.Timestamp);
+    case "totalTime":
+      return minutesNumber(row.TotalTime);
+    case "sessionId":
+      return row.SessionId || "";
+    default:
+      return "";
+  }
 }
 
 function downloadCSV(){
@@ -660,7 +837,15 @@ function downloadCSV(){
 
   const csvRows = [headers.join(",")];
 
-  completions.forEach(row => {
+  const exportRows = sortRows(completions).map(row => ({
+    ...row,
+    Timestamp: formatDateShort(row.Timestamp),
+    TimeStarted: formatDateShort(row.TimeStarted),
+    TimeFinished: formatDateShort(row.TimeFinished),
+    Percent: formatPercent(row.Percent)
+  }));
+
+  exportRows.forEach(row => {
     csvRows.push(headers.map(header => csvEscape(row[header] || "")).join(","));
   });
 
@@ -678,6 +863,89 @@ function downloadCSV(){
   toast("CSV downloaded.");
 }
 
+function formatStudentName(row){
+  const first = row.FirstName || "";
+  const last = row.LastName || "";
+  return `${first} ${last}`.trim() || "Student";
+}
+
+function formatPercent(value){
+  if(value === null || value === undefined || value === "") return "—";
+  const raw = String(value).trim();
+
+  if(raw.includes("%")){
+    const num = parseFloat(raw.replace("%",""));
+    return isNaN(num) ? raw : Math.round(num) + "%";
+  }
+
+  const num = Number(raw);
+  if(isNaN(num)) return raw;
+
+  if(num > 0 && num <= 1){
+    return Math.round(num * 100) + "%";
+  }
+
+  return Math.round(num) + "%";
+}
+
+function percentNumber(value){
+  if(value === null || value === undefined || value === "") return 0;
+  const raw = String(value).trim().replace("%","");
+  const num = Number(raw);
+  if(isNaN(num)) return 0;
+  return num > 0 && num <= 1 ? num * 100 : num;
+}
+
+function formatDateShort(value){
+  if(!value) return "—";
+  const date = parseFlexibleDate(value);
+  if(!date) return String(value);
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const year = String(date.getFullYear()).slice(-2);
+  return `${month}/${day}/${year}`;
+}
+
+function parseFlexibleDate(value){
+  if(!value) return null;
+  if(value instanceof Date && !isNaN(value.getTime())) return value;
+
+  let text = String(value).trim();
+  text = text.replace(" at ", " ");
+
+  const date = new Date(text);
+  if(!isNaN(date.getTime())) return date;
+
+  return null;
+}
+
+function dateNumber(value){
+  const date = parseFlexibleDate(value);
+  return date ? date.getTime() : 0;
+}
+
+function minutesNumber(value){
+  if(!value) return 0;
+  const num = parseFloat(String(value));
+  return isNaN(num) ? 0 : num;
+}
+
+function buildShortLinkText(link){
+  try{
+    const url = new URL(link);
+    return url.origin + "/modules/financial-planning-goal-setting";
+  }catch(error){
+    return "Student module link ready";
+  }
+}
+
+function shortSessionCode(sessionId){
+  if(!sessionId || sessionId === "—") return "—";
+  const text = String(sessionId);
+  if(text.length <= 12) return text;
+  return text.slice(-6).toUpperCase();
+}
+
 function csvEscape(value){
   const text = String(value).replace(/"/g,'""');
   return `"${text}"`;
@@ -692,7 +960,14 @@ function escapeHtml(value){
     .replaceAll("'","&#039;");
 }
 
+document.addEventListener("keydown", event => {
+  if(event.key === "Escape"){
+    closeLaunchModal();
+  }
+});
+
 loadAccess();
+updateSortMarks();
 </script>
 
 </body>
