@@ -25,7 +25,7 @@ const MODULE_META = {
   previewUrl: "pfm-financial-planning-goal-setting-preview.html",
   launchUrl: "../teacher-dashboard.html",
   shopifyUrl: "https://vividlessons.com/products/pfm-financial-planning-goal-setting",
-  version: "1.0"
+  version: "3.1"
 };
 </script>
 <style>
@@ -41,8 +41,21 @@ const MODULE_META = {
 <div class="module" id="moduleSections"></div>
 <div class="cert" id="certificate"><div class="logo cert-logo"></div><div class="kicker">Certificate of Completion</div><h2>Outstanding Work!</h2><p>This certifies that</p><div class="cert-name" id="certName">Student Name</div><p>successfully completed <strong id="certModule">Financial Planning & Goal Setting</strong>.</p><div class="cert-grid"><div class="cert-stat"><strong id="certScore">0 / 15</strong><span>Score</span></div><div class="cert-stat"><strong id="certPercent">0%</strong><span>Percent</span></div><div class="cert-stat"><strong id="certStarted">--</strong><span>Started</span></div><div class="cert-stat"><strong id="certFinished">--</strong><span>Finished</span></div></div><div class="reflection-box"><strong>Student Reflection:</strong><p id="certReflection"></p></div><button class="btn btn-secondary" onclick="window.print()">Print / Save Certificate</button></div>
 </main>
-<footer class="footer"><div><strong>Vivid Lessons</strong><br>Learn. Apply. Succeed.</div><div>Module Version 1.0</div></footer><div class="toast" id="toast">Saved.</div>
+<footer class="footer"><div><strong>Vivid Lessons</strong><br>Learn. Apply. Succeed.</div><div>Module Version 3.1</div></footer><div class="toast" id="toast">Saved.</div>
 <script>
+const COMPLETION_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyYuTwmseLvhPuvlw-VzCaqeh4DpHHrSLOrPySj7hJe9pxji4nwHw-7CEqCUsOUZcc0/exec";
+const URL_PARAMS = new URLSearchParams(window.location.search);
+const SESSION_ID = URL_PARAMS.get("sessionId") || ("vl-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8));
+let completionSubmitted = false;
+
+function getParamValue(...names){
+  for(const name of names){
+    const value = URL_PARAMS.get(name);
+    if(value) return value;
+  }
+  return "";
+}
+
 const QUESTIONS = [
 {n:1,title:"What Is a Financial Goal?",subtitle:"Students identify what makes a goal financial.",lesson:"A financial goal is a money-related outcome someone plans for. It could involve saving, spending, earning, borrowing, investing, or reducing debt.",callout:"Key idea: A goal becomes stronger when it includes a clear target, a reason, and a timeline.",type:"multiple-choice",prompt:"Which statement is the best example of a financial goal?",options:["I want to have more fun after school.","I want to save $900 for car insurance by August.","I want to think about college someday.","I want my future to be less stressful."],correct:1,feedbackGood:"Correct. This goal includes a money target and a timeline.",feedbackBad:"Not quite. A financial goal should connect to money and be specific enough to plan for."},
 {n:2,title:"Short-Term, Intermediate, and Long-Term Goals",subtitle:"Students separate goals by timeline.",lesson:"Financial goals can be short-term, intermediate, or long-term. A short-term goal may happen in weeks or months, while a long-term goal may take years.",callout:"Examples: saving for prom tickets is short-term. Paying for training, college, a home, or retirement is longer-term.",type:"multiple-choice",prompt:"Which goal is most clearly a long-term financial goal?",options:["Buying lunch tomorrow.","Saving for a concert next month.","Planning how to pay for education or training after high school.","Finding a coupon for one grocery trip."],correct:2,feedbackGood:"Correct. Education or training costs usually require a longer plan.",feedbackBad:"Not quite. Look for the goal that takes years or affects a major life path."},
@@ -88,8 +101,119 @@ function checkMatching(){const feedback=document.getElementById("fb7");const val
 function move(btn,dir){const item=btn.closest(".sort-item"),list=item.parentElement;if(dir<0&&item.previousElementSibling)list.insertBefore(item,item.previousElementSibling);if(dir>0&&item.nextElementSibling)list.insertBefore(item.nextElementSibling,item)}
 function checkSort(){const items=[...document.querySelectorAll("#sortList .sort-item")],order=items.map(item=>item.dataset.step).join(""),feedback=document.getElementById("fb8"),correct=order==="1234";if(correct){score++;feedback.className="feedback show good";feedback.textContent="Correct. Define, estimate, act, then track."}else{feedback.className="feedback show bad";feedback.textContent="Not quite. Start by defining the goal, then estimate costs and trade-offs."}recordAnswer(8,"sorting",order,correct);setTimeout(()=>completeSection(8),700)}
 function checkNumeric(){const input=document.getElementById("calcAnswer"),feedback=document.getElementById("fb10");if(input.value.trim()===""){toast("Enter a number first.");return}const studentAnswer=Number(input.value),correct=studentAnswer===150;if(correct){score++;feedback.className="feedback show good";feedback.textContent="Correct. $1,200 divided by 8 months equals $150 per month."}else{feedback.className="feedback show bad";feedback.textContent="Not quite. Divide the total goal amount by the number of months."}input.disabled=true;recordAnswer(10,"calculator",input.value,correct);setTimeout(()=>completeSection(10),700)}
-function finishModule(){const reflection=document.getElementById("reflection").value.trim(),feedback=document.getElementById("fb16");if(reflection.length<25){feedback.className="feedback show bad";feedback.textContent="Please write a stronger reflection before finishing.";return}finishTime=new Date();completedSections=MODULE_META.sectionCount;updateProgress();document.getElementById("badge16").className="badge done";document.getElementById("badge16").textContent="Complete";const first=document.getElementById("firstName").value.trim(),last=document.getElementById("lastName").value.trim(),percent=Math.round((score/total)*100);document.getElementById("certName").textContent=first+" "+last;document.getElementById("certScore").textContent=score+" / "+total;document.getElementById("certPercent").textContent=percent+"%";document.getElementById("certStarted").textContent=formatTime(startTime);document.getElementById("certFinished").textContent=formatTime(finishTime);document.getElementById("certReflection").textContent=reflection;document.getElementById("certificate").classList.add("show");const completionRecord=buildCompletionRecord(reflection,percent);console.log("Vivid Lessons Completion Record:",completionRecord);toast("Module complete. Certificate generated.")}
-function buildCompletionRecord(reflection,percent){const first=document.getElementById("firstName").value.trim(),last=document.getElementById("lastName").value.trim(),period=document.getElementById("classPeriod").value.trim(),totalMinutes=Math.max(1,Math.round((finishTime-startTime)/60000));return {timestamp:new Date().toISOString(),firstName:first,lastName:last,classPeriod:period,moduleId:MODULE_META.id,moduleTitle:MODULE_META.title,category:MODULE_META.category,score:score,totalQuestions:total,percent:percent,completed:true,questionTypes:questionTypes.join(", "),answers:JSON.stringify(answers),timeStarted:startTime.toISOString(),timeFinished:finishTime.toISOString(),totalTime:totalMinutes+" minutes",reflection:reflection}}
+function finishModule(){
+  const reflection=document.getElementById("reflection").value.trim(),feedback=document.getElementById("fb16");
+  if(reflection.length<25){
+    feedback.className="feedback show bad";
+    feedback.textContent="Please write a stronger reflection before finishing.";
+    return;
+  }
+
+  if(!finishTime){
+    finishTime=new Date();
+  }
+
+  completedSections=MODULE_META.sectionCount;
+  updateProgress();
+
+  document.getElementById("badge16").className="badge done";
+  document.getElementById("badge16").textContent="Complete";
+
+  const first=document.getElementById("firstName").value.trim(),
+        last=document.getElementById("lastName").value.trim(),
+        percent=Math.round((score/total)*100);
+
+  const certHeading = document.querySelector("#certificate h2");
+  if(certHeading){
+    if(percent >= 90) certHeading.textContent = "Outstanding Work!";
+    else if(percent >= 80) certHeading.textContent = "Strong Work!";
+    else if(percent >= 70) certHeading.textContent = "Nice Progress!";
+    else certHeading.textContent = "Module Complete!";
+  }
+
+  document.getElementById("certName").textContent=first+" "+last;
+  document.getElementById("certScore").textContent=score+" / "+total;
+  document.getElementById("certPercent").textContent=percent+"%";
+  document.getElementById("certStarted").textContent=formatTime(startTime);
+  document.getElementById("certFinished").textContent=formatTime(finishTime);
+  document.getElementById("certReflection").textContent=reflection;
+  document.getElementById("certificate").classList.add("show");
+
+  const completionRecord=buildCompletionRecord(reflection,percent);
+  console.log("Vivid Lessons Completion Record:",completionRecord);
+
+  submitCompletionRecord(completionRecord);
+}
+
+function buildCompletionRecord(reflection,percent){
+  const first=document.getElementById("firstName").value.trim(),
+        last=document.getElementById("lastName").value.trim(),
+        period=document.getElementById("classPeriod").value.trim(),
+        totalMinutes=Math.max(1,Math.round((finishTime-startTime)/60000));
+
+  return {
+    timestamp:new Date().toISOString(),
+    firstName:first,
+    lastName:last,
+    classPeriod:period,
+
+    moduleId:MODULE_META.id,
+    moduleTitle:MODULE_META.title,
+    category:MODULE_META.category,
+    topic:MODULE_META.topic,
+    productType:MODULE_META.productType,
+    moduleSize:"standard",
+
+    score:score,
+    totalQuestions:total,
+    percent:percent+"%",
+    completed:"Yes",
+
+    questionTypes:questionTypes.join(", "),
+    answers:JSON.stringify(answers),
+
+    timeStarted:formatTime(startTime),
+    timeFinished:formatTime(finishTime),
+    totalTime:totalMinutes+" minutes",
+
+    reflection:reflection,
+    version:MODULE_META.version,
+
+    teacherEmail:getParamValue("teacherEmail","email","teacher"),
+    accessCode:getParamValue("accessCode","licenseKey","key"),
+    sessionId:SESSION_ID,
+    shopifyOrderNumber:getParamValue("shopifyOrderNumber","order","orderNumber"),
+    notes:getParamValue("notes")
+  };
+}
+
+function submitCompletionRecord(record){
+  if(completionSubmitted){
+    toast("Completion already submitted.");
+    return;
+  }
+
+  completionSubmitted = true;
+  toast("Saving completion...");
+
+  fetch(COMPLETION_WEB_APP_URL,{
+    method:"POST",
+    mode:"no-cors",
+    headers:{
+      "Content-Type":"text/plain;charset=utf-8"
+    },
+    body:JSON.stringify(record)
+  })
+  .then(()=>{
+    toast("Completion saved to teacher dashboard.");
+  })
+  .catch(error=>{
+    completionSubmitted = false;
+    console.error("Completion submit error:", error);
+    toast("Certificate created, but completion did not save. Tell your teacher.");
+  });
+}
+
 </script>
 </body>
 </html>
