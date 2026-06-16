@@ -360,7 +360,7 @@ td{color:#334155;font-weight:700}
 
 <footer class="footer">
   <div><strong>Vivid Lessons</strong> · Learn. Apply. Succeed.</div>
-  <div>Teacher Dashboard v2.5 · Aligned cards + contained completions</div>
+  <div>Teacher Dashboard v2.6 · Per-teacher session count</div>
 </footer>
 
 <div class="toast" id="toast">Ready.</div>
@@ -393,10 +393,10 @@ let licensedModules = [];
 let completions = [];
 let licenseValidated = false;
 let licenseData = null;
-let sessionsCreated = Number(localStorage.getItem("vlSessionsCreated") || "0");
+let sessionsCreated = 0;
 let sortState = { key:"student", direction:"asc" };
 
-document.getElementById("statSessions").textContent = sessionsCreated;
+document.getElementById("statSessions").textContent = "—";
 
 function toast(msg){
   const t=document.getElementById("toast");
@@ -407,6 +407,29 @@ function toast(msg){
 
 function cleanValue(id){
   return document.getElementById(id).value.trim();
+}
+
+function sessionStorageKey(email){
+  return "vlSessionsCreated:" + String(email || "").trim().toLowerCase();
+}
+
+function getTeacherSessionCount(email){
+  return Number(localStorage.getItem(sessionStorageKey(email)) || "0");
+}
+
+function setTeacherSessionCount(email,count){
+  localStorage.setItem(sessionStorageKey(email), String(count));
+}
+
+function updateSessionStatForCurrentTeacher(){
+  if(!licenseValidated || !licenseData){
+    document.getElementById("statSessions").textContent = "—";
+    return;
+  }
+
+  const teacherEmail = cleanValue("teacherEmail");
+  sessionsCreated = getTeacherSessionCount(teacherEmail);
+  document.getElementById("statSessions").textContent = sessionsCreated;
 }
 
 function jsonp(params){
@@ -476,7 +499,9 @@ function clearLicense(){
   document.getElementById("orderDisplay").textContent = "—";
   document.getElementById("statModules").textContent = "—";
   document.getElementById("statCompletions").textContent = "—";
+  document.getElementById("statSessions").textContent = "—";
   document.getElementById("statStatus").textContent = "Locked";
+  sessionsCreated = 0;
   renderModules();
   renderModuleFilter();
   closeLaunchModal();
@@ -520,6 +545,7 @@ async function validateLicense(){
     document.getElementById("orderDisplay").textContent = data.shopifyOrderNumber || "—";
     document.getElementById("statModules").textContent = licensedModules.length;
     document.getElementById("statStatus").textContent = "Active";
+    updateSessionStatForCurrentTeacher();
 
     renderModules();
     renderModuleFilter();
@@ -649,8 +675,9 @@ function startStudentSession(moduleId, openModal){
   currentSessionLink = buildStudentLink(moduleId);
   if(!currentSessionLink) return;
 
-  sessionsCreated += 1;
-  localStorage.setItem("vlSessionsCreated", String(sessionsCreated));
+  const teacherEmailForSessionCount = cleanValue("teacherEmail");
+  sessionsCreated = getTeacherSessionCount(teacherEmailForSessionCount) + 1;
+  setTeacherSessionCount(teacherEmailForSessionCount, sessionsCreated);
   document.getElementById("statSessions").textContent = sessionsCreated;
 
   const codeText = "Session " + shortSessionCode(currentSessionId);
