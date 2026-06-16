@@ -209,12 +209,12 @@ td{color:#334155;font-weight:700}
   <div class="form-stack">
     <div>
       <label for="teacherEmail">Teacher Email</label>
-      <input id="teacherEmail" value="sample.teacher@vividlessons.com" autocomplete="email" />
+      <input id="teacherEmail" type="email" placeholder="Teacher email" autocomplete="email">
     </div>
 
     <div>
       <label for="accessCode">License Key</label>
-      <input id="accessCode" value="VL-SAMPLE-PFM-001" />
+      <input id="accessCode" type="text" placeholder="Access code" autocomplete="off">
     </div>
 
     <button class="btn btn-primary" onclick="validateLicense()">Validate License</button>
@@ -366,7 +366,7 @@ td{color:#334155;font-weight:700}
 <div class="toast" id="toast">Ready.</div>
 
 <script>
-const BACKEND_URL = "https://script.google.com/macros/s/AKfycbyYuTwmseLvhPuvlw-VzCaqeh4DpHHrSLOrPySj7hJe9pxji4nwHw-7CEqCUsOUZcc0/exec";
+const DASHBOARD_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyYuTwmseLvhPuvlw-VzCaqeh4DpHHrSLOrPySj7hJe9pxji4nwHw-7CEqCUsOUZcc0/exec";
 
 /*
   Add future modules here as you build them.
