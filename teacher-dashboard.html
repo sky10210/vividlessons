@@ -437,7 +437,7 @@ function jsonp(params){
     const callbackName = "vlCallback_" + Date.now() + "_" + Math.random().toString(36).slice(2);
     params.callback = callbackName;
 
-    const url = new URL(BACKEND_URL);
+    const url = new URL(DASHBOARD_SCRIPT_URL);
     Object.keys(params).forEach(key => url.searchParams.set(key, params[key]));
 
     const script = document.createElement("script");
