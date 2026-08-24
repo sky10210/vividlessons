@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Planning & Goal Setting | Vivid Lessons</title>
+<style>
+html,body{margin:0;min-height:100%;background:#F8FAFC;font-family:Arial,sans-serif}.loading{min-height:100vh;display:grid;place-items:center;color:#0D1B2A;font-weight:700}.error{max-width:720px;margin:80px auto;padding:24px;background:white;border:1px solid #e2e8f0;border-radius:18px;color:#991b1b}
+</style>
+</head>
+<body>
+<div class="loading" id="status">Loading Vivid Lessons module…</div>
+<script>
+(async function(){
+  const sourceUrl = "https://vividlessons.com/modules/pfm-financial-planning-goal-setting.html";
+  const oldEndpoint = "https://script.google.com/macros/s/AKfycbyYuTwmseLvhPuvlw-VzCaqeh4DpHHrSLOrPySj7hJe9pxji4nwHw-7CEqCUsOUZcc0/exec";
+  const newEndpoint = "https://script.google.com/macros/s/AKfycbxVlFk0h_txjaAaTsMVuaWqqSWHLHK-tfl9_KDWDIbUjbPqdR_vu3Vs1AQy8vfmEd8/exec";
+  try{
+    const response = await fetch(sourceUrl, {cache:"no-store"});
+    if(!response.ok) throw new Error("Module source could not be loaded.");
+    let html = await response.text();
+    if(!html.includes(oldEndpoint)) throw new Error("Expected submission endpoint was not found in the module source.");
+    html = html.replace(oldEndpoint, newEndpoint);
+    document.open();
+    document.write(html);
+    document.close();
+  }catch(error){
+    document.body.innerHTML = '<div class="error"><strong>Module loading error.</strong><br>Please tell Mr. D. '+String(error.message || error)+'</div>';
+  }
+})();
+</script>
+</body>
+</html>
