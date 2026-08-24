@@ -1,0 +1,17 @@
+name: Check Goal v3.4 Parts
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/check-goal-v34-parts.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Hash staged parts
+        run: |
+          wc -c .v34-parts/part1 .v34-parts/part2 .v34-parts/part3 .v34-parts/part4
+          sha256sum .v34-parts/part1 .v34-parts/part2 .v34-parts/part3 .v34-parts/part4
