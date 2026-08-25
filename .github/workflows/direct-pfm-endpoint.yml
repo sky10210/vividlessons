@@ -1,0 +1,33 @@
+name: Direct PFM endpoint
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/direct-pfm-endpoint.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch classroom module
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('modules/pfm-financial-planning-goal-setting-mrd.html')
+          s=p.read_text()
+          old='https://script.google.com/macros/s/AKfycbxVlFk0h_txjaAaTsMVuaWqqSWHLHK-tfl9_KDWDIbUjbPqdR_vu3Vs1AQy8vfmEd8/exec'
+          new='https://script.google.com/macros/s/AKfycbzwwYHMS2dU1i1FDw3MtzeeSyjJovTACGiagbVVa8xVIkxDtZfPx8oGrMd1q3IDk0D2/exec'
+          if old not in s:
+              raise SystemExit('old endpoint not found')
+          s=s.replace(old,new)
+          s=s.replace('placeholder="Example: 150"','placeholder="Example: 120"')
+          p.write_text(s)
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add modules/pfm-financial-planning-goal-setting-mrd.html
+          git rm .github/workflows/direct-pfm-endpoint.yml
+          git commit -m "Point PFM goal module directly to submissions sheet endpoint"
+          git push
