@@ -1,0 +1,34 @@
+name: Update PFM submissions endpoint v2
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-pfm-endpoint-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-endpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace Apps Script endpoint
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('modules/pfm-financial-planning-goal-setting-mrd.html')
+          text = p.read_text()
+          old = 'https://script.google.com/macros/s/AKfycbzwwYHMS2dU1i1FDw3MtzeeSyjJovTACGiagbVVa8xVIkxDtZfPx8oGrMd1q3IDk0D2/exec'
+          new = 'https://script.google.com/macros/s/AKfycbyk3NqQyPpoOPvF_Dk7oVsaC-8zkzSwzNgyP9-zIqApFsIN4X4167mhezfaBW2vm_Y/exec'
+          if old not in text:
+              raise SystemExit('Old endpoint not found; refusing to make an uncertain edit')
+          p.write_text(text.replace(old, new))
+          PY
+      - name: Commit update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add modules/pfm-financial-planning-goal-setting-mrd.html
+          git commit -m 'Point PFM module to v2 submissions sheet' || exit 0
+          git push
