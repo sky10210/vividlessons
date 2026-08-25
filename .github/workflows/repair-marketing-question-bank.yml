@@ -1,0 +1,53 @@
+name: Repair Marketing Question Bank
+on:
+  push:
+    paths:
+      - '.github/workflows/repair-marketing-question-bank.yml'
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace cloned finance questions with marketing bank
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re, ast, json
+
+          builder = Path('.github/workflows/build-marketing-basics-module.yml').read_text(encoding='utf-8')
+          target_path = Path('modules/marketing-basics-intro-mrd.html')
+          target = target_path.read_text(encoding='utf-8')
+
+          m = re.search(r'          QUESTIONS = \[\n(.*?)\n          \]\n          qjson =', builder, re.S)
+          if not m:
+              raise SystemExit('Could not locate canonical Marketing QUESTIONS list in builder workflow')
+          questions = ast.literal_eval('[\n' + m.group(1) + '\n]')
+          if len(questions) != 20:
+              raise SystemExit(f'Expected 20 marketing questions, found {len(questions)}')
+
+          qjson = json.dumps(questions, ensure_ascii=False, separators=(',', ':'))
+          pattern = r'const QUESTIONS = \[.*?\];\n\nfunction shuffleArray'
+          replacement = 'const QUESTIONS = ' + qjson + ';\n\nfunction shuffleArray'
+          target, count = re.subn(pattern, replacement, target, count=1, flags=re.S)
+          if count != 1:
+              raise SystemExit('Could not replace live QUESTIONS array')
+
+          finance_markers = ['What Makes a Goal Financial?', 'SMART Goals', 'Calculate the Savings Target', 'Financial Decision Process']
+          for marker in finance_markers:
+              if marker in target:
+                  raise SystemExit('Finance content still present after replacement: ' + marker)
+          required = ['Marketing Is More Than Advertising','Market Segmentation','The Marketing Mix: 4 Ps','Marketing Ethics','Launch Day: Make the Marketing Decision']
+          for marker in required:
+              if marker not in target:
+                  raise SystemExit('Missing marketing content: ' + marker)
+
+          target_path.write_text(target, encoding='utf-8')
+          print('Replaced question bank with 20 marketing questions and passed content audit.')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add modules/marketing-basics-intro-mrd.html
+          git diff --cached --quiet || git commit -m "Replace finance questions with Marketing Basics bank"
+          git push
