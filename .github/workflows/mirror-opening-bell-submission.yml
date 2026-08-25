@@ -26,7 +26,11 @@ jobs:
           endpoint = 'https://script.google.com/macros/s/AKfycbw4kLfppzaPH0LJnYnijygKpqSN11gme9JHpgOt4_R-ReiA-cHFi53kde4hK3kl0y4/exec'
           s = re.sub(r'const COMPLETION_WEB_APP_URL = "[^"]+";', f'const COMPLETION_WEB_APP_URL = "{endpoint}";', s, count=1)
 
-          old_pattern = re.compile(r'function submitCompletionRecord\(record\)\{.*?\n\}', re.S)
+          start = s.find('function submitCompletionRecord(record){')
+          end = s.find('\n\nrestoreCompletionLockIfNeeded();', start)
+          if start == -1 or end == -1:
+              raise SystemExit('Could not locate submission function boundaries')
+
           new_func = '''function submitCompletionRecord(record){
   if(completionSubmitted){
     toast("Completion already submitted.");
@@ -74,9 +78,7 @@ jobs:
   });
 }'''
 
-          if not old_pattern.search(s):
-              raise SystemExit('Could not locate submitCompletionRecord function')
-          s = old_pattern.sub(new_func, s, count=1)
+          s = s[:start] + new_func + s[end:]
           p.write_text(s)
           PY
       - name: Commit connection
