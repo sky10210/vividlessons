@@ -46,7 +46,7 @@ const MODULE_META = {
 </main>
 <footer class="footer"><div><strong>Vivid Lessons</strong><br>Learn. Apply. Succeed.</div><div>Module Version 3.5</div></footer><div class="toast" id="toast">Saved.</div>
 <script>
-const COMPLETION_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxVlFk0h_txjaAaTsMVuaWqqSWHLHK-tfl9_KDWDIbUjbPqdR_vu3Vs1AQy8vfmEd8/exec";
+const COMPLETION_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzwwYHMS2dU1i1FDw3MtzeeSyjJovTACGiagbVVa8xVIkxDtZfPx8oGrMd1q3IDk0D2/exec";
 const URL_PARAMS = new URLSearchParams(window.location.search);
 const SESSION_ID = URL_PARAMS.get("sessionId") || ("vl-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8));
 let completionSubmitted = false;
@@ -105,7 +105,7 @@ function sectionHTML(q){
   }else if(q.type==="sorting"){
     inner=`<div class="sort-list" id="sortList"><div class="sort-item" data-step="3">Choose action steps and a savings amount<span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span></div><div class="sort-item" data-step="1">Define the goal clearly<span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span></div><div class="sort-item" data-step="4">Track progress and adjust when needed<span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span></div><div class="sort-item" data-step="2">Estimate cost, timeline, and opportunity cost<span class="sort-controls"><button onclick="move(this,-1)">↑</button><button onclick="move(this,1)">↓</button></span></div></div><button class="btn btn-primary" style="margin-top:14px" onclick="checkSort()">Check Order</button><div class="feedback" id="fb${q.n}"></div>`;
   }else if(q.type==="calculator"){
-    inner=`<div class="numeric-box"><div><label>Enter dollars per month</label><input id="calcAnswer" type="number" placeholder="Example: 150"></div><button class="btn btn-primary" onclick="checkNumeric(${q.n})">Check Answer</button></div><div class="feedback" id="fb${q.n}"></div>`;
+    inner=`<div class="numeric-box"><div><label>Enter dollars per month</label><input id="calcAnswer" type="number" placeholder="Example: 120"></div><button class="btn btn-primary" onclick="checkNumeric(${q.n})">Check Answer</button></div><div class="feedback" id="fb${q.n}"></div>`;
   }else{
     inner=`<div class="options">${renderRandomizedOptions(q)}</div><div class="feedback" id="fb${q.n}"></div>`;
   }
