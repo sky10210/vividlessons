@@ -1,0 +1,27 @@
+name: Clean Marketing Basics Module
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/cleanup-marketing-basics-module.yml'
+permissions:
+  contents: write
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('modules/marketing-basics-intro-mrd.html')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('A Vivid Lessons interactive personal finance module where students evaluate long-term goals, opportunity costs, and realistic financial planning decisions.','A Vivid Lessons interactive marketing module where students apply target markets, segmentation, customer value, the 4 Ps, branding, competition, customer experience, and ethics.')
+          s=s.replace('<a href="../personal-finance.html">Personal Finance</a>','<a href="../marketing.html">Marketing</a>')
+          p.write_text(s,encoding='utf-8')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add modules/marketing-basics-intro-mrd.html
+          git diff --cached --quiet || git commit -m "Clean Marketing Basics module metadata and navigation"
+          git push
