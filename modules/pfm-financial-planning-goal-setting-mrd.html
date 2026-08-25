@@ -46,7 +46,7 @@ const MODULE_META = {
 </main>
 <footer class="footer"><div><strong>Vivid Lessons</strong><br>Learn. Apply. Succeed.</div><div>Module Version 3.5</div></footer><div class="toast" id="toast">Saved.</div>
 <script>
-const COMPLETION_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyk3NqQyPpoOPvF_Dk7oVsaC-8zkzSwzNgyP9-zIqApFsIN4X4167mhezfaBW2vm_Y/exec";
+const COMPLETION_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw4kLfppzaPH0LJnYnijygKpqSN11gme9JHpgOt4_R-ReiA-cHFi53kde4hK3kl0y4/exec";
 const URL_PARAMS = new URLSearchParams(window.location.search);
 const SESSION_ID = URL_PARAMS.get("sessionId") || ("vl-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8));
 let completionSubmitted = false;
@@ -416,16 +416,36 @@ function submitCompletionRecord(record){
   completionSubmitted = true;
   toast("Saving completion...");
 
-  fetch(COMPLETION_WEB_APP_URL,{
-    method:"POST",
-    mode:"no-cors",
-    headers:{
-      "Content-Type":"text/plain;charset=utf-8"
-    },
-    body:JSON.stringify(record)
+  const p = new URLSearchParams({
+    bellId: "PFM-GOAL-SETTING",
+    label: "Vivid PFM Goal Setting",
+    firstName: record.firstName || "",
+    lastName: record.lastName || "",
+    name: ((record.firstName||"")+" "+(record.lastName||"")).trim(),
+    answer: JSON.stringify({
+      score: record.score,
+      totalQuestions: record.totalQuestions,
+      percent: record.percent,
+      reflection: record.reflection,
+      version: record.version,
+      questionTypes: record.questionTypes,
+      answers: record.answers,
+      sessionId: record.sessionId,
+      timeStarted: record.timeStarted,
+      timeFinished: record.timeFinished
+    }),
+    late: "0",
+    duration: String(record.totalTime || "").replace(/[^0-9]/g, "") || "1",
+    timestamp: record.timestamp || new Date().toISOString(),
+    cls: "PFM - " + (record.classPeriod || "")
+  });
+
+  fetch(`${COMPLETION_WEB_APP_URL}?${p.toString()}`,{
+    method:"GET",
+    mode:"no-cors"
   })
   .then(()=>{
-    toast("Completion saved to teacher dashboard.");
+    toast("Completion saved to Google Sheets.");
   })
   .catch(error=>{
     completionSubmitted = false;
