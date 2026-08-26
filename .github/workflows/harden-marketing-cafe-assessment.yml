@@ -1,0 +1,57 @@
+name: Harden Marketing Cafe Assessment
+
+on:
+  push:
+    paths:
+      - '.github/workflows/harden-marketing-cafe-assessment.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rewrite cafe module assessment choices
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('modules/marketing-cafe-customer-strategy-mrd.html')
+          text = p.read_text()
+
+          replacements = {
+          "s:'Common Ground can post ads, but ads alone will not save a weak offer. The cafe first needs to understand who it serves and what value those people want.',q:'Which statement best describes marketing?',o:['Marketing is only making ads and logos.','Marketing is understanding customers, creating value, communicating it, and encouraging exchanges.','Marketing is lowering prices until everyone buys.','Marketing is copying whichever competitor is most popular.'],a:1,e:'Correct: marketing starts with customer understanding and value, not just promotion.'":
+          "s:'Common Ground has $800 to improve afternoon sales. One owner wants to spend it all on social ads. Another wants to interview customers, adjust the after-school offer, and then promote what students respond to.',q:'Which plan uses marketing most effectively?',o:['Spend the full budget promoting the current menu because greater awareness should create demand.','Research student needs, improve the offer around those findings, then communicate the value to that audience.','Lower several prices first, then advertise the discounts broadly to anyone nearby.','Study the most successful cafe in town and reproduce the parts of its strategy that appear popular.'],a:1,e:'Best choice: marketing connects customer understanding, value creation, and communication. The other choices can be marketing tactics, but they begin without enough evidence about the customer.'",
+
+          "s:'Students want an affordable after-school place. Office workers spend more but mostly come early. Local residents are the largest group, but their visits are less predictable.',q:'Which target strategy is strongest for a small cafe with limited money?',o:['Try to serve every group equally from day one.','Choose one primary target based on fit, then treat other groups as secondary opportunities.','Choose only the largest group no matter what they want.','Choose only the group that spends the most per visit.'],a:1,e:'Correct: focused targeting helps a small business make better decisions.'":
+          "s:'Students visit most often from 3–5 p.m., usually spend $6–$9, and repeatedly ask for seating, outlets, and quick food. Office workers average $11 per visit but mainly arrive before 8 a.m. Nearby residents are numerous but show no consistent visit pattern.',q:'If Common Ground is trying to strengthen its weak afternoon business first, which target decision is best supported by the evidence?',o:['Prioritize office workers because their average transaction is highest, then extend the morning offer into the afternoon.','Prioritize nearby residents because the segment is largest and therefore has the greatest potential reach.','Prioritize students because their timing, repeated needs, and spending range fit the specific afternoon problem the cafe is trying to solve.','Split the afternoon budget evenly across all three groups so the cafe does not miss a potentially valuable segment.'],a:2,e:'Best choice: students fit the specific afternoon objective. The other segments have attractive qualities, but those qualities do not align as closely with the problem being solved.'",
+
+          "s:'Student interviews mention “somewhere to sit after school,” “Wi-Fi that actually works,” and “something under $7.”',q:'What are students really buying from Common Ground?',o:['Only hot coffee.','An affordable place to recharge, study, and meet friends.','A luxury cafe experience.','A place that ignores seating and Wi-Fi.'],a:1,e:'Correct: students are buying a bundle of benefits, not just a drink.'":
+          "s:'In interviews, students mention drinks, but they repeatedly return to three issues: finding a seat after school, getting dependable Wi-Fi, and keeping the total purchase below about $7.',q:'Which interpretation would be most useful when designing the cafe offer?',o:['The core benefit is convenient access to an affordable after-school space; drinks and snacks help deliver that experience.','The core benefit is inexpensive beverages; seating and Wi-Fi are mainly extra features that should matter only after pricing is set.','The core benefit is a social atmosphere; price matters less because students who value the experience will usually pay more.','The core benefit is product variety; expanding drink choices would address more student preferences than changing the space.'],a:0,e:'Best choice: the repeated evidence points to the broader outcome students want—an affordable, usable after-school place—not merely a beverage.'",
+
+          "s:'Maya is 17, comes after school with friends, usually has $6–$9, wants quick service and outlets, and finds places through TikTok and word of mouth.',q:'What is the best way to use Maya’s persona?',o:['Use it to guide decisions while continuing to test it.','Assume every teenager is exactly like Maya.','Use it only to pick colors for social media.','Ignore new evidence because changing a persona is bad.'],a:0,e:'Correct: personas guide decisions, but marketers keep checking them against evidence.'":
+          "s:'Maya is 17, comes after school with friends, usually has $6–$9, wants quick service and outlets, and discovers places through TikTok and word of mouth. The persona was built from a small first round of student interviews.',q:'How should Common Ground use Maya when making its next decision?',o:['Design the first student offer around Maya’s documented needs, then compare actual student behavior with the persona and revise it when needed.','Use Maya as the standard profile for the entire teen market because a detailed persona is intended to represent everyone in the segment.','Use Maya mainly to choose promotional channels because product and pricing decisions should be based on broader market averages instead.','Wait to use the persona until the cafe has enough research to prove that every characteristic accurately represents most local students.'],a:0,e:'Best choice: a persona is a useful, testable decision model—not a stereotype and not something that must be perfect before it can guide a hypothesis.'",
+
+          "s:'Common Ground wants to become the everyday after-school cafe for students, not just an occasional treat.',q:'Which value proposition is strongest?',o:['The best coffee in town for everyone.','A friendly local cafe with drinks and snacks.','For students who need an affordable after-school place, Common Ground offers quick $5–$7 favorites, reliable Wi-Fi, charging, and space to work or meet friends.','A modern cafe with excellent vibes and popular flavors.'],a:2,e:'Correct: the best answer is specific about the customer, benefit, and proof.'":
+          "s:'Research suggests students want an everyday after-school stop: purchases around $5–$7, fast service, reliable Wi-Fi, outlets, and enough room to work or meet friends.',q:'Which value proposition best turns that evidence into a focused reason to choose Common Ground?',o:['For local students, Common Ground is an easy after-school stop with affordable favorites, dependable Wi-Fi, charging, and space to stay awhile.','For busy customers, Common Ground serves quality drinks and snacks quickly in a comfortable neighborhood setting at competitive prices.','For students and families, Common Ground combines a welcoming atmosphere, popular menu choices, and friendly service for any time of day.','For coffee drinkers, Common Ground offers carefully prepared beverages, convenient service, and a local alternative to national chains.'],a:0,e:'Best choice: all four sound plausible, but the first most precisely matches the chosen target, desired benefit, and evidence from the research.'",
+
+          "s:'Competitors have premium coffee claims or national rewards apps. Neither offers fast after-school combos, dependable Wi-Fi, charging, and seating designed for students.',q:'Which strategy creates the strongest advantage?',o:['Copy the premium coffee claims of other cafes.','Build the after-school experience around fast value combos, reliable Wi-Fi, charging, and student seating.','Launch a rewards app before fixing the customer experience.','Offer the largest drink menu in town.'],a:1,e:'Correct: advantage comes from solving the target customer’s problem better than alternatives.'":
+          "s:'A nearby independent cafe is known for premium beans. A national chain has a strong rewards program and broad menu. Student research for Common Ground emphasizes price, speed, Wi-Fi, outlets, and a place to stay after school.',q:'Which strategy gives Common Ground the most defensible point of difference for its chosen target?',o:['Develop a higher-end coffee line so the cafe can compete directly with the independent shop on product quality.','Build a simple loyalty program with student bonuses so the cafe can answer the national chain’s strongest retention tool.','Create a tightly designed after-school offer combining fast value combos, dependable connectivity, charging, and student-friendly seating.','Expand the menu with more drinks and snacks so students have more reasons to choose Common Ground over either competitor.'],a:2,e:'Best choice: it combines several target-relevant benefits competitors are not currently organizing around. The other strategies could help, but they imitate competitor strengths or add variety without solving the clearest customer problem.'"
+          }
+
+          for old,new in replacements.items():
+              if old not in text:
+                  raise SystemExit('Expected assessment block not found; aborting to avoid partial rewrite.')
+              text = text.replace(old,new,1)
+
+          text = text.replace('All answers come from the mini-lesson directly above each question.','Use the mini-lesson and cafe evidence together. Several choices may sound reasonable; choose the one best supported by the evidence.',1)
+          p.write_text(text)
+          PY
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add modules/marketing-cafe-customer-strategy-mrd.html
+          git commit -m 'Make cafe marketing assessment less obvious'
+          git push
