@@ -115,10 +115,12 @@ const questions = [
 {u:'First Savings Goal',s:'A small emergency fund protects your paycheck.',learn:'Emergency savings is money for unexpected problems like a tire, school fee, or missed shift. It keeps one surprise from turning into debt.',ex:'Saving 10–25 from each paycheck may feel small, but it creates a cushion before a problem happens.',q:'What is the best purpose of a starter emergency fund?',a:['Covering unexpected costs without immediately relying on debt','Buying every want as soon as payday arrives','Avoiding all federal and state taxes','Replacing the need to track spending'],c:0,why:'Emergency savings helps you handle surprises without panic borrowing.'},
 {u:'Big Picture',s:'Your paycheck is a tool, not just a reward.',learn:'The goal is not to be perfect. The goal is to understand the paycheck, avoid obvious traps, and build habits early while mistakes are still small.',ex:'A student who tracks pay, saves a piece, and avoids scams is already ahead of many adults.',q:'Which habit best supports long-term financial success?',a:['Checking pay stubs, saving regularly, and spending with a plan','Spending quickly because money is easier to manage when it is gone','Only thinking about net pay after buying what you want','Using credit for normal purchases without tracking the balance'],c:0,why:'Understanding your paycheck and using a plan creates control and confidence.'}
 ];
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzwX6kkT5EvvNiSO_dtsQ5VhNbteuqN3O9HV1SDT4zkgsiEMCtQsa8a56gK7GPVYNEv/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw4kLfppzaPH0LJnYnijygKpqSN11gme9JHpgOt4_R-ReiA-cHFi53kde4hK3kl0y4/exec";
 const MODULE_TITLE = "Your First Paycheck";
+const MODULE_ID = "pfm-your-first-paycheck";
+const SESSION_ID = "vl-paycheck-" + Date.now() + "-" + Math.random().toString(36).slice(2,8);
 
-let started=false, answered=0, score=0, submitted=false;
+let started=false, answered=0, score=0, submitted=false, moduleStartedAt=null;
 const selected = new Array(questions.length).fill(false);
 const displayChoices = [];
 
@@ -129,6 +131,7 @@ function startModule(){
   if(!first || !last){alert('Please enter your first and last name.');return;}
   if(!period){alert('Please choose class block 1, 2, or 4.');return;}
   started=true;
+  if(!moduleStartedAt) moduleStartedAt=new Date();
   alert('Welcome, '+first+'. Start with the first lesson and work down.');
   document.getElementById('unit0').scrollIntoView({behavior:'smooth',block:'start'});
 }
@@ -267,36 +270,55 @@ async function submitCompletion(){
   submitted = true;
   const first=document.getElementById('firstName').value.trim();
   const last=document.getElementById('lastName').value.trim();
-  const name=(first+' '+last).trim();
   const period=document.getElementById('classPeriod').value.trim();
   const percent=Math.round(score/questions.length*100);
+  const finishedAt=new Date();
+  const startedAt=moduleStartedAt || finishedAt;
+  const minutes=Math.max(1,Math.round((finishedAt-startedAt)/60000));
   const payload={
-    name:name,
+    moduleId:MODULE_ID,
+    moduleTitle:MODULE_TITLE,
+    category:'Personal Finance',
+    topic:'Paychecks, Taxes, and First Money Decisions',
+    productType:'Interactive Module',
+    moduleSize:'standard',
+    score:score,
+    totalQuestions:questions.length,
+    percent:percent+'%',
+    completed:'Yes',
+    questionTypes:'multiple-choice, matching, sorting, calculator',
+    answers:'',
+    timeStarted:startedAt.toLocaleString(),
+    timeFinished:finishedAt.toLocaleString(),
+    totalTime:minutes+' minutes',
+    reflection:document.getElementById('reflection').value.trim(),
+    version:'1.0',
+    teacherEmail:'',
+    accessCode:'',
+    sessionId:SESSION_ID,
+    notes:''
+  };
+  const params=new URLSearchParams({
+    timestamp:finishedAt.toISOString(),
+    cls:'Personal Finance',
+    block:period,
     firstName:first,
     lastName:last,
-    period:period,
-    module:MODULE_TITLE,
-    score:score,
-    total:questions.length,
-    percent:percent,
-    reflection:document.getElementById('reflection').value.trim(),
-    completed:'Yes',
-    completedAt:new Date().toISOString()
-  };
-  setSubmitStatus('Submitting completion to Google Sheet...', '');
+    qid:'BELL-PFM-FIRST-PAYCHECK',
+    question:'Vivid PFM Paycheck',
+    answer:JSON.stringify(payload),
+    status:'On Time',
+    duration:String(minutes)
+  });
+  setSubmitStatus('Submitting completion to MRDHQ Responses...', '');
   try{
-    await fetch(GOOGLE_SCRIPT_URL,{
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body:JSON.stringify(payload)
-    });
-    setSubmitStatus('Google Sheet submission sent. Screenshot your certificate just in case.', 'good');
+    await fetch(GOOGLE_SCRIPT_URL+'?'+params.toString(),{method:'GET',mode:'no-cors'});
+    setSubmitStatus('MRDHQ submission sent. Screenshot your certificate just in case.', 'good');
     const note=document.getElementById('certSubmitNote');
-    if(note) note.textContent='Google Sheet submission sent. Screenshot your certificate just in case.';
+    if(note) note.textContent='MRDHQ submission sent. Screenshot your certificate just in case.';
   }catch(error){
     submitted = false;
-    setSubmitStatus('Certificate created, but the Sheet submission may not have gone through. Screenshot the certificate and tell Mr. D.', 'warn');
+    setSubmitStatus('Certificate created, but the MRDHQ submission may not have gone through. Screenshot the certificate and tell Mr. D.', 'warn');
     const note=document.getElementById('certSubmitNote');
     if(note) note.textContent='Submission may not have gone through. Screenshot this certificate and tell Mr. D.';
   }
