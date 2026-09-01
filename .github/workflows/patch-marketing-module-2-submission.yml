@@ -1,0 +1,63 @@
+name: Patch Marketing Module 2 submission
+
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-marketing-module-2-submission.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch Marketing Module 2
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('modules/marketing-cafe-customer-strategy-mrd.html')
+          text = p.read_text()
+
+          old_url = 'const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbw4kLfppzaPH0LJnYnijygKpqSN11gme9JHpgOt4_R-ReiA-cHFi53kde4hK3kl0y4/exec";'
+          new_url = 'const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbyucfQcDDR9S_4i8_EiI2LAm0k49NNGT0IBiRnXTjZQKgtfuOwM73Wtxxt5fzojGFY/exec";'
+          if old_url not in text:
+              raise SystemExit('Expected module endpoint not found')
+          text = text.replace(old_url, new_url, 1)
+
+          old_prompt = '<p>In 5–7 sentences, explain how you would position Common Ground so a specific customer group would choose it.</p>'
+          new_prompt = '<p>Explain how you would position Common Ground so a specific customer group would choose it.</p>'
+          if old_prompt not in text:
+              raise SystemExit('Reflection prompt not found')
+          text = text.replace(old_prompt, new_prompt, 1)
+
+          old_placeholder = 'placeholder="Write your 5–7 sentence strategy reflection here..."'
+          new_placeholder = 'placeholder="Write your strategy reflection here..."'
+          if old_placeholder not in text:
+              raise SystemExit('Reflection placeholder not found')
+          text = text.replace(old_placeholder, new_placeholder, 1)
+
+          minimum = "if(text.split(/\\s+/).filter(Boolean).length<60){alert('Add more detail. Aim for 5–7 sentences that explain your cafe strategy.');return;}"
+          if minimum not in text:
+              raise SystemExit('Reflection minimum validation not found')
+          text = text.replace(minimum, '', 1)
+
+          old_params = "const params=new URLSearchParams({timestamp:finished.toISOString(),cls:'Marketing Fundamentals',block:user.pd,firstName:user.fn,lastName:user.ln,name:(user.fn+' '+user.ln).trim(),qid:'MARKETING-CAFE',bellId:'MARKETING-CAFE',question:'Build a Cafe People Choose',label:'Marketing Cafe',answer:JSON.stringify(payload),status:'On Time',late:'0',duration:String(minutes)});"
+          new_params = "const params=new URLSearchParams({action:'moduleSubmit',manualEntry:'1',moduleNumber:'2',timestamp:finished.toISOString(),cls:'Marketing',block:user.pd,firstName:user.fn,lastName:user.ln,name:(user.fn+' '+user.ln).trim(),qid:'MARKETING-CAFE',bellId:'MARKETING-CAFE',question:'Build a Cafe People Choose',label:'Marketing Cafe',answer:JSON.stringify(payload),status:'On Time',late:'0',duration:String(minutes)});"
+          if old_params not in text:
+              raise SystemExit('Module submission parameter block not found')
+          text = text.replace(old_params, new_params, 1)
+
+          p.write_text(text)
+          PY
+
+      - name: Commit Marketing Module 2 patch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add modules/marketing-cafe-customer-strategy-mrd.html
+          git diff --cached --quiet && exit 0
+          git commit -m 'Route Marketing Module 2 to module tab and remove reflection minimum'
+          git push
