@@ -598,8 +598,7 @@ function saveModuleSubmission_(ss, context) {
   var moduleSheet = getOrCreateSheetWithHeaders_(ss, tabName, moduleHeaders_());
   moduleSheet.appendRow(row);
 
-  var responses = getOrCreateResponseSheet_(ss, 'Responses');
-  responses.appendRow([
+  var responseRow = [
     ts,
     formatDate_(ts),
     className,
@@ -611,7 +610,17 @@ function saveModuleSubmission_(ss, context) {
     totalScore + (percent ? ' (' + percent + ')' : ''),
     'On Time',
     duration
-  ]);
+  ];
+
+  var responses = getOrCreateResponseSheet_(ss, 'Responses');
+  responses.appendRow(responseRow);
+
+  // Preserve the existing class-specific response tab while also routing the
+  // full submission to the master Modules sheet and dedicated module tab.
+  var classSheet = ss.getSheetByName(className);
+  if (classSheet && classSheet.getName() !== responses.getName()) {
+    classSheet.appendRow(responseRow);
+  }
 
   return {
     success:true,
